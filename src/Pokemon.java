@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Pokemon implements Card{
+public class Pokemon implements Card {
 
     protected String name;
     protected int id;
@@ -58,7 +58,7 @@ public class Pokemon implements Card{
 
 
         if (this.hp <= 0) {
-            this.hp = 0;
+            this.setHp(0);
             return true;
         }
 

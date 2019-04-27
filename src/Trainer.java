@@ -33,4 +33,28 @@ public class Trainer implements Player {
         this.hand = hand;
     }
 
+    public void changeActivePokemon() {
+
+        int i = team.lastIndexOf(activePokemon);
+        if (i <= 4) {
+            Pokemon nextPokemon = team.get(i + 1);
+            setActivePokemon(nextPokemon);
+        } else {
+            setActivePokemon(null);
+        }
+
+    }
+
+    //todo good implementation of opponent move;
+    public void attack(Trainer dude) {
+        Pokemon opponent = dude.getActivePokemon();
+        Attack opponentMove = (Attack) opponent.getAbilities().get(1);
+        activePokemon.getAttacked(opponent, opponentMove);
+
+        if (!activePokemon.isAlive()) {
+            changeActivePokemon();
+        }
+
+    }
+
 }
