@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Pokemon implements Card {
+public class Pokemon implements Card{
 
     protected String name;
     protected int id;
@@ -53,8 +53,9 @@ public class Pokemon implements Card {
     }
 
     public boolean getAttacked(Pokemon attacker, Attack move) {
-        double effectiveDamage = this.type.calcDamage(attacker.getType(), move.getDamage());
+        int effectiveDamage = this.type.calcDamage(attacker.type, move.getDamage());
         this.hp -= (int) effectiveDamage;
+
 
         if (this.hp <= 0) {
             this.hp = 0;

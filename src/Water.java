@@ -1,6 +1,10 @@
 
 public class Water extends Type {
 
+    public Water(){
+        this.name = "Water";
+    }
+
     @Override
     public int calcDamage(Type type, int damage) {
         return type.calcDamageWater(damage);

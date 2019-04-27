@@ -1,5 +1,9 @@
 public class Lightning extends Type {
 
+    public Lightning(){
+        this.name = "Lightning";
+    }
+
     @Override
     public int calcDamage(Type type, int damage) {
         return type.calcDamageLightning(damage);

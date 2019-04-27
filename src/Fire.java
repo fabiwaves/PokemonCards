@@ -1,6 +1,10 @@
 
 public class Fire extends Type {
 
+    public Fire(){
+        this.name = "Fire";
+    }
+
     @Override
     public int calcDamage(Type type, int damage) {
         return type.calcDamageFire(damage);

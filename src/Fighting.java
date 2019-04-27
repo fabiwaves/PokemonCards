@@ -1,6 +1,10 @@
 
 public class Fighting extends Type {
 
+    public Fighting(){
+        this.name = "Fighting";
+    }
+
     @Override
     public int calcDamage(Type type, int damage) {
         return type.calcDamageFighting(damage);

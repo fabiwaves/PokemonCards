@@ -1,5 +1,9 @@
 public class Plant extends Type {
 
+    public Plant(){
+        this.name = "Plant";
+    }
+
     @Override
     public int calcDamage(Type type, int damage) {
         return type.calcDamagePlant(damage);

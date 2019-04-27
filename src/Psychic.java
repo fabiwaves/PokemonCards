@@ -1,5 +1,9 @@
 
-public class Phychic extends Type {
+public class Psychic extends Type {
+
+    public Psychic(){
+        name = "Psychic";
+    }
 
     @Override
     public int calcDamage(Type type, int damage) {
