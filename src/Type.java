@@ -14,7 +14,7 @@ public abstract class Type {
 
     abstract public int calcDamageLightning(int damage);
 
-    abstract public int calcDamageFight(int damage);
+    abstract public int calcDamageFighting(int damage);
 
     abstract public int calcDamagePsychic(int damage);
 
