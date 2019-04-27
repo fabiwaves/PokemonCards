@@ -6,10 +6,10 @@ import java.util.HashMap;
 
 public class Attack {
 
-    protected String name;
-    protected int damage;
-    protected String description;
-    protected HashMap<String, Integer> energies;
+    private String name;
+    private int damage;
+    private String description;
+    private HashMap<String, Integer> energies;
 
 
     public Attack(String name, int damage, String description, HashMap<String, Integer> energies) {

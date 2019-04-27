@@ -3,8 +3,8 @@
  */
 public class Energy implements Card {
 
-    protected String name;
-    protected String type;
+    private String name;
+    private String type;
 
     public Energy(String name, String type) {
         this.name = name;

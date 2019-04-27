@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public class Trainer implements Player {
 
-    protected Pokemon activePokemon;
-    protected ArrayList<Pokemon> team;
-    protected ArrayList<Pokemon> hand;
+    private Pokemon activePokemon;
+    private ArrayList<Pokemon> team;
+    private ArrayList<Pokemon> hand;
 
     public Trainer() {
     }

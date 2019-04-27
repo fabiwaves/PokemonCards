@@ -12,7 +12,7 @@ public class PsychicTest {
     private int damage2;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         psychic = new Psychic();
         otherType = new Fire();
         damage1 = 2;

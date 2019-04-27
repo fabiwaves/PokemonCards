@@ -31,19 +31,19 @@ public class PokemonTest {
     @Test
     public void testGetName() {
         assertEquals("Piplup", piplup.getName());
-        assertEquals(piplup.name, piplup.getName());
+        assertEquals(piplup.getName(), piplup.getName());
     }
 
     @Test
     public void testGetId() {
         assertEquals(393,piplup.getId());
-        assertEquals(piplup.id,piplup.getId());
+        assertEquals(piplup.getId(),piplup.getId());
     }
 
     @Test
     public void testGetHp() {
         assertEquals(70,piplup.getHp());
-        assertEquals(piplup.hp,piplup.getHp());
+        assertEquals(piplup.getId(),piplup.getHp());
 
     }
 
@@ -59,12 +59,12 @@ public class PokemonTest {
 
     @Test
     public void testGetEnergies() {
-        assertEquals(piplup.energies,piplup.getEnergies());
+        assertEquals(piplup.getEnergies(),piplup.getEnergies());
     }
 
     @Test
     public void testGetType() {
-        assertEquals(piplup.type,piplup.getType());
+        assertEquals(piplup.getType(),piplup.getType());
     }
 
     @Test

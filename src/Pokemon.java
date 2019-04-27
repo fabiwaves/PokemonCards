@@ -6,12 +6,12 @@ import java.util.ArrayList;
 
 public class Pokemon implements Card {
 
-    protected String name;
-    protected int id;
-    protected int hp;
-    protected ArrayList abilities;
-    protected ArrayList energies;
-    protected Type type;
+    private String name;
+    private int id;
+    private int hp;
+    private ArrayList abilities;
+    private ArrayList energies;
+    private Type type;
 
     public Pokemon(String name, int id, int hp, ArrayList abilities, ArrayList energies, Type type) {
         this.name = name;

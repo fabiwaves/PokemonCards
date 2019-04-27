@@ -10,7 +10,7 @@ public class FireTest {
     private int damage2;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         fire = new Fire();
         otherType = new Fighting();
         damage1 = 2;

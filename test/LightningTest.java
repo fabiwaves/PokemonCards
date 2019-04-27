@@ -10,7 +10,7 @@ public class LightningTest {
     private int damage2;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         lightning = new Lightning();
         otherType = new Fighting();
         damage1 = 2;
