@@ -1,3 +1,6 @@
+/**
+ * @author Fabiwave
+ */
 public class Plant extends Type {
 
     public Plant(){

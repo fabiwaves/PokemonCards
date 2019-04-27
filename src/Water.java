@@ -1,4 +1,6 @@
-
+/**
+ * @author Fabiwave
+ */
 public class Water extends Type {
 
     public Water(){

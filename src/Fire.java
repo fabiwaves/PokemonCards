@@ -1,4 +1,6 @@
-
+/**
+ * @author Fabiwave
+ */
 public class Fire extends Type {
 
     public Fire(){

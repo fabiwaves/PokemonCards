@@ -1,4 +1,6 @@
-
+/**
+ * @author Fabiwave
+ */
 public class Fighting extends Type {
 
     public Fighting(){

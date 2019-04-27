@@ -1,3 +1,6 @@
+/**
+ * @author Fabiwave
+ */
 public class Lightning extends Type {
 
     public Lightning(){

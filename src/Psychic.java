@@ -1,4 +1,6 @@
-
+/**
+ * @author Fabiwave
+ */
 public class Psychic extends Type {
 
     public Psychic(){
