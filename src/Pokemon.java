@@ -115,36 +115,30 @@ public class Pokemon implements Card {
         return false;
     }
 
-    //TODO IMPLEMENTATION
+    /**
+     * Check if the pokemon has the necessary energies to do the attack
+     * @param pokemon pokemon to which I want to check the condition
+     * @param move move to which I want to check the condition
+     * @return true if it has the necessary energy, false otherwise
+     */
     public boolean checkEnergy(Pokemon pokemon, Attack move) {
 
-        ArrayList<String> aux = getTypeOfEnergy(pokemon);
-        String[] list = {"Fighting","Fire,","Lighting","Plant","Psychic"};
+        boolean cond = true;
+        ArrayList<Energy> auxEnergy = pokemon.getEnergies();
+        String[] listOfTypes = {"Fighting", "Fire,", "Lighting", "Plant", "Psychic", "Water"};
 
-        for (int i = 0; i<move.getEnergies().size();i++){
+        for (int i = 0; i < 6; i++) {
+            int energiesInPokemon = countRep(auxEnergy, listOfTypes[i]);
+            int costOfEnergy = move.getCost(listOfTypes[1]);
 
-            move.getEnergies().get(i);
-        }
-        return false;
-    }
-
-    /**
-     * Gives an arrayList with the type of energies of a pokemon
-     *
-     * @param pokemon Object of which one wants to obtain the types of energy
-     * @return An array containing the types of energy
-     */
-    public ArrayList<String> getTypeOfEnergy(Pokemon pokemon) {
-        ArrayList<String> auxArray = new ArrayList<>();
-
-        for (int i = 0; i < pokemon.getEnergies().size(); i++) {
-            Energy aux = (Energy) pokemon.getEnergies().get(i);
-            String auxType = aux.getType();
-            auxArray.add(auxType);
+            if (costOfEnergy == energiesInPokemon) {
+                cond = true;
+            } else {
+                cond = false;
+            }
         }
 
-        return auxArray;
-
+        return cond;
     }
 
     /**
@@ -154,18 +148,15 @@ public class Pokemon implements Card {
      * @param type  String we want to count
      * @return amount of repetitions of the string in the ArrayList
      */
-    public int countRep(ArrayList<String> array, String type) {
+    public int countRep(ArrayList<Energy> array, String type) {
         int count = 0;
-        if (!array.contains(type)) {
-            count = 0;
-            return count;
-        } else {
-            for (int i = 0; i < array.size(); i++) {
-                if (array.get(i) == type) {
-                    count++;
-                }
-            }
-            return count;
+        for (int i = 0; i < array.size(); i++) {
+            Energy energy = array.get(i);
+            String compare = energy.getType();
+
+            if (compare == type)
+                count++;
         }
+        return count;
     }
 }

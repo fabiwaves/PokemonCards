@@ -14,7 +14,7 @@ public class Plant extends Type {
 
     @Override
     public int calcDamagePlant(int damage) {
-        return super.resistant(damage);
+        return damage;
     }
 
     @Override
@@ -24,7 +24,7 @@ public class Plant extends Type {
 
     @Override
     public int calcDamageWater(int damage) {
-        return damage;
+        return super.resistant(damage);
     }
 
     @Override
