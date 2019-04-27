@@ -1,3 +1,7 @@
+/**
+ * @author Fabiwave
+ */
+
 import java.util.HashMap;
 
 public class Attack {
@@ -15,14 +19,29 @@ public class Attack {
         this.energies = energies;
     }
 
+    /**
+     * Gives the name of the attack
+     *
+     * @return the name of the attack
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Gives the damage of the attack
+     *
+     * @return the damage of the attack
+     */
     public int getDamage() {
         return damage;
     }
 
+    /**
+     * Gives the description of the attack
+     *
+     * @return the description of the attack
+     */
     public String getDescription() {
         return description;
     }

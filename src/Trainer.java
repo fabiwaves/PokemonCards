@@ -1,3 +1,6 @@
+/**
+ * @author Fabiwave
+ */
 import java.util.ArrayList;
 
 public class Trainer implements Player {

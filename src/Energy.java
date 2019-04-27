@@ -1,7 +1,32 @@
-public abstract class Energy implements Card {
+/**
+ * @author Fabiwave
+ */
+public class Energy implements Card {
 
-    public abstract String getName();
+    protected String name;
+    protected String type;
 
-    public abstract Trainer player();
+    public Energy(String name, String type) {
+        this.name = name;
+        this.type = type;
+    }
+
+    /**
+     * Gives the name of the energy
+     *
+     * @return the name of this energy
+     */
+    public String getName() {
+        return this.name;
+    }
+
+    /**
+     * Gives the type of the energy
+     *
+     * @return the type of the energy
+     */
+    public String getType() {
+        return this.type;
+    }
 
 }

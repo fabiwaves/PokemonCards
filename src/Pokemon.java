@@ -1,3 +1,7 @@
+/**
+ * @author Fabiwave
+ */
+
 import java.util.ArrayList;
 
 public class Pokemon implements Card {
@@ -18,40 +22,86 @@ public class Pokemon implements Card {
         this.type = type;
     }
 
+    /**
+     * Gives the name of the pokemon
+     *
+     * @return the name of the pokemon
+     */
     @Override
     public String getName() {
         return name;
     }
 
+    /**
+     * Gives the id of the pokemon
+     *
+     * @return the id of the pokemon
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Gives the hp of the pokemon
+     *
+     * @return the hp of the pokemon
+     */
     public int getHp() {
         return hp;
     }
 
+    /**
+     * Gives the collection of abilites of a pokemon
+     *
+     * @return abilities of the pokemon
+     */
     public ArrayList getAbilities() {
         return abilities;
     }
 
+    /**
+     * Gives the energies associated to the pokemon
+     *
+     * @return the energies of the pokemon
+     */
     public ArrayList getEnergies() {
         return energies;
     }
 
-    @Override
+    /**
+     * Gives the type of the pokemon
+     *
+     * @return the type of the pokemon
+     */
     public Type getType() {
         return type;
     }
 
+    /**
+     * Changes the hp of the pokemon
+     *
+     * @param hp new amount of hp
+     */
     public void setHp(int hp) {
         this.hp = hp;
     }
 
+    /**
+     * Gives if the pokemon is alive
+     *
+     * @return true is the pokemon hp is greater than 0 and false otherwise
+     */
     public boolean isAlive() {
         return (this.hp > 0);
     }
 
+    /**
+     * Simulates being attacked by other pokemon
+     *
+     * @param attacker Pokemon
+     * @param move     move
+     * @return true if the pokemon is still alive, false otherwise
+     */
     public boolean getAttacked(Pokemon attacker, Attack move) {
         int effectiveDamage = this.type.calcDamage(attacker.type, move.getDamage());
         this.hp -= (int) effectiveDamage;
