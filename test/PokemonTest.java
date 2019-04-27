@@ -1,4 +1,3 @@
-import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,39 +26,51 @@ public class PokemonTest {
     }
 
     @Test
-    public void getName() {
-
+    public void testGetName() {
+        System.out.println("YAY");
     }
 
     @Test
-    public void getId() {
+    public void testGetId() {
     }
 
     @Test
-    public void getHp() {
+    public void testGetHp() {
     }
 
     @Test
-    public void getAbilities() {
+    public void testGetAbilities() {
     }
 
     @Test
-    public void getEnergies() {
+    public void testGetEnergies() {
     }
 
     @Test
-    public void getType() {
+    public void testGetType() {
     }
 
     @Test
-    public void setHp() {
+    public void testSetHp() {
     }
 
     @Test
-    public void isAlive() {
+    public void testIsAlive() {
     }
 
     @Test
-    public void getAttacked() {
+    public void testGetAttacked() {
+    }
+
+    @Test
+    public void testCheckEnergy() {
+    }
+
+    @Test
+    public void testGetTypeOfEnergy() {
+    }
+
+    @Test
+    public void testCountRep() {
     }
 }

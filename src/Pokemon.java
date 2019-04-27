@@ -114,4 +114,58 @@ public class Pokemon implements Card {
 
         return false;
     }
+
+    //TODO IMPLEMENTATION
+    public boolean checkEnergy(Pokemon pokemon, Attack move) {
+
+        ArrayList<String> aux = getTypeOfEnergy(pokemon);
+        String[] list = {"Fighting","Fire,","Lighting","Plant","Psychic"};
+
+        for (int i = 0; i<move.getEnergies().size();i++){
+
+            move.getEnergies().get(i);
+        }
+        return false;
+    }
+
+    /**
+     * Gives an arrayList with the type of energies of a pokemon
+     *
+     * @param pokemon Object of which one wants to obtain the types of energy
+     * @return An array containing the types of energy
+     */
+    public ArrayList<String> getTypeOfEnergy(Pokemon pokemon) {
+        ArrayList<String> auxArray = new ArrayList<>();
+
+        for (int i = 0; i < pokemon.getEnergies().size(); i++) {
+            Energy aux = (Energy) pokemon.getEnergies().get(i);
+            String auxType = aux.getType();
+            auxArray.add(auxType);
+        }
+
+        return auxArray;
+
+    }
+
+    /**
+     * Counts the repetition of a String in an ArrayList
+     *
+     * @param array ArrayListi we want to check
+     * @param type  String we want to count
+     * @return amount of repetitions of the string in the ArrayList
+     */
+    public int countRep(ArrayList<String> array, String type) {
+        int count = 0;
+        if (!array.contains(type)) {
+            count = 0;
+            return count;
+        } else {
+            for (int i = 0; i < array.size(); i++) {
+                if (array.get(i) == type) {
+                    count++;
+                }
+            }
+            return count;
+        }
+    }
 }

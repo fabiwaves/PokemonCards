@@ -38,6 +38,15 @@ public class Attack {
     }
 
     /**
+     * Gives the Hashmap op the energies required for the attack
+     *
+     * @return energies of the pokemon
+     */
+    public HashMap<String, Integer> getEnergies() {
+        return energies;
+    }
+
+    /**
      * Gives the description of the attack
      *
      * @return the description of the attack
@@ -46,8 +55,14 @@ public class Attack {
         return description;
     }
 
-    public Integer getCost(String energy) {
-        Integer cost = this.energies.get(energy);
+    /**
+     * Gives the amount of energy requirement of an Energy
+     *
+     * @param nameEnergy Name of the energy that you want to know the requiremente
+     * @return Integer with the number of energy necessary
+     */
+    public Integer getCost(String nameEnergy) {
+        Integer cost = this.energies.get(nameEnergy);
         if (cost == null) {
             cost = new Integer(0);
         }
