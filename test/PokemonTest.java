@@ -7,22 +7,25 @@ import static org.junit.Assert.*;
 
 public class PokemonTest {
 
-    public Pokemon piplup;
+    private Pokemon piplup;
+    private ArrayList<String> abilities;
+    private ArrayList<Energy> energies;
+    private Water water;
 
     @Before
     public void setUp() {
         //Array for the abilities
-        ArrayList<String> abilities = new ArrayList<>();
+        abilities = new ArrayList<>();
         abilities.add("Bubble Beam");
         abilities.add("Brine");
         abilities.add("Whirlpool");
         abilities.add("Hydro Pump");
         //Array for the energies
-        ArrayList<Energy> energies = new ArrayList<>();
+        energies = new ArrayList<>();
         Energy energy = new Energy("name","type");
         energies.add(energy);
         //Initialization of type
-        Water water = new Water();
+        water = new Water();
         //Initialization of piplup
         piplup = new Pokemon("Piplup", 393, 70, abilities, energies, water);
 
@@ -37,34 +40,26 @@ public class PokemonTest {
     @Test
     public void testGetId() {
         assertEquals(393,piplup.getId());
-        assertEquals(piplup.getId(),piplup.getId());
     }
 
     @Test
     public void testGetHp() {
         assertEquals(70,piplup.getHp());
-        assertEquals(piplup.getId(),piplup.getHp());
-
     }
 
     @Test
     public void testGetAbilities() {
-        ArrayList<String> abilities = new ArrayList<>();
-        abilities.add("Bubble Beam");
-        abilities.add("Brine");
-        abilities.add("Whirlpool");
-        abilities.add("Hydro Pump");
         assertEquals(abilities,piplup.getAbilities());
     }
 
     @Test
     public void testGetEnergies() {
-        assertEquals(piplup.getEnergies(),piplup.getEnergies());
+        assertEquals(energies,piplup.getEnergies());
     }
 
     @Test
     public void testGetType() {
-        assertEquals(piplup.getType(),piplup.getType());
+        assertEquals(water, piplup.getType());
     }
 
     @Test
