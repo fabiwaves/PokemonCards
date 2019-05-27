@@ -29,11 +29,17 @@ public class Trainer implements Player {
     }
 
     public void setTeam(ArrayList<Pokemon> team) {
-        this.team = team;
+        for (int i = 0;i<team.size();i++){
+            Pokemon pokemon = team.get(i);
+            this.team.add(pokemon);
+        }
     }
 
     public void setHand(ArrayList<Pokemon> hand) {
-        this.hand = hand;
+        for (int i = 0; i < hand.size();i++){
+            Pokemon pokemon = hand.get(i);
+            addPokemon(pokemon);
+        }
     }
 
     public void changeActivePokemon() {
@@ -58,6 +64,12 @@ public class Trainer implements Player {
             changeActivePokemon();
         }
 
+    }
+
+    public void addPokemon(Pokemon pokemon){
+        if (this.hand.size() < 5){
+            this.hand.add(pokemon);
+        }
     }
 
 }
