@@ -1,6 +1,8 @@
-/**
+package Cartas; /**
  * @author fabiwave
  */
+
+import Cartas.Pokemon;
 
 import java.util.ArrayList;
 
@@ -9,7 +11,7 @@ public interface Player {
     /**
      * Gives the active pokemon
      *
-     * @return Pokemon
+     * @return Cartas.Pokemon
      */
     public Pokemon getActivePokemon();
 
@@ -23,7 +25,7 @@ public interface Player {
     /**
      * Gives the collection of all the pokemon of the player
      *
-     * @return ArrayList with the pokemon that the Trainer has
+     * @return ArrayList with the pokemon that the Cartas.Trainer has
      */
     public ArrayList<Pokemon> getTeam();
 
@@ -53,10 +55,4 @@ public interface Player {
      */
     public void changeActivePokemon();
 
-    /**
-     * Simulates the attack to other trainer
-     *
-     * @param dude Trainer to whom the attack is aimed
-     */
-    public void attack(Trainer dude);
 }

@@ -1,15 +1,17 @@
+package Ataques;
+
 /**
  * @author Fabiwave
  */
-public class Lightning extends Type {
+public class Fire extends Type {
 
-    public Lightning(){
-        this.name = "Lightning";
+    public Fire(){
+        this.name = "Ataques.Fire";
     }
 
     @Override
     public int calcDamage(Type type, int damage) {
-        return type.calcDamageLightning(damage);
+        return type.calcDamageFire(damage);
     }
 
     @Override
@@ -24,7 +26,7 @@ public class Lightning extends Type {
 
     @Override
     public int calcDamageWater(int damage) {
-        return damage;
+        return super.weak(damage);
     }
 
     @Override
@@ -33,13 +35,11 @@ public class Lightning extends Type {
     }
 
     @Override
-    // Damage that fighting type does to lightning
     public int calcDamageFighting(int damage) {
-        return super.weak(damage);
+        return damage;
     }
 
     @Override
-    // Damage that psychic type does to lightning
     public int calcDamagePsychic(int damage) {
         return damage;
     }

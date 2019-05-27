@@ -1,3 +1,6 @@
+import Ataques.Fighting;
+import Ataques.Plant;
+import Ataques.Type;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

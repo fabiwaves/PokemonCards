@@ -1,3 +1,6 @@
+import Ataques.Fighting;
+import Ataques.Lightning;
+import Ataques.Type;
 import org.junit.Before;
 import org.junit.Test;
 

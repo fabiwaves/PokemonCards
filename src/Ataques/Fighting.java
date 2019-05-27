@@ -1,20 +1,22 @@
+package Ataques;
+
 /**
  * @author Fabiwave
  */
-public class Psychic extends Type {
+public class Fighting extends Type {
 
-    public Psychic(){
-        name = "Psychic";
+    public Fighting(){
+        this.name = "Ataques.Fighting";
     }
 
     @Override
     public int calcDamage(Type type, int damage) {
-        return type.calcDamagePsychic(damage);
+        return type.calcDamageFighting(damage);
     }
 
     @Override
     public int calcDamagePlant(int damage) {
-        return damage;
+        return super.weak(damage);
     }
 
     @Override
@@ -34,7 +36,7 @@ public class Psychic extends Type {
 
     @Override
     public int calcDamageFighting(int damage) {
-        return super.resistant(damage);
+        return damage;
     }
 
     @Override

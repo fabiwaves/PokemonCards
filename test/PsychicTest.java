@@ -1,3 +1,6 @@
+import Ataques.Fire;
+import Ataques.Psychic;
+import Ataques.Type;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

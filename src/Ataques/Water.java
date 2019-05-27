@@ -1,20 +1,22 @@
+package Ataques;
+
 /**
  * @author Fabiwave
  */
-public class Fire extends Type {
+public class Water extends Type {
 
-    public Fire(){
-        this.name = "Fire";
+    public Water(){
+        this.name = "Ataques.Water";
     }
 
     @Override
     public int calcDamage(Type type, int damage) {
-        return type.calcDamageFire(damage);
+        return type.calcDamageWater(damage);
     }
 
     @Override
     public int calcDamagePlant(int damage) {
-        return damage;
+        return super.weak(damage);
     }
 
     @Override
@@ -24,17 +26,17 @@ public class Fire extends Type {
 
     @Override
     public int calcDamageWater(int damage) {
-        return super.weak(damage);
+        return damage;
     }
 
     @Override
     public int calcDamageLightning(int damage) {
-        return damage;
+        return super.weak(damage);
     }
 
     @Override
     public int calcDamageFighting(int damage) {
-        return damage;
+        return super.resistant(damage);
     }
 
     @Override

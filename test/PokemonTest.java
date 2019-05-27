@@ -1,3 +1,6 @@
+import Ataques.Water;
+import Cartas.IEnergy;
+import Cartas.Pokemon;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,12 +12,12 @@ public class PokemonTest {
 
     private Pokemon piplup;
     private ArrayList<String> abilities;
-    private ArrayList<Energy> energies;
+    private ArrayList<IEnergy> energies;
     private Water water;
 
     @Before
     public void setUp() {
-        //Array for the abilities
+        /*//Array for the abilities
         abilities = new ArrayList<>();
         abilities.add("Bubble Beam");
         abilities.add("Brine");
@@ -22,7 +25,7 @@ public class PokemonTest {
         abilities.add("Hydro Pump");
         //Array for the energies
         energies = new ArrayList<>();
-        Energy energy = new Energy("name","type");
+        IEnergy energy = new IEnergy("name","type");
         energies.add(energy);
         //Initialization of type
         water = new Water();
@@ -92,4 +95,5 @@ public class PokemonTest {
     @Test
     public void testCountRep() {
     }
-}
+    */
+}}

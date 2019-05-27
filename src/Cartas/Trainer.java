@@ -1,6 +1,7 @@
-/**
+package Cartas; /**
  * @author Fabiwave
  */
+
 import java.util.ArrayList;
 
 public class Trainer implements Player {
@@ -54,22 +55,15 @@ public class Trainer implements Player {
 
     }
 
-    //todo good implementation of opponent move;
-    public void attack(Trainer dude) {
-        Pokemon opponent = dude.getActivePokemon();
-        Attack opponentMove = (Attack) opponent.getAbilities().get(1);
-        activePokemon.getAttacked(opponent, opponentMove);
-
-        if (!activePokemon.isAlive()) {
-            changeActivePokemon();
-        }
-
-    }
-
     public void addPokemon(Pokemon pokemon){
         if (this.hand.size() < 5){
             this.hand.add(pokemon);
         }
+    }
+
+    public void play(AbstractCard card) {
+        card.setTrainer(this);
+        card.play();
     }
 
 }
