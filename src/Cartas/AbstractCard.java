@@ -1,5 +1,7 @@
 package Cartas;
 
+import Jugador.Trainer;
+
 public abstract class AbstractCard {
 
     String name;

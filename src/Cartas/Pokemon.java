@@ -3,6 +3,7 @@ package Cartas; /**
  */
 
 import Ataques.Type;
+import Jugador.Trainer;
 
 import java.util.ArrayList;
 
@@ -51,6 +52,11 @@ public class Pokemon extends AbstractCard implements IPokemon {
         return type;
     }
 
+    @Override
+    public Trainer getTrainer() {
+        return trainer;
+    }
+
     public void setHp(int hp) {
         this.hp = hp;
     }
@@ -74,7 +80,6 @@ public class Pokemon extends AbstractCard implements IPokemon {
 
         return false;
     }
-
 
     //todo implementar esto
     public void play() {

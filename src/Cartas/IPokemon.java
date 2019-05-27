@@ -1,6 +1,7 @@
 package Cartas;
 
 import Ataques.Type;
+import Jugador.Trainer;
 
 import java.util.ArrayList;
 

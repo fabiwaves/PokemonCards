@@ -1,6 +1,10 @@
-package Cartas; /**
+ /**
  * @author Fabiwave
  */
+
+ package Jugador;
+import Cartas.AbstractCard;
+import Cartas.Pokemon;
 
 import java.util.ArrayList;
 
@@ -11,6 +15,9 @@ public class Trainer implements Player {
     private ArrayList<Pokemon> hand;
 
     public Trainer() {
+        this.activePokemon = null;
+        this.team = null;
+        this.hand = null;
     }
 
     public Pokemon getActivePokemon() {

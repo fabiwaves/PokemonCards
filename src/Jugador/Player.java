@@ -1,4 +1,4 @@
-package Cartas; /**
+package Jugador; /**
  * @author fabiwave
  */
 
@@ -25,7 +25,7 @@ public interface Player {
     /**
      * Gives the collection of all the pokemon of the player
      *
-     * @return ArrayList with the pokemon that the Cartas.Trainer has
+     * @return ArrayList with the pokemon that the Jugador.Trainer has
      */
     public ArrayList<Pokemon> getTeam();
 
