@@ -1,32 +1,32 @@
-package Ataques;
+package Types;
 
 /**
  * @author Fabiwave
  */
-public class Fighting extends Type {
+public class Plant extends Type {
 
-    public Fighting(){
-        this.name = "Ataques.Fighting";
+    public Plant(){
+        this.name = "Types.Plant";
     }
 
     @Override
     public int calcDamage(Type type, int damage) {
-        return type.calcDamageFighting(damage);
+        return type.calcDamagePlant(damage);
     }
 
     @Override
     public int calcDamagePlant(int damage) {
-        return super.weak(damage);
+        return damage;
     }
 
     @Override
     public int calcDamageFire(int damage) {
-        return damage;
+        return super.weak(damage);
     }
 
     @Override
     public int calcDamageWater(int damage) {
-        return damage;
+        return super.resistant(damage);
     }
 
     @Override
@@ -41,6 +41,6 @@ public class Fighting extends Type {
 
     @Override
     public int calcDamagePsychic(int damage) {
-        return super.weak(damage);
+        return damage;
     }
 }

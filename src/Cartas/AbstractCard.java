@@ -2,6 +2,8 @@ package Cartas;
 
 import Jugador.Trainer;
 
+// TODO: Hacer ICard y cambiar los AbstractCard por ICard en parametros
+
 public abstract class AbstractCard {
 
     String name;

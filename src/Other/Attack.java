@@ -1,4 +1,4 @@
-package Cartas; /**
+package Other; /**
  * @author Fabiwave
  */
 
@@ -37,14 +37,6 @@ public class Attack {
         return damage;
     }
 
-    /**
-     * Gives the Hashmap op the energies required for the attack
-     *
-     * @return energies of the pokemon
-     */
-    public HashMap<String, Integer> getEnergies() {
-        return energies;
-    }
 
     /**
      * Gives the description of the attack

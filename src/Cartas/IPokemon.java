@@ -1,9 +1,13 @@
 package Cartas;
 
-import Ataques.Type;
+import Other.Attack;
+import Types.Type;
+import Jugador.Player;
 import Jugador.Trainer;
 
 import java.util.ArrayList;
+
+// TODO: extends ICard
 
 public interface IPokemon {
 
@@ -26,14 +30,14 @@ public interface IPokemon {
      *
      * @return abilities of the pokemon
      */
-    public ArrayList getAbilities();
+    public ArrayList<Attack> getAttacks();
 
     /**
      * Gives the energies associated to the pokemon
      *
      * @return the energies of the pokemon
      */
-    public ArrayList getEnergies();
+    public int[] getEnergies();
 
     /**
      * Gives the type of the pokemon
@@ -72,4 +76,19 @@ public interface IPokemon {
      */
     public boolean getAttacked(Pokemon attacker, Attack move);
 
+    void setNextAttack(int index);
+
+    void attackTrainer(Player adversary);
+
+    void addFightingEnergy(IEnergy energy);
+
+    void addFireEnergy(IEnergy energy);
+
+    void addLightningEnergy(IEnergy energy);
+
+    void addPlantEnergy(IEnergy energy);
+
+    void addPsychicEnergy(IEnergy energy);
+
+    void addWaterEnergy(IEnergy energy);
 }

@@ -4,15 +4,15 @@
 
  package Jugador;
 import Cartas.AbstractCard;
-import Cartas.Pokemon;
+import Cartas.IPokemon;
 
 import java.util.ArrayList;
 
 public class Trainer implements Player {
 
-    private Pokemon activePokemon;
-    private ArrayList<Pokemon> team;
-    private ArrayList<Pokemon> hand;
+    private IPokemon activePokemon;
+    private ArrayList<IPokemon> team;
+    private ArrayList<AbstractCard> hand;
 
     public Trainer() {
         this.activePokemon = null;
@@ -20,33 +20,37 @@ public class Trainer implements Player {
         this.hand = null;
     }
 
-    public Pokemon getActivePokemon() {
+    public IPokemon getActivePokemon() {
         return activePokemon;
     }
 
-    public ArrayList<Pokemon> getHand() {
+    public ArrayList getAbilities() {
+        return activePokemon.getAttacks();
+    }
+
+    public ArrayList<AbstractCard> getHand() {
         return hand;
     }
 
-    public ArrayList<Pokemon> getTeam() {
+    public ArrayList<IPokemon> getTeam() {
         return team;
     }
 
-    public void setActivePokemon(Pokemon activePokemon) {
+    public void setActivePokemon(IPokemon activePokemon) {
         this.activePokemon = activePokemon;
     }
 
-    public void setTeam(ArrayList<Pokemon> team) {
+    public void setTeam(ArrayList<IPokemon> team) {
         for (int i = 0;i<team.size();i++){
-            Pokemon pokemon = team.get(i);
+            IPokemon pokemon = team.get(i);
             this.team.add(pokemon);
         }
     }
 
-    public void setHand(ArrayList<Pokemon> hand) {
+    public void setHand(ArrayList<IPokemon> hand) {
         for (int i = 0; i < hand.size();i++){
-            Pokemon pokemon = hand.get(i);
-            addPokemon(pokemon);
+            IPokemon pokemon = hand.get(i);
+            addPokemonToTeam(pokemon);
         }
     }
 
@@ -54,7 +58,7 @@ public class Trainer implements Player {
 
         int i = team.lastIndexOf(activePokemon);
         if (i <= 4) {
-            Pokemon nextPokemon = team.get(i + 1);
+            IPokemon nextPokemon = team.get(i + 1);
             setActivePokemon(nextPokemon);
         } else {
             setActivePokemon(null);
@@ -62,10 +66,19 @@ public class Trainer implements Player {
 
     }
 
-    public void addPokemon(Pokemon pokemon){
-        if (this.hand.size() < 5){
-            this.hand.add(pokemon);
+    public void addPokemonToTeam(IPokemon pokemon){
+        if (this.team.size() < 5){
+            this.team.add(pokemon);
+            this.hand.remove((AbstractCard) pokemon);
         }
+    }
+
+    public void selectAttack(int index){
+        activePokemon.setNextAttack(index);
+    }
+
+    public void attackEnemy(Player adversary){
+        activePokemon.attackTrainer(adversary);
     }
 
     public void play(AbstractCard card) {

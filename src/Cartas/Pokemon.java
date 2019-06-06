@@ -2,7 +2,9 @@ package Cartas; /**
  * @author Fabiwave
  */
 
-import Ataques.Type;
+import Other.Attack;
+import Types.Type;
+import Jugador.Player;
 import Jugador.Trainer;
 
 import java.util.ArrayList;
@@ -12,19 +14,22 @@ public class Pokemon extends AbstractCard implements IPokemon {
     private String name;
     private int id;
     private int hp;
-    private ArrayList abilities;
-    private ArrayList energies;
+    private ArrayList<Attack> attacks;
+    private int[] energies;
     private Type type;
     private Trainer trainer;
+    private int next_attack_index;
 
-    public Pokemon(String name, int id, int hp, ArrayList abilities, ArrayList energies, Type type, Trainer trainer) {
+    public Pokemon(String name, int id, int hp, ArrayList<Attack> abilities, Type type, Trainer trainer) {
         this.name = name;
         this.id = id;
         this.hp = hp;
-        this.abilities = abilities;
-        this.energies = energies;
+        this.attacks = abilities;
+        // energies: {Fighning, Fire, Lightning, Plant, Psychic, Water}
+        this.energies = new int[] {0, 0, 0, 0, 0, 0};
         this.type = type;
         this.trainer = trainer;
+        this.next_attack_index = -1;
     }
 
     @Override
@@ -40,11 +45,11 @@ public class Pokemon extends AbstractCard implements IPokemon {
         return hp;
     }
 
-    public ArrayList getAbilities() {
-        return abilities;
+    public ArrayList getAttacks() {
+        return attacks;
     }
 
-    public ArrayList getEnergies() {
+    public int[] getEnergies() {
         return energies;
     }
 
@@ -81,9 +86,51 @@ public class Pokemon extends AbstractCard implements IPokemon {
         return false;
     }
 
+    @Override
+    public void setNextAttack(int index) {
+        if (index >= 0 && index < attacks.size()){
+            this.next_attack_index = index;
+        }
+    }
+
+    @Override
+    public void attackTrainer(Player adversary) {
+        adversary.getActivePokemon().getAttacked(this, this.attacks.get(next_attack_index));
+    }
+
+    @Override
+    public void addFightingEnergy(IEnergy energy) {
+        this.energies[0] += 1;
+    }
+
+    @Override
+    public void addFireEnergy(IEnergy energy) {
+        this.energies[1] += 1;
+    }
+
+    @Override
+    public void addLightningEnergy(IEnergy energy) {
+        this.energies[2] += 1;
+    }
+
+    @Override
+    public void addPlantEnergy(IEnergy energy) {
+        this.energies[3] += 1;
+    }
+
+    @Override
+    public void addPsychicEnergy(IEnergy energy) {
+        this.energies[4] += 1;
+    }
+
+    @Override
+    public void addWaterEnergy(IEnergy energy) {
+        this.energies[5] += 1;
+    }
+
     //todo implementar esto
     public void play() {
-        return;
+        this.trainer.addPokemonToTeam(this);
     }
 
 }

@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 public class AttackTest {
 
     String description = " A spray of countless bubbles is jetted at the opposing Pokémon.";
-    //Cartas.Attack attack = new Cartas.Attack("Buble", 40, description,);
+    //Other.Attack attack = new Other.Attack("Buble", 40, description,);
 
     @Test
     public void getName() {

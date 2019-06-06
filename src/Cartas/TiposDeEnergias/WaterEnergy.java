@@ -7,6 +7,7 @@ public class WaterEnergy extends AbstractCard implements IEnergy {
 
     @Override
     public void play() {
-
+        this.getTrainer().getActivePokemon().addWaterEnergy(this);
+        this.getTrainer().getHand().remove(this);
     }
 }

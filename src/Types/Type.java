@@ -1,4 +1,4 @@
-package Ataques; /**
+package Types; /**
  * @author Fabiwave
  */
 import java.lang.Math;
@@ -9,14 +9,14 @@ public abstract class Type {
     /**
      * Calculate the damage that is inflicted by a pokemon of the specified type
      *
-     * @param type   Ataques.Type of pokemon
+     * @param type   Types.Type of pokemon
      * @param damage Amount of damage inflicted
      * @return The damage inflicted by the pokemon
      */
     abstract public int calcDamage(Type type, int damage);
 
     /**
-     * Calculate the damage inflicted by a Ataques.Plant type
+     * Calculate the damage inflicted by a Types.Plant type
      *
      * @param damage Amount of damage inflicted
      * @return The damage inflicted by the pokemon
@@ -24,7 +24,7 @@ public abstract class Type {
     abstract public int calcDamagePlant(int damage);
 
     /**
-     * Calculate the damage inflicted by a Ataques.Fire type
+     * Calculate the damage inflicted by a Types.Fire type
      *
      * @param damage Amount of damage inflicted
      * @return The damage inflicted by the pokemon
@@ -32,7 +32,7 @@ public abstract class Type {
     abstract public int calcDamageFire(int damage);
 
     /**
-     * Calculate the damage inflicted by a Ataques.Water type
+     * Calculate the damage inflicted by a Types.Water type
      *
      * @param damage Amount of damage inflicted
      * @return The damage inflicted by the pokemon
@@ -40,7 +40,7 @@ public abstract class Type {
     abstract public int calcDamageWater(int damage);
 
     /**
-     * Calculate the damage inflicted by a Ataques.Lightning type
+     * Calculate the damage inflicted by a Types.Lightning type
      *
      * @param damage Amount of damage inflicted
      * @return The damage inflicted by the pokemon
@@ -48,7 +48,7 @@ public abstract class Type {
     abstract public int calcDamageLightning(int damage);
 
     /**
-     * Calculate the damage inflicted by a Ataques.Fighting type
+     * Calculate the damage inflicted by a Types.Fighting type
      *
      * @param damage Amount of damage inflicted
      * @return The damage inflicted by the pokemon
@@ -56,7 +56,7 @@ public abstract class Type {
     abstract public int calcDamageFighting(int damage);
 
     /**
-     * Calculate the damage inflicted by a Ataques.Psychic type
+     * Calculate the damage inflicted by a Types.Psychic type
      *
      * @param damage Amount of damage inflicted
      * @return The damage inflicted by the pokemon

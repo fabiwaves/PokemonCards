@@ -1,6 +1,6 @@
-import Ataques.Fire;
-import Ataques.Type;
-import Ataques.Water;
+import Types.Fire;
+import Types.Type;
+import Types.Water;
 import org.junit.Before;
 import org.junit.Test;
 

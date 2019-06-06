@@ -1,12 +1,9 @@
-import Ataques.Water;
+import Types.Water;
 import Cartas.IEnergy;
 import Cartas.Pokemon;
 import org.junit.Before;
-import org.junit.Test;
 
 import java.util.ArrayList;
-
-import static org.junit.Assert.*;
 
 public class PokemonTest {
 
@@ -52,7 +49,7 @@ public class PokemonTest {
 
     @Test
     public void testGetAbilities() {
-        assertEquals(abilities,piplup.getAbilities());
+        assertEquals(abilities,piplup.getAttacks());
     }
 
     @Test
