@@ -1,8 +1,10 @@
-package Other; /**
- * @author Fabiwave
- */
+package Other;
 
 import java.util.HashMap;
+
+/**
+ * @author Fabiwave
+ */
 
 public class Attack {
 
@@ -56,7 +58,7 @@ public class Attack {
     public Integer getCost(String nameEnergy) {
         Integer cost = this.energies.get(nameEnergy);
         if (cost == null) {
-            cost = new Integer(0);
+            cost = 0;
         }
         return cost;
     }

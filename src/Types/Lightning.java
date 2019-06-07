@@ -3,10 +3,11 @@ package Types;
 /**
  * @author Fabiwave
  */
+
 public class Lightning extends Type {
 
-    public Lightning(){
-        this.name = "Types.Lightning";
+    public Lightning() {
+        this.name = "Lightning";
     }
 
     @Override

@@ -4,7 +4,7 @@ import Types.Type;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class FireTest {
     private Fire fire;
@@ -27,14 +27,14 @@ public class FireTest {
 
     @Test
     public void calcDamagePlant() {
-        assertEquals(damage1,fire.calcDamagePlant(damage1));
-        assertEquals(damage2,fire.calcDamagePlant(damage2));
+        assertEquals(damage1, fire.calcDamagePlant(damage1));
+        assertEquals(damage2, fire.calcDamagePlant(damage2));
     }
 
     @Test
     public void calcDamageFire() {
-        assertEquals(damage1,fire.calcDamageFire(damage1));
-        assertEquals(damage2,fire.calcDamageFire(damage2));
+        assertEquals(damage1, fire.calcDamageFire(damage1));
+        assertEquals(damage2, fire.calcDamageFire(damage2));
     }
 
     @Test
@@ -45,19 +45,19 @@ public class FireTest {
 
     @Test
     public void calcDamageLightning() {
-        assertEquals(damage1,fire.calcDamageLightning(damage1));
-        assertEquals(damage2,fire.calcDamageLightning(damage2));
+        assertEquals(damage1, fire.calcDamageLightning(damage1));
+        assertEquals(damage2, fire.calcDamageLightning(damage2));
     }
 
     @Test
     public void calcDamageFighting() {
-        assertEquals(damage1,fire.calcDamageFighting(damage1));
-        assertEquals(damage2,fire.calcDamageFighting(damage2));
+        assertEquals(damage1, fire.calcDamageFighting(damage1));
+        assertEquals(damage2, fire.calcDamageFighting(damage2));
     }
 
     @Test
     public void calcDamagePsychic() {
-        assertEquals(damage1,fire.calcDamagePsychic(damage1));
-        assertEquals(damage2,fire.calcDamagePsychic(damage2));
+        assertEquals(damage1, fire.calcDamagePsychic(damage1));
+        assertEquals(damage2, fire.calcDamagePsychic(damage2));
     }
 }

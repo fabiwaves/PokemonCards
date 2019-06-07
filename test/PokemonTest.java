@@ -1,6 +1,6 @@
+import Cards.IEnergy;
+import Cards.Pokemon;
 import Types.Water;
-import Cartas.IEnergy;
-import Cartas.Pokemon;
 import org.junit.Before;
 
 import java.util.ArrayList;
@@ -93,4 +93,5 @@ public class PokemonTest {
     public void testCountRep() {
     }
     */
-}}
+    }
+}

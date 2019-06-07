@@ -3,10 +3,11 @@ package Types;
 /**
  * @author Fabiwave
  */
+
 public class Fire extends Type {
 
-    public Fire(){
-        this.name = "Types.Fire";
+    public Fire() {
+        this.name = "Fire";
     }
 
     @Override

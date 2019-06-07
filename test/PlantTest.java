@@ -5,7 +5,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class PlantTest {
 
@@ -29,8 +29,8 @@ public class PlantTest {
 
     @Test
     public void calcDamagePlant() {
-        Assert.assertEquals(damage1,plant.calcDamagePlant(damage1));
-        Assert.assertEquals(damage2,plant.calcDamagePlant(damage2));
+        Assert.assertEquals(damage1, plant.calcDamagePlant(damage1));
+        Assert.assertEquals(damage2, plant.calcDamagePlant(damage2));
     }
 
     @Test
@@ -54,13 +54,13 @@ public class PlantTest {
 
     @Test
     public void calcDamageFighting() {
-        Assert.assertEquals(damage1,plant.calcDamageFighting(damage1));
-        Assert.assertEquals(damage2,plant.calcDamageFighting(damage2));
+        Assert.assertEquals(damage1, plant.calcDamageFighting(damage1));
+        Assert.assertEquals(damage2, plant.calcDamageFighting(damage2));
     }
 
     @Test
     public void calcDamagePsychic() {
-        Assert.assertEquals(damage1,plant.calcDamagePsychic(damage1));
-        Assert.assertEquals(damage2,plant.calcDamagePsychic(damage2));
+        Assert.assertEquals(damage1, plant.calcDamagePsychic(damage1));
+        Assert.assertEquals(damage2, plant.calcDamagePsychic(damage2));
     }
 }

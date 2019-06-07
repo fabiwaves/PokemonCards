@@ -4,7 +4,7 @@ import Types.Type;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class FightingTest {
     private Fighting fighting;
@@ -27,37 +27,37 @@ public class FightingTest {
 
     @Test
     public void calcDamagePlant() {
-        assertEquals(damage1*2,fighting.calcDamagePlant(damage1));
-        assertEquals(damage2*2,fighting.calcDamagePlant(damage2));
+        assertEquals(damage1 * 2, fighting.calcDamagePlant(damage1));
+        assertEquals(damage2 * 2, fighting.calcDamagePlant(damage2));
     }
 
     @Test
     public void calcDamageFire() {
-        assertEquals(damage1,fighting.calcDamageFire(damage1));
-        assertEquals(damage2,fighting.calcDamageFire(damage2));
+        assertEquals(damage1, fighting.calcDamageFire(damage1));
+        assertEquals(damage2, fighting.calcDamageFire(damage2));
     }
 
     @Test
     public void calcDamageWater() {
-        assertEquals(damage1,fighting.calcDamageWater(damage1));
-        assertEquals(damage2,fighting.calcDamageWater(damage2));
+        assertEquals(damage1, fighting.calcDamageWater(damage1));
+        assertEquals(damage2, fighting.calcDamageWater(damage2));
     }
 
     @Test
     public void calcDamageLightning() {
-        assertEquals(damage1,fighting.calcDamageLightning(damage1));
-        assertEquals(damage2,fighting.calcDamageLightning(damage2));
+        assertEquals(damage1, fighting.calcDamageLightning(damage1));
+        assertEquals(damage2, fighting.calcDamageLightning(damage2));
     }
 
     @Test
     public void calcDamageFighting() {
-        assertEquals(damage1,fighting.calcDamageFighting(damage1));
-        assertEquals(damage2,fighting.calcDamageFighting(damage2));
+        assertEquals(damage1, fighting.calcDamageFighting(damage1));
+        assertEquals(damage2, fighting.calcDamageFighting(damage2));
     }
 
     @Test
     public void calcDamagePsychic() {
-        assertEquals(damage1*2,fighting.calcDamagePsychic(damage1));
-        assertEquals(damage2*2,fighting.calcDamagePsychic(damage2));
+        assertEquals(damage1 * 2, fighting.calcDamagePsychic(damage1));
+        assertEquals(damage2 * 2, fighting.calcDamagePsychic(damage2));
     }
 }

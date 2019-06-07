@@ -1,7 +1,9 @@
-package Types; /**
+package Types;
+
+/**
  * @author Fabiwave
  */
-import java.lang.Math;
+
 public abstract class Type {
 
     protected String name;
@@ -66,20 +68,20 @@ public abstract class Type {
     /**
      * Modify the damage of the attack simulating resistance to this
      *
-     * @param damage
+     * @param damage the attack damage before resistance calculation
      * @return Effective damage
      */
-    public int resistant(int damage) {
+    int resistant(int damage) {
         return Math.max(damage - 30, 0);
     }
 
     /**
      * Modify the damage of the attack simulating weakness to this
      *
-     * @param damage
+     * @param damage he attack damage before weakness calculation
      * @return Effective damage
      */
-    public int weak(int damage) {
+    int weak(int damage) {
         return damage * 2;
     }
 }

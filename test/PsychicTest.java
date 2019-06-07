@@ -5,7 +5,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class PsychicTest {
 
@@ -29,26 +29,26 @@ public class PsychicTest {
 
     @Test
     public void calcDamagePlant() {
-        Assert.assertEquals(damage1,psychic.calcDamagePlant(damage1));
-        Assert.assertEquals(damage2,psychic.calcDamagePlant(damage2));
+        Assert.assertEquals(damage1, psychic.calcDamagePlant(damage1));
+        Assert.assertEquals(damage2, psychic.calcDamagePlant(damage2));
     }
 
     @Test
     public void calcDamageFire() {
-        Assert.assertEquals(damage1,psychic.calcDamageFire(damage1));
-        Assert.assertEquals(damage2,psychic.calcDamageFire(damage2));
+        Assert.assertEquals(damage1, psychic.calcDamageFire(damage1));
+        Assert.assertEquals(damage2, psychic.calcDamageFire(damage2));
     }
 
     @Test
     public void calcDamageWater() {
-        Assert.assertEquals(damage1,psychic.calcDamageWater(damage1));
-        Assert.assertEquals(damage2,psychic.calcDamageWater(damage2));
+        Assert.assertEquals(damage1, psychic.calcDamageWater(damage1));
+        Assert.assertEquals(damage2, psychic.calcDamageWater(damage2));
     }
 
     @Test
     public void calcDamageLightning() {
-        Assert.assertEquals(damage1,psychic.calcDamageLightning(damage1));
-        Assert.assertEquals(damage2,psychic.calcDamageLightning(damage2));
+        Assert.assertEquals(damage1, psychic.calcDamageLightning(damage1));
+        Assert.assertEquals(damage2, psychic.calcDamageLightning(damage2));
     }
 
     @Test
@@ -59,7 +59,7 @@ public class PsychicTest {
 
     @Test
     public void calcDamagePsychic() {
-        Assert.assertEquals(damage1*2, psychic.calcDamagePsychic(damage1));
-        Assert.assertEquals(damage2*2, psychic.calcDamagePsychic(damage2));
+        Assert.assertEquals(damage1 * 2, psychic.calcDamagePsychic(damage1));
+        Assert.assertEquals(damage2 * 2, psychic.calcDamagePsychic(damage2));
     }
 }

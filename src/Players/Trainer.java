@@ -1,10 +1,7 @@
- /**
- * @author Fabiwave
- */
+package Players;
 
- package Jugador;
-import Cartas.AbstractCard;
-import Cartas.IPokemon;
+import Cards.ICard;
+import Cards.IPokemon;
 
 import java.util.ArrayList;
 
@@ -12,7 +9,7 @@ public class Trainer implements Player {
 
     private IPokemon activePokemon;
     private ArrayList<IPokemon> team;
-    private ArrayList<AbstractCard> hand;
+    private ArrayList<ICard> hand;
 
     public Trainer() {
         this.activePokemon = null;
@@ -24,34 +21,26 @@ public class Trainer implements Player {
         return activePokemon;
     }
 
-    public ArrayList getAbilities() {
-        return activePokemon.getAttacks();
-    }
-
-    public ArrayList<AbstractCard> getHand() {
-        return hand;
-    }
-
-    public ArrayList<IPokemon> getTeam() {
-        return team;
-    }
-
     public void setActivePokemon(IPokemon activePokemon) {
         this.activePokemon = activePokemon;
     }
 
-    public void setTeam(ArrayList<IPokemon> team) {
-        for (int i = 0;i<team.size();i++){
-            IPokemon pokemon = team.get(i);
-            this.team.add(pokemon);
-        }
+    public ArrayList getAbilities() {
+        return activePokemon.getAttacks();
+    }
+
+    public ArrayList<ICard> getHand() {
+        return hand;
     }
 
     public void setHand(ArrayList<IPokemon> hand) {
-        for (int i = 0; i < hand.size();i++){
-            IPokemon pokemon = hand.get(i);
+        for (IPokemon pokemon : hand) {
             addPokemonToTeam(pokemon);
         }
+    }
+
+    public ArrayList<IPokemon> getTeam() {
+        return team;
     }
 
     public void changeActivePokemon() {
@@ -66,24 +55,30 @@ public class Trainer implements Player {
 
     }
 
-    public void addPokemonToTeam(IPokemon pokemon){
-        if (this.team.size() < 5){
+    public void addPokemonToTeam(IPokemon pokemon) {
+        if (this.team.size() < 5) {
             this.team.add(pokemon);
-            this.hand.remove((AbstractCard) pokemon);
+            this.hand.remove(pokemon);
         }
     }
 
-    public void selectAttack(int index){
+    public void selectAttack(int index) {
         activePokemon.setNextAttack(index);
     }
 
-    public void attackEnemy(Player adversary){
+    public void attackEnemy(Player adversary) {
         activePokemon.attackTrainer(adversary);
     }
 
-    public void play(AbstractCard card) {
+    public void play(ICard card) {
         card.setTrainer(this);
         card.play();
+    }
+
+    public void checkActivePokemon() {
+        if (!this.activePokemon.isAlive()) {
+            this.changeActivePokemon();
+        }
     }
 
 }

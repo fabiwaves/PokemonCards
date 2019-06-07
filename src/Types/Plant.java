@@ -3,10 +3,11 @@ package Types;
 /**
  * @author Fabiwave
  */
+
 public class Plant extends Type {
 
-    public Plant(){
-        this.name = "Types.Plant";
+    public Plant() {
+        this.name = "Plant";
     }
 
     @Override

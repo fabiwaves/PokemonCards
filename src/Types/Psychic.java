@@ -3,10 +3,11 @@ package Types;
 /**
  * @author Fabiwave
  */
+
 public class Psychic extends Type {
 
-    public Psychic(){
-        name = "Types.Psychic";
+    public Psychic() {
+        name = "Psychic";
     }
 
     @Override

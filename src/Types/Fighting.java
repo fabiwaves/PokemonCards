@@ -3,10 +3,11 @@ package Types;
 /**
  * @author Fabiwave
  */
+
 public class Fighting extends Type {
 
-    public Fighting(){
-        this.name = "Types.Fighting";
+    public Fighting() {
+        this.name = "Fighting";
     }
 
     @Override
