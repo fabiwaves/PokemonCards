@@ -10,11 +10,19 @@ public class Trainer implements Player {
     private IPokemon activePokemon;
     private ArrayList<IPokemon> team;
     private ArrayList<ICard> hand;
+    private ArrayList<ICard> deck;
+    private ArrayList<ICard> cementery;
+    private ArrayList<ICard> prizes;
 
-    public Trainer() {
+    public Trainer(ArrayList<ICard> deck) {
         this.activePokemon = null;
-        this.team = null;
-        this.hand = null;
+        this.team = new ArrayList<>();
+        this.hand = new ArrayList<>();
+        this.cementery = new ArrayList<>();
+        this.prizes =  new ArrayList<>();
+        if(deck.size()==60){
+            this.deck = deck;
+        }
     }
 
     public IPokemon getActivePokemon() {
@@ -79,6 +87,11 @@ public class Trainer implements Player {
         if (!this.activePokemon.isAlive()) {
             this.changeActivePokemon();
         }
+    }
+
+    public void sendToCementery(ICard card, ArrayList<ICard> place){
+        place.remove(card);
+        this.cementery.add(card);
     }
 
 }
