@@ -13,9 +13,11 @@ public class Trainer implements Player {
     private ArrayList<ICard> deck;
     private ArrayList<ICard> cementery;
     private ArrayList<ICard> prizes;
+    private ICard nextTarget;
 
     public Trainer(ArrayList<ICard> deck) {
         this.activePokemon = null;
+        this.nextTarget = null;
         this.team = new ArrayList<>();
         this.hand = new ArrayList<>();
         this.cementery = new ArrayList<>();
@@ -45,6 +47,10 @@ public class Trainer implements Player {
         for (IPokemon pokemon : hand) {
             addPokemonToTeam(pokemon);
         }
+    }
+
+    public void setNextTarget(ICard card){
+        this.nextTarget = card;
     }
 
     public ArrayList<IPokemon> getTeam() {
@@ -80,7 +86,8 @@ public class Trainer implements Player {
 
     public void play(ICard card) {
         card.setTrainer(this);
-        card.play();
+        card.play(this.nextTarget);
+        this.nextTarget = null;
     }
 
     public void checkActivePokemon() {

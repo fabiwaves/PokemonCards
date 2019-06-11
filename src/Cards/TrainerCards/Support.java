@@ -2,7 +2,7 @@ package Cards.TrainerCards;
 
 import Cards.ICard;
 
-public class Stadium extends TrainerCard {
+public class Support extends TrainerCard {
 
     @Override
     public void play(ICard card) {

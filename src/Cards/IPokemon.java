@@ -1,5 +1,6 @@
 package Cards;
 
+import Cards.TrainerCards.PKMObject;
 import Other.Attack;
 import Players.Player;
 import Players.Trainer;
@@ -52,6 +53,10 @@ public interface IPokemon extends ICard {
      * @param trainer new amount of hp
      */
     void setTrainer(Trainer trainer);
+
+    PKMObject getPKMObject();
+
+    void setPkmObject(PKMObject pkmObject);
 
     /**
      * Gives if the pokemon is alive

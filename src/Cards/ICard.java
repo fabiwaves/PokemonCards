@@ -36,5 +36,5 @@ public interface ICard {
      * Represents the action of playing a card
      * It depends of the card type the effect of the play
      */
-    void play();
+    void play(ICard card);
 }

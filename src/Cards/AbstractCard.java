@@ -22,6 +22,4 @@ public abstract class AbstractCard implements ICard {
     public void setTrainer(Trainer trainer) {
         this.trainer = trainer;
     }
-
-    public abstract void play();
 }

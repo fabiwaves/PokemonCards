@@ -4,7 +4,7 @@ import Cards.AbstractCard;
 
 public abstract class TrainerCard extends AbstractCard implements ITrainerCard {
 
-    protected String description;
+    private String description;
 
     public String getDescription() {
         return this.description;

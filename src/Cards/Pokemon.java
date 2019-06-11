@@ -1,5 +1,6 @@
 package Cards;
 
+import Cards.TrainerCards.PKMObject;
 import Other.Attack;
 import Players.Player;
 import Players.Trainer;
@@ -17,6 +18,7 @@ public class Pokemon extends AbstractCard implements IPokemon {
     private Type type;
     private Trainer trainer;
     private int next_attack_index;
+    private PKMObject pkmObject;
 
     public Pokemon(String name, int id, int hp, ArrayList<Attack> abilities, Type type, Trainer trainer) {
         String[] energy_names = {"Fighting", "Fire", "Lightning", "Plant", "Psychic", "Water"};
@@ -32,6 +34,7 @@ public class Pokemon extends AbstractCard implements IPokemon {
         this.type = type;
         this.trainer = trainer;
         this.next_attack_index = -1;
+        this.pkmObject = null;
     }
 
     @Override
@@ -66,6 +69,14 @@ public class Pokemon extends AbstractCard implements IPokemon {
 
     public void setTrainer(Trainer trainer) {
         this.trainer = trainer;
+    }
+
+    public PKMObject getPKMObject(){
+        return this.pkmObject;
+    }
+
+    public void setPkmObject(PKMObject pkmObject) {
+        this.pkmObject = pkmObject;
     }
 
     public boolean isAlive() {
@@ -145,7 +156,7 @@ public class Pokemon extends AbstractCard implements IPokemon {
         );
     }
 
-    public void play() {
+    public void play(ICard card) {
         this.trainer.addPokemonToTeam(this);
     }
 
