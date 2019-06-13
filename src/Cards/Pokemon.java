@@ -5,11 +5,13 @@ import Other.Attack;
 import Players.Player;
 import Players.Trainer;
 import Types.Type;
+import Visitors.IVisitable;
+import Visitors.IVisitor;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Pokemon extends AbstractCard implements IPokemon {
+public class Pokemon extends AbstractCard implements IPokemon, IVisitable {
     private String name;
     private int id;
     private int hp;
@@ -158,6 +160,10 @@ public class Pokemon extends AbstractCard implements IPokemon {
 
     public void play(ICard card) {
         this.trainer.addPokemonToTeam(this);
+    }
+
+    public void acceptVisitor(IVisitor visitor){
+        visitor.visitPokemon(this);
     }
 
 }

@@ -2,29 +2,35 @@ package Players;
 
 import Cards.ICard;
 import Cards.IPokemon;
+import Visitors.IVisitable;
+import Visitors.IVisitor;
 
 import java.util.ArrayList;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Trainer implements Player {
+public class Trainer extends Observable implements Player, IVisitable {
 
     private IPokemon activePokemon;
     private ArrayList<IPokemon> team;
     private ArrayList<ICard> hand;
     private ArrayList<ICard> deck;
-    private ArrayList<ICard> cementery;
+    private ArrayList<ICard> cemetery;
     private ArrayList<ICard> prizes;
     private ICard nextTarget;
+    private Observer observer;
 
     public Trainer(ArrayList<ICard> deck) {
         this.activePokemon = null;
         this.nextTarget = null;
         this.team = new ArrayList<>();
         this.hand = new ArrayList<>();
-        this.cementery = new ArrayList<>();
+        this.cemetery = new ArrayList<>();
         this.prizes =  new ArrayList<>();
         if(deck.size()==60){
             this.deck = deck;
         }
+        this.observer = null;
     }
 
     public IPokemon getActivePokemon() {
@@ -88,6 +94,8 @@ public class Trainer implements Player {
         card.setTrainer(this);
         card.play(this.nextTarget);
         this.nextTarget = null;
+        notifyObservers(card);
+        // todo: notifyObservers(1);
     }
 
     public void checkActivePokemon() {
@@ -96,9 +104,13 @@ public class Trainer implements Player {
         }
     }
 
-    public void sendToCementery(ICard card, ArrayList<ICard> place){
+    public void sendToCemetery(ICard card, ArrayList<ICard> place){
         place.remove(card);
-        this.cementery.add(card);
+        this.cemetery.add(card);
     }
 
+    @Override
+    public void acceptVisitor(IVisitor visitor) {
+        visitor.visitTrainer(this);
+    }
 }
