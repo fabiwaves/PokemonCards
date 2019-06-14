@@ -1,5 +1,6 @@
 package Cards;
 
+import Cards.Phases.AbstractPhase;
 import Cards.TrainerCards.PKMObject;
 import Other.AbstractAbility;
 import Other.Attack;
@@ -22,22 +23,24 @@ public class Pokemon extends AbstractCard implements IPokemon, IVisitable {
     private Trainer trainer;
     private int next_ability_index;
     private PKMObject pkmObject;
+    private AbstractPhase phase;
 
-    public Pokemon(String name, int id, int hp, ArrayList<AbstractAbility> abilities, Type type, Trainer trainer) {
+    public Pokemon(String name, int id, int hp, ArrayList<AbstractAbility> abilities, Type type, Trainer trainer, AbstractPhase phase) {
         String[] energy_names = {"Fighting", "Fire", "Lightning", "Plant", "Psychic", "Water"};
         this.name = name;
         this.id = id;
         this.hp = hp;
         this.abilities = abilities;
         this.energies = new HashMap<>();
-        for (String a_name :
-                energy_names) {
-            this.energies.put(a_name, 0);
-        }
         this.type = type;
         this.trainer = trainer;
         this.next_ability_index = -1;
         this.pkmObject = null;
+        for (String a_name :
+                energy_names) {
+            this.energies.put(a_name, 0);
+        }
+        this.phase = phase;
     }
 
     @Override
@@ -82,6 +85,11 @@ public class Pokemon extends AbstractCard implements IPokemon, IVisitable {
         this.pkmObject = pkmObject;
     }
 
+    //todo: hacer javadoc de esto
+    public AbstractPhase getPhase(){
+        return this.phase;
+    }
+
     public boolean isAlive() {
         return (this.hp > 0);
     }
@@ -100,8 +108,7 @@ public class Pokemon extends AbstractCard implements IPokemon, IVisitable {
     }
 
     @Override
-    public void setNextAttack(int index) {
-        //todo: Cambiar a setNextAbility
+    public void setNextAbility(int index) {
         if (index >= 0 && index < abilities.size()) {
             this.next_ability_index = index;
         }

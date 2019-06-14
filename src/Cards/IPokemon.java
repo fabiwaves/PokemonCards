@@ -55,8 +55,16 @@ public interface IPokemon extends ICard {
      */
     void setTrainer(Trainer trainer);
 
+    /**
+     * Gives the object associated to the pokemon
+     * @return the object that its associated to this pokemon
+     */
     PKMObject getPKMObject();
 
+    /**
+     * Sets an object to a pokemon
+     * @param pkmObject object that has to be set
+     */
     void setPkmObject(PKMObject pkmObject);
 
     /**
@@ -76,10 +84,10 @@ public interface IPokemon extends ICard {
     boolean getAttacked(Pokemon attacker, AbstractAbility move);
 
     /**
-     * Set the next attack of a pokemon
+     * Set the next ability of a pokemon
      * @param index of the attack that want to be used
      */
-    void setNextAttack(int index);
+    void setNextAbility(int index);
 
     /**
      * Attacks a trainer

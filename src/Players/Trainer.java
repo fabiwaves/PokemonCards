@@ -17,12 +17,12 @@ public class Trainer extends Observable implements Player, IVisitable {
     private ArrayList<ICard> deck;
     private ArrayList<ICard> graveyard;
     private ArrayList<ICard> prizes;
-    private ICard nextTarget;
     private Observer observer;
+    private Trainer trainer_target;
+    private IPokemon pokemon_target;
 
     public Trainer(ArrayList<ICard> deck) {
         this.activePokemon = null;
-        this.nextTarget = null;
         this.team = new ArrayList<>();
         this.hand = new ArrayList<>();
         this.graveyard = new ArrayList<>();
@@ -31,6 +31,8 @@ public class Trainer extends Observable implements Player, IVisitable {
             this.deck = deck;
         }
         this.observer = null;
+        this.pokemon_target = null;
+        this.trainer_target = null;
     }
 
     public IPokemon getActivePokemon() {
@@ -55,9 +57,6 @@ public class Trainer extends Observable implements Player, IVisitable {
         }
     }
 
-    public void setNextTarget(ICard card){
-        this.nextTarget = card;
-    }
 
     public ArrayList<IPokemon> getTeam() {
         return team;
@@ -83,19 +82,35 @@ public class Trainer extends Observable implements Player, IVisitable {
     }
 
     public void selectAttack(int index) {
-        activePokemon.setNextAttack(index);
+        activePokemon.setNextAbility(index);
     }
 
     public void attackEnemy(Player adversary) {
         activePokemon.attackTrainer(adversary);
     }
 
+    public void setTrainer_target(Trainer trainer){
+        this.trainer_target = trainer;
+    }
+
+    public void setPokemon_target(IPokemon pokemon){
+        this.pokemon_target = pokemon;
+    }
+
+    public IPokemon getPokemon_target(){
+        return this.pokemon_target;
+    }
+
+    public Trainer getTrainer_target(){
+        return this.trainer_target;
+    }
+
     public void play(ICard card) {
         card.setTrainer(this);
-        card.play(this.nextTarget);
+        /* card.play(this.nextTarget);
         this.nextTarget = null;
         notifyObservers(card);
-        // todo: notifyObservers(1);
+        // todo: notifyObservers(1); */
     }
 
     public void checkActivePokemon() {
