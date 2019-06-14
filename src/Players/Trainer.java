@@ -15,7 +15,7 @@ public class Trainer extends Observable implements Player, IVisitable {
     private ArrayList<IPokemon> team;
     private ArrayList<ICard> hand;
     private ArrayList<ICard> deck;
-    private ArrayList<ICard> cemetery;
+    private ArrayList<ICard> graveyard;
     private ArrayList<ICard> prizes;
     private ICard nextTarget;
     private Observer observer;
@@ -25,7 +25,7 @@ public class Trainer extends Observable implements Player, IVisitable {
         this.nextTarget = null;
         this.team = new ArrayList<>();
         this.hand = new ArrayList<>();
-        this.cemetery = new ArrayList<>();
+        this.graveyard = new ArrayList<>();
         this.prizes =  new ArrayList<>();
         if(deck.size()==60){
             this.deck = deck;
@@ -42,7 +42,7 @@ public class Trainer extends Observable implements Player, IVisitable {
     }
 
     public ArrayList getAbilities() {
-        return activePokemon.getAttacks();
+        return activePokemon.getAbilities();
     }
 
     public ArrayList<ICard> getHand() {
@@ -104,9 +104,9 @@ public class Trainer extends Observable implements Player, IVisitable {
         }
     }
 
-    public void sendToCemetery(ICard card, ArrayList<ICard> place){
+    public void sendToGraveyard(ICard card, ArrayList<ICard> place){
         place.remove(card);
-        this.cemetery.add(card);
+        this.graveyard.add(card);
     }
 
     @Override

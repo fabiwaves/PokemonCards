@@ -31,7 +31,7 @@ public interface IPokemon extends ICard {
      *
      * @return abilities of the pokemon
      */
-    ArrayList<Attack> getAttacks();
+    ArrayList<Attack> getAbilities();
 
     /**
      * Gives the energies associated to the pokemon
@@ -74,19 +74,45 @@ public interface IPokemon extends ICard {
      */
     boolean getAttacked(Pokemon attacker, Attack move);
 
+    /**
+     * Set the next attack of a pokemon
+     * @param index of the attack that want to be used
+     */
     void setNextAttack(int index);
 
+    /**
+     * Attacks a trainer
+     * @param adversary player that it is going to attack to
+     */
     void attackTrainer(Player adversary);
 
+    /**
+     * Adds a fighting energy to the pokemon
+     */
     void addFightingEnergy();
 
+    /**
+     * Adds a fire energy to the pokemon
+     */
     void addFireEnergy();
 
+    /**
+     * Adds a lighting energy to the pokemon
+     */
     void addLightningEnergy();
 
+    /**
+     * Adds a plat energy to the pokemon
+     */
     void addPlantEnergy();
 
+    /**
+     * Adds a physic energy to the pokemon
+     */
     void addPsychicEnergy();
 
+    /**
+     * Adds a water energy to the pokemon
+     */
     void addWaterEnergy();
 }

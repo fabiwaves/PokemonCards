@@ -15,10 +15,12 @@ public class Pokemon extends AbstractCard implements IPokemon, IVisitable {
     private String name;
     private int id;
     private int hp;
+    // TODO: Cambiar a abilities
     private ArrayList<Attack> attacks;
     private HashMap<String, Integer> energies;
     private Type type;
     private Trainer trainer;
+    // TODO: Cambiar a abilities
     private int next_attack_index;
     private PKMObject pkmObject;
 
@@ -52,7 +54,7 @@ public class Pokemon extends AbstractCard implements IPokemon, IVisitable {
         return hp;
     }
 
-    public ArrayList<Attack> getAttacks() {
+    public ArrayList<Attack> getAbilities() {
         return attacks;
     }
 
@@ -99,6 +101,7 @@ public class Pokemon extends AbstractCard implements IPokemon, IVisitable {
 
     @Override
     public void setNextAttack(int index) {
+        //todo: Cambiar a setNextAbility
         if (index >= 0 && index < attacks.size()) {
             this.next_attack_index = index;
         }

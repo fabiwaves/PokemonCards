@@ -49,7 +49,7 @@ public class PokemonTest {
 
     @Test
     public void testGetAbilities() {
-        assertEquals(abilities,piplup.getAttacks());
+        assertEquals(abilities,piplup.getAbilities());
     }
 
     @Test

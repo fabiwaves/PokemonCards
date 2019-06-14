@@ -11,6 +11,6 @@ public class FireEnergy extends AbstractCard implements IEnergy {
     public void play(ICard card) {
         IPokemon pokemon = (IPokemon) card;
         pokemon.addFireEnergy();
-        this.getTrainer().sendToCementery(this, getTrainer().getHand());
+        this.getTrainer().sendToGraveyard(this, getTrainer().getHand());
     }
 }

@@ -41,7 +41,7 @@ public class Game implements Observer {
     @Override
     public void update(Observable o, Object arg) {
 
-        //Me avisa que el jugador termino su turno y debo cambiarlo por la otra
+        //Me avisa que el jugador termino su turno y debo cambiarlo por la otro
         if(arg.equals(0)){
             changePlayer();
             // current_player.play();
@@ -56,6 +56,12 @@ public class Game implements Observer {
             else{
                 //TODO: Implementar el caso cuando debo reemplazar la carta por la nueva
             }
+        }
+
+        //Caso que se juegue otro tipo de carta, de manera tal que hago el efecto y despues lo
+
+        if(arg.equals(3)){
+
         }
 
 
