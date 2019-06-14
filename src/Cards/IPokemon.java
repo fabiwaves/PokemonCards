@@ -1,5 +1,6 @@
 package Cards;
 
+import Cards.Phases.AbstractPhase;
 import Cards.TrainerCards.PKMObject;
 import Other.AbstractAbility;
 import Other.Attack;
@@ -26,6 +27,12 @@ public interface IPokemon extends ICard {
      * @return the hp of the pokemon
      */
     int getHp();
+
+    /**
+     * Gives the maximum hp that a pokemon can have
+     * @return the max_hp
+     */
+    int getMax_hp();
 
     /**
      * Gives the collection of abilites of a pokemon
@@ -56,6 +63,12 @@ public interface IPokemon extends ICard {
     void setTrainer(Trainer trainer);
 
     /**
+     * Sets the hp for a pokemon
+     * @param hp new value of hp
+     */
+    void setHp(int hp);
+
+    /**
      * Gives the object associated to the pokemon
      * @return the object that its associated to this pokemon
      */
@@ -66,6 +79,12 @@ public interface IPokemon extends ICard {
      * @param pkmObject object that has to be set
      */
     void setPkmObject(PKMObject pkmObject);
+
+    /**
+     * Gives the phase of the pokemon
+     * @return phase of the pokemon
+     */
+    public AbstractPhase getPhase();
 
     /**
      * Gives if the pokemon is alive

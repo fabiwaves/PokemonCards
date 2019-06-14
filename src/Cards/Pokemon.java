@@ -17,6 +17,7 @@ public class Pokemon extends AbstractCard implements IPokemon, IVisitable {
     private String name;
     private int id;
     private int hp;
+    private int max_hp;
     private ArrayList<AbstractAbility> abilities;
     private HashMap<String, Integer> energies;
     private Type type;
@@ -30,6 +31,7 @@ public class Pokemon extends AbstractCard implements IPokemon, IVisitable {
         this.name = name;
         this.id = id;
         this.hp = hp;
+        this.max_hp = hp;
         this.abilities = abilities;
         this.energies = new HashMap<>();
         this.type = type;
@@ -56,6 +58,8 @@ public class Pokemon extends AbstractCard implements IPokemon, IVisitable {
         return hp;
     }
 
+    public int getMax_hp(){return max_hp;}
+
     public ArrayList<AbstractAbility> getAbilities() {
         return abilities;
     }
@@ -77,6 +81,16 @@ public class Pokemon extends AbstractCard implements IPokemon, IVisitable {
         this.trainer = trainer;
     }
 
+    public void setHp(int hp){
+        int aux = this.hp;
+        if(aux + hp > this.max_hp){
+            this.hp = this.max_hp;
+        }
+        else{
+            this.hp = hp;
+        }
+    }
+
     public PKMObject getPKMObject(){
         return this.pkmObject;
     }
@@ -85,7 +99,6 @@ public class Pokemon extends AbstractCard implements IPokemon, IVisitable {
         this.pkmObject = pkmObject;
     }
 
-    //todo: hacer javadoc de esto
     public AbstractPhase getPhase(){
         return this.phase;
     }
