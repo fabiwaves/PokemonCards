@@ -16,4 +16,12 @@ public interface IAbility {
      */
     public String getDescription();
 
+    /**
+     * Gives the amount of energy requirement of an Energy
+     *
+     * @param nameEnergy Name of the energy that you want to know the requiremente
+     * @return Integer with the number of energy necessary
+     */
+    public Integer getCost(String nameEnergy);
+
 }

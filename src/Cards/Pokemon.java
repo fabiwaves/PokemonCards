@@ -1,6 +1,7 @@
 package Cards;
 
 import Cards.TrainerCards.PKMObject;
+import Other.AbstractAbility;
 import Other.Attack;
 import Players.Player;
 import Players.Trainer;
@@ -15,21 +16,19 @@ public class Pokemon extends AbstractCard implements IPokemon, IVisitable {
     private String name;
     private int id;
     private int hp;
-    // TODO: Cambiar a abilities
-    private ArrayList<Attack> attacks;
+    private ArrayList<AbstractAbility> abilities;
     private HashMap<String, Integer> energies;
     private Type type;
     private Trainer trainer;
-    // TODO: Cambiar a abilities
-    private int next_attack_index;
+    private int next_ability_index;
     private PKMObject pkmObject;
 
-    public Pokemon(String name, int id, int hp, ArrayList<Attack> abilities, Type type, Trainer trainer) {
+    public Pokemon(String name, int id, int hp, ArrayList<AbstractAbility> abilities, Type type, Trainer trainer) {
         String[] energy_names = {"Fighting", "Fire", "Lightning", "Plant", "Psychic", "Water"};
         this.name = name;
         this.id = id;
         this.hp = hp;
-        this.attacks = abilities;
+        this.abilities = abilities;
         this.energies = new HashMap<>();
         for (String a_name :
                 energy_names) {
@@ -37,7 +36,7 @@ public class Pokemon extends AbstractCard implements IPokemon, IVisitable {
         }
         this.type = type;
         this.trainer = trainer;
-        this.next_attack_index = -1;
+        this.next_ability_index = -1;
         this.pkmObject = null;
     }
 
@@ -54,8 +53,8 @@ public class Pokemon extends AbstractCard implements IPokemon, IVisitable {
         return hp;
     }
 
-    public ArrayList<Attack> getAbilities() {
-        return attacks;
+    public ArrayList<AbstractAbility> getAbilities() {
+        return abilities;
     }
 
     public HashMap<String, Integer> getEnergies() {
@@ -87,8 +86,9 @@ public class Pokemon extends AbstractCard implements IPokemon, IVisitable {
         return (this.hp > 0);
     }
 
-    public boolean getAttacked(Pokemon attacker, Attack move) {
-        int effectiveDamage = this.type.calcDamage(attacker.type, move.getDamage());
+    public boolean getAttacked(Pokemon attacker, AbstractAbility move) {
+        Attack attack = (Attack) move;
+        int effectiveDamage = this.type.calcDamage(attacker.type, attack.getDamage());
         this.hp -= effectiveDamage;
 
         if (this.hp <= 0) {
@@ -102,14 +102,14 @@ public class Pokemon extends AbstractCard implements IPokemon, IVisitable {
     @Override
     public void setNextAttack(int index) {
         //todo: Cambiar a setNextAbility
-        if (index >= 0 && index < attacks.size()) {
-            this.next_attack_index = index;
+        if (index >= 0 && index < abilities.size()) {
+            this.next_ability_index = index;
         }
     }
 
     @Override
     public void attackTrainer(Player adversary) {
-        adversary.getActivePokemon().getAttacked(this, this.attacks.get(next_attack_index));
+        adversary.getActivePokemon().getAttacked(this, this.abilities.get(next_ability_index));
         adversary.checkActivePokemon();
     }
 

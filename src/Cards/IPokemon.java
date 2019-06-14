@@ -1,6 +1,7 @@
 package Cards;
 
 import Cards.TrainerCards.PKMObject;
+import Other.AbstractAbility;
 import Other.Attack;
 import Players.Player;
 import Players.Trainer;
@@ -31,7 +32,7 @@ public interface IPokemon extends ICard {
      *
      * @return abilities of the pokemon
      */
-    ArrayList<Attack> getAbilities();
+    ArrayList<AbstractAbility> getAbilities();
 
     /**
      * Gives the energies associated to the pokemon
@@ -72,7 +73,7 @@ public interface IPokemon extends ICard {
      * @param move     move
      * @return true if the pokemon is still alive, false otherwise
      */
-    boolean getAttacked(Pokemon attacker, Attack move);
+    boolean getAttacked(Pokemon attacker, AbstractAbility move);
 
     /**
      * Set the next attack of a pokemon
