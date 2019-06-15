@@ -14,7 +14,8 @@ public class Phase2 extends AbstractPhase {
      * @param pokemon that wants to be checkes
      * @return true if it is the pokemon, false otherwise
      */
-    public boolean check_prev_id1(IPokemon pokemon){
+    @Override
+    public boolean checkPrevId1(IPokemon pokemon){
         return (this.prev_pokemon_id1 == pokemon.getId());
     }
 
@@ -23,7 +24,8 @@ public class Phase2 extends AbstractPhase {
      * @param pokemon that wants to be checkes
      * @return true if it is the pokemon, false otherwise
      */
-    public boolean check_prev_id2(IPokemon pokemon){
+    @Override
+    public boolean checkPrevId2(IPokemon pokemon){
         return (this.prev_pokemon_id2 == pokemon.getId());
     }
 }

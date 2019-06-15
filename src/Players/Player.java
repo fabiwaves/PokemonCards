@@ -49,7 +49,7 @@ public interface Player {
     /**
      * Changes the active pokemon to the next one in the hand
      */
-    void changeActivePokemon();
+    void replaceActivePokemon();
 
     /**
      * Checks if active pokemon is still alive
@@ -57,33 +57,17 @@ public interface Player {
     void checkActivePokemon();
 
     /**
-     * Sends a card from any place to the cemetery pile
+     * Add a played pokemon card to the the team
      *
-     * @param card  Card that you want to send to the cemetery
-     * @param place Location of the card
      */
-    public void sendToGraveyard(ICard card, ArrayList<ICard> place);
-
-    /**
-     * Add a pokemon to the the team
-     *
-     * @param pokemon that you want to add to the team
-     */
-    public void addPokemonToTeam(IPokemon pokemon);
+    public void addPokemonToTeam();
 
     /**
      * Select an attack of a pokemon
      *
      * @param index of the attack that you want to use
      */
-    public void selectAttack(int index);
-
-    /**
-     * Attacks an enemy
-     *
-     * @param adversary that you want to attack
-     */
-    public void attackEnemy(Player adversary);
+    public void selectAbility(int index);
 
     /**
      * Simulates the action of playing a card
@@ -91,4 +75,6 @@ public interface Player {
      * @param card that you want to play
      */
     public void play(ICard card);
+
+    void playACard();
 }

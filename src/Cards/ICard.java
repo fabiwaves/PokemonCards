@@ -1,5 +1,6 @@
 package Cards;
 
+import Controller.Game;
 import Players.Trainer;
 
 public interface ICard {
@@ -36,5 +37,7 @@ public interface ICard {
      * Represents the action of playing a card
      * It depends of the card type the effect of the play
      */
-    void play(ICard card);
+    void play();
+
+    void notifyType(Game game);
 }

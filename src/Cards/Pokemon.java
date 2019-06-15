@@ -2,9 +2,8 @@ package Cards;
 
 import Cards.Phases.AbstractPhase;
 import Cards.TrainerCards.PKMObject;
-import Other.AbstractAbility;
-import Other.Attack;
-import Players.Player;
+import Controller.Game;
+import Other.Abilities.AbstractAbility;
 import Players.Trainer;
 import Types.Type;
 import Visitors.IVisitable;
@@ -13,7 +12,7 @@ import Visitors.IVisitor;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Pokemon extends AbstractCard implements IPokemon, IVisitable {
+public class Pokemon extends AbstractCard implements IPokemon {
     private String name;
     private int id;
     private int hp;
@@ -36,7 +35,7 @@ public class Pokemon extends AbstractCard implements IPokemon, IVisitable {
         this.energies = new HashMap<>();
         this.type = type;
         this.trainer = trainer;
-        this.next_ability_index = -1;
+        this.next_ability_index = 0;
         this.pkmObject = null;
         for (String a_name :
                 energy_names) {
@@ -82,11 +81,13 @@ public class Pokemon extends AbstractCard implements IPokemon, IVisitable {
     }
 
     public void setHp(int hp){
-        int aux = this.hp;
-        if(aux + hp > this.max_hp){
+        if(hp > this.max_hp){
             this.hp = this.max_hp;
         }
-        else{
+        else if (hp <= 0) {
+            this.hp = 0;
+        }
+        else {
             this.hp = hp;
         }
     }
@@ -107,19 +108,6 @@ public class Pokemon extends AbstractCard implements IPokemon, IVisitable {
         return (this.hp > 0);
     }
 
-    public boolean getAttacked(Pokemon attacker, AbstractAbility move) {
-        Attack attack = (Attack) move;
-        int effectiveDamage = this.type.calcDamage(attacker.type, attack.getDamage());
-        this.hp -= effectiveDamage;
-
-        if (this.hp <= 0) {
-            this.hp = 0;
-            return true;
-        }
-
-        return false;
-    }
-
     @Override
     public void setNextAbility(int index) {
         if (index >= 0 && index < abilities.size()) {
@@ -127,10 +115,8 @@ public class Pokemon extends AbstractCard implements IPokemon, IVisitable {
         }
     }
 
-    @Override
-    public void attackTrainer(Player adversary) {
-        adversary.getActivePokemon().getAttacked(this, this.abilities.get(next_ability_index));
-        adversary.checkActivePokemon();
+    public void useAbility(){
+        this.abilities.get(this.next_ability_index).useAbility();
     }
 
     @Override
@@ -181,8 +167,14 @@ public class Pokemon extends AbstractCard implements IPokemon, IVisitable {
         );
     }
 
-    public void play(ICard card) {
-        this.trainer.addPokemonToTeam(this);
+    public void play() {
+        this.trainer.addPokemonToTeam();
+    }
+
+    @Override
+    public void notifyType(Game game) {
+        // TODO: Maybe redundante
+        game.playPokemon(this);
     }
 
     public void acceptVisitor(IVisitor visitor){

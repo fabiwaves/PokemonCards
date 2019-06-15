@@ -2,17 +2,16 @@ package Cards;
 
 import Cards.Phases.AbstractPhase;
 import Cards.TrainerCards.PKMObject;
-import Other.AbstractAbility;
-import Other.Attack;
-import Players.Player;
+import Other.Abilities.AbstractAbility;
 import Players.Trainer;
 import Types.Type;
+import Visitors.IVisitable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 
-public interface IPokemon extends ICard {
+public interface IPokemon extends ICard, IVisitable {
 
     /**
      * Gives the id of the pokemon
@@ -94,25 +93,12 @@ public interface IPokemon extends ICard {
     boolean isAlive();
 
     /**
-     * Simulates being attacked by other pokemon
-     *
-     * @param attacker Cards.Pokemon
-     * @param move     move
-     * @return true if the pokemon is still alive, false otherwise
-     */
-    boolean getAttacked(Pokemon attacker, AbstractAbility move);
-
-    /**
      * Set the next ability of a pokemon
      * @param index of the attack that want to be used
      */
     void setNextAbility(int index);
 
-    /**
-     * Attacks a trainer
-     * @param adversary player that it is going to attack to
-     */
-    void attackTrainer(Player adversary);
+    void useAbility();
 
     /**
      * Adds a fighting energy to the pokemon

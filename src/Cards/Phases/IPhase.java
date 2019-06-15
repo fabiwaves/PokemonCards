@@ -1,5 +1,7 @@
 package Cards.Phases;
 
+import Cards.IPokemon;
+
 public interface IPhase {
 
     /**
@@ -25,4 +27,8 @@ public interface IPhase {
      * @param prev_pokemon_id2 id of the pokemon that comes before this one
      */
     public void setPrev_pokemon_id2(int prev_pokemon_id2);
+
+    public boolean checkPrevId1(IPokemon pokemon);
+
+    public boolean checkPrevId2(IPokemon pokemon);
 }

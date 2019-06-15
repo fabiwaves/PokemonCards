@@ -28,7 +28,7 @@
 #### Hasta ahora no hay ninguna funcionalidad opcional implementada
 
 ### Testing
-####Creados en JUnit 4!
+#### Creados en JUnit 4!
 ##### Hasta ahora los test solo abarcan las clases asociadas a los tipos de los Pokemon, asi que si se quiere probar más que eso no se puede.
 
  

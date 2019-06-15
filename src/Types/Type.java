@@ -8,6 +8,10 @@ public abstract class Type {
 
     protected String name;
 
+    public String getName(){
+        return this.name;
+    }
+
     /**
      * Calculate the damage that is inflicted by a pokemon of the specified type
      *

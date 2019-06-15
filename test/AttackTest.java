@@ -3,7 +3,7 @@ import org.junit.Test;
 public class AttackTest {
 
     String description = " A spray of countless bubbles is jetted at the opposing Pokémon.";
-    //Other.Attack attack = new Other.Attack("Buble", 40, description,);
+    //Other.Abilities.Attack attack = new Other.Abilities.Attack("Buble", 40, description,);
 
     @Test
     public void getName() {

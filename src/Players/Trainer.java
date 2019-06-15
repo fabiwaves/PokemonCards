@@ -2,49 +2,48 @@ package Players;
 
 import Cards.ICard;
 import Cards.IPokemon;
+import Controller.Game;
 import Visitors.IVisitable;
 import Visitors.IVisitor;
 
 import java.util.ArrayList;
 import java.util.Observable;
-import java.util.Observer;
 
 public class Trainer extends Observable implements Player, IVisitable {
 
-    private IPokemon activePokemon;
     private ArrayList<IPokemon> team;
     private ArrayList<ICard> hand;
     private ArrayList<ICard> deck;
     private ArrayList<ICard> graveyard;
     private ArrayList<ICard> prizes;
-    private Observer observer;
-    private Trainer trainer_target;
-    private IPokemon pokemon_target;
+    private Game observer;
+    private ICard cardToPlay;
 
     public Trainer(ArrayList<ICard> deck) {
-        this.activePokemon = null;
         this.team = new ArrayList<>();
         this.hand = new ArrayList<>();
         this.graveyard = new ArrayList<>();
-        this.prizes =  new ArrayList<>();
-        if(deck.size()==60){
+        this.prizes = new ArrayList<>();
+        if (deck.size() == 60) {
             this.deck = deck;
         }
         this.observer = null;
-        this.pokemon_target = null;
-        this.trainer_target = null;
+        this.cardToPlay = null;
     }
 
     public IPokemon getActivePokemon() {
-        return activePokemon;
+        return this.team.get(0);
     }
 
     public void setActivePokemon(IPokemon activePokemon) {
-        this.activePokemon = activePokemon;
+        int pkm_index = this.team.indexOf(activePokemon);
+        IPokemon current_active = this.team.get(0);
+        this.team.set(0, activePokemon);
+        this.team.set(pkm_index, current_active);
     }
 
     public ArrayList getAbilities() {
-        return activePokemon.getAbilities();
+        return this.team.get(0).getAbilities();
     }
 
     public ArrayList<ICard> getHand() {
@@ -52,9 +51,7 @@ public class Trainer extends Observable implements Player, IVisitable {
     }
 
     public void setHand(ArrayList<IPokemon> hand) {
-        for (IPokemon pokemon : hand) {
-            addPokemonToTeam(pokemon);
-        }
+        // TODO: WAT
     }
 
 
@@ -62,51 +59,68 @@ public class Trainer extends Observable implements Player, IVisitable {
         return team;
     }
 
-    public void changeActivePokemon() {
-
-        int i = team.lastIndexOf(activePokemon);
-        if (i <= 4) {
-            IPokemon nextPokemon = team.get(i + 1);
-            setActivePokemon(nextPokemon);
-        } else {
-            setActivePokemon(null);
-        }
-
-    }
-
-    public void addPokemonToTeam(IPokemon pokemon) {
-        if (this.team.size() < 5) {
-            this.team.add(pokemon);
-            this.hand.remove(pokemon);
+    public void replaceActivePokemon() {
+        int remaining_pkm = this.team.size() - 1;
+        this.sendToGraveyard(this.team.get(0), this.team);
+        if (remaining_pkm <= 0) {
+            // Notify player lost
         }
     }
 
-    public void selectAttack(int index) {
-        activePokemon.setNextAbility(index);
+    public void addPokemonToTeam() {
+        try {
+            IPokemon pkm = (IPokemon) this.cardToPlay;
+            if (this.team.size() < 6) {
+                this.team.add(pkm);
+                this.hand.remove(pkm);
+            }
+        } catch (Exception e) {
+            // To stop unauthorized executions
+            return;
+        }
     }
 
-    public void attackEnemy(Player adversary) {
-        activePokemon.attackTrainer(adversary);
+    public void selectAbility(int index) {
+        this.team.get(0).setNextAbility(index);
     }
 
-    public void setTrainer_target(Trainer trainer){
-        this.trainer_target = trainer;
+    public void useAbility(int index) {
+        this.team.get(0).useAbility();
     }
 
-    public void setPokemon_target(IPokemon pokemon){
-        this.pokemon_target = pokemon;
+    public IPokemon selectOwnPokemonTarget() {
+        // TODO (Not in this version): Show pokemons to the player
+        int index = 0; // TODO (Not in this version): Get player input
+        return this.team.get(index);
     }
 
-    public IPokemon getPokemon_target(){
-        return this.pokemon_target;
+    public IPokemon selectEnemyPokemonTarget() {
+        ArrayList<IPokemon> enemy_team = this.observer.getAdversaryPokemon();
+        int index = 0; // TODO (Not in this version): Get player input
+        return enemy_team.get(index);
     }
 
-    public Trainer getTrainer_target(){
-        return this.trainer_target;
+    public Player selectTrainerTarget() {
+        Player target = this;
+        boolean select_enemy = true; // TODO (Not in this version): Get trainer input
+        if (select_enemy){
+            target = this.observer.getAdversary();
+        }
+        return target;
+    }
+
+    public void playACard() {
+        if (this.cardToPlay != null) {
+            cardToPlay.notifyType(this.observer);
+        }
+        this.cardToPlay = null;
     }
 
     public void play(ICard card) {
         card.setTrainer(this);
+        this.cardToPlay = card;
+        notifyObservers(5);
+        // controller.notify(card);
         /* card.play(this.nextTarget);
         this.nextTarget = null;
         notifyObservers(card);
@@ -114,18 +128,35 @@ public class Trainer extends Observable implements Player, IVisitable {
     }
 
     public void checkActivePokemon() {
-        if (!this.activePokemon.isAlive()) {
-            this.changeActivePokemon();
+        if (!this.team.get(0).isAlive()) {
+            this.replaceActivePokemon();
         }
     }
 
-    public void sendToGraveyard(ICard card, ArrayList<ICard> place){
+    public Player getAdversary() {
+        return this.observer.getAdversary();
+    }
+
+    /**
+     * Sends a card from any place to the cemetery pile
+     *
+     * @param card  Card that you want to send to the graveyard
+     * @param place Location of the card
+     */
+    private <T> void sendToGraveyard(T card, ArrayList<T> place) {
         place.remove(card);
-        this.graveyard.add(card);
+        this.graveyard.add((ICard) card);
     }
 
     @Override
     public void acceptVisitor(IVisitor visitor) {
         visitor.visitTrainer(this);
+    }
+
+    public void notifyAttack(){
+        // Attacks are notified with 10 argument
+        notifyObservers(10);
+        // End turn automatically
+        notifyObservers(0);
     }
 }
