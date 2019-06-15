@@ -6,7 +6,6 @@ import Controller.Game;
 import Other.Abilities.AbstractAbility;
 import Players.Trainer;
 import Types.Type;
-import Visitors.IVisitable;
 import Visitors.IVisitor;
 
 import java.util.ArrayList;
@@ -57,7 +56,9 @@ public class Pokemon extends AbstractCard implements IPokemon {
         return hp;
     }
 
-    public int getMax_hp(){return max_hp;}
+    public int getMax_hp() {
+        return max_hp;
+    }
 
     public ArrayList<AbstractAbility> getAbilities() {
         return abilities;
@@ -80,19 +81,17 @@ public class Pokemon extends AbstractCard implements IPokemon {
         this.trainer = trainer;
     }
 
-    public void setHp(int hp){
-        if(hp > this.max_hp){
+    public void setHp(int hp) {
+        if (hp > this.max_hp) {
             this.hp = this.max_hp;
-        }
-        else if (hp <= 0) {
+        } else if (hp <= 0) {
             this.hp = 0;
-        }
-        else {
+        } else {
             this.hp = hp;
         }
     }
 
-    public PKMObject getPKMObject(){
+    public PKMObject getPKMObject() {
         return this.pkmObject;
     }
 
@@ -100,7 +99,7 @@ public class Pokemon extends AbstractCard implements IPokemon {
         this.pkmObject = pkmObject;
     }
 
-    public AbstractPhase getPhase(){
+    public AbstractPhase getPhase() {
         return this.phase;
     }
 
@@ -115,7 +114,7 @@ public class Pokemon extends AbstractCard implements IPokemon {
         }
     }
 
-    public void useAbility(){
+    public void useAbility() {
         this.abilities.get(this.next_ability_index).useAbility();
     }
 
@@ -173,11 +172,10 @@ public class Pokemon extends AbstractCard implements IPokemon {
 
     @Override
     public void notifyType(Game game) {
-        // TODO: Maybe redundante
         game.playPokemon(this);
     }
 
-    public void acceptVisitor(IVisitor visitor){
+    public void acceptVisitor(IVisitor visitor) {
         visitor.visitPokemon(this);
     }
 

@@ -2,8 +2,10 @@ package Controller;
 
 
 import Cards.IPokemon;
+import Cards.TrainerCards.PKMObject;
+import Cards.TrainerCards.Stadium;
+import Cards.TrainerCards.Support;
 import Players.Player;
-
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -12,13 +14,13 @@ public class Game implements Observer {
 
     private Player player1;
     private Player player2;
-    private boolean card_stadium_played;
+    private Stadium card_stadium;
     private Player current_player;
 
     public Game(Player player1, Player player2) {
         this.player1 = player1;
         this.player2 = player2;
-        this.card_stadium_played = false;
+        this.card_stadium = null;
         this.current_player = player1;
     }
 
@@ -26,15 +28,15 @@ public class Game implements Observer {
         this.current_player = current_player;
     }
 
-    public Player getAdversary(){
+    public Player getAdversary() {
         Player adversary = this.player2;
-        if (this.current_player.equals(player2)){
+        if (this.current_player.equals(player2)) {
             adversary = player1;
         }
         return adversary;
     }
 
-    public ArrayList<IPokemon> getAdversaryPokemon(){
+    public ArrayList<IPokemon> getAdversaryPokemon() {
         return this.getAdversary().getTeam();
     }
 
@@ -47,8 +49,8 @@ public class Game implements Observer {
         }
     }
 
-    public boolean isCardStadiumPlayed() {
-        return card_stadium_played;
+    public void setCardStadium(Stadium stadium) {
+        this.card_stadium = stadium;
     }
 
     public void playPokemon(IPokemon pkm) {
@@ -56,8 +58,29 @@ public class Game implements Observer {
         this.current_player.addPokemonToTeam();
     }
 
+    public void playStadium(Stadium std){
+        setCardStadium(std);
+    }
+
+    public void playPKMObject(PKMObject pkmObject){
+        pkmObject.setCurrentPokemon(current_player.getActivePokemon());
+    }
+
+    public void playSupport(Support support){
+
+    }
+
     @Override
     public void update(Observable o, Object arg) {
+
+        if(arg.equals(-1)){
+            //todo: Implementar que el juego se termina
+        }
+
+        if (arg.equals(0)) {
+            // Notify 0 va a ser para notificar que se acabo el turno
+            changePlayer();
+        }
 
         if (arg.equals(5)) {
             if (this.current_player.equals(o)) {
@@ -74,34 +97,15 @@ public class Game implements Observer {
             }
         }
 
-        if (arg.equals(15)){
-            // Notify 15 significa que se dano al pokemon del jugador activo
+        if (arg.equals(15)) {
+            // Notify 15 significa que se daño al pokemon del jugador activo
             if (!this.current_player.getTeam().get(0).isAlive()) {
                 this.current_player.replaceActivePokemon();
             }
 
         }
 
-        //Me avisa que el jugador termino su turno y debo cambiarlo por la otro
-        if (arg.equals(0)) {
-            changePlayer();
-        }
-
-        //Me avisa que se jugo una carta stadium y debo ver que procede segun el caso
-        if (arg.equals(1)) {
-            if ((!card_stadium_played)) {
-                card_stadium_played = true;
-            } else {
-                //TODO: Implementar el caso cuando debo reemplazar la carta por la nueva
-            }
-        }
-
-        //Caso que se juegue otro tipo de carta, de manera tal que hago el efecto y despues lo
-
-        if (arg.equals(3)) {
-
-        }
-
-
     }
+
 }
+

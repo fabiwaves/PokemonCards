@@ -1,11 +1,25 @@
 package Cards.TrainerCards;
 
-import Cards.ICard;
+import Controller.Game;
+import Other.Effects.IEffect;
 
 public class Support extends TrainerCard {
 
+    private IEffect effect;
+
+    public Support(IEffect effect){
+        this.effect = effect;
+    }
+
     @Override
-    public void play(ICard card) {
+    public void play() {
+        this.effect.executeBefore();
+        this.effect.executeAfter();
+    }
+
+    @Override
+    public void notifyType(Game game) {
+        game.playSupport(this);
 
     }
 }

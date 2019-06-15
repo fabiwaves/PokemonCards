@@ -63,7 +63,7 @@ public class Trainer extends Observable implements Player, IVisitable {
         int remaining_pkm = this.team.size() - 1;
         this.sendToGraveyard(this.team.get(0), this.team);
         if (remaining_pkm <= 0) {
-            // Notify player lost
+            notifyObservers(-1);
         }
     }
 
@@ -103,7 +103,7 @@ public class Trainer extends Observable implements Player, IVisitable {
     public Player selectTrainerTarget() {
         Player target = this;
         boolean select_enemy = true; // TODO (Not in this version): Get trainer input
-        if (select_enemy){
+        if (select_enemy) {
             target = this.observer.getAdversary();
         }
         return target;
@@ -120,11 +120,6 @@ public class Trainer extends Observable implements Player, IVisitable {
         card.setTrainer(this);
         this.cardToPlay = card;
         notifyObservers(5);
-        // controller.notify(card);
-        /* card.play(this.nextTarget);
-        this.nextTarget = null;
-        notifyObservers(card);
-        // todo: notifyObservers(1); */
     }
 
     public void checkActivePokemon() {
@@ -153,7 +148,7 @@ public class Trainer extends Observable implements Player, IVisitable {
         visitor.visitTrainer(this);
     }
 
-    public void notifyAttack(){
+    public void notifyAttack() {
         // Attacks are notified with 10 argument
         notifyObservers(10);
         // End turn automatically

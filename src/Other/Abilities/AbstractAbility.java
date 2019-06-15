@@ -37,7 +37,4 @@ public abstract class AbstractAbility implements IAbility {
         return this.pokemon;
     }
 
-    //public void use(ICard target,cost)
-
-
 }

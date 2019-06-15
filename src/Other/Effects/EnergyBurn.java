@@ -6,6 +6,7 @@ import Players.Trainer;
 import java.util.HashMap;
 
 public class EnergyBurn extends AbstractAbilityEffect {
+
     @Override
     public void executeBefore() {
         IPokemon pokemon = this.ability.getPokemon();

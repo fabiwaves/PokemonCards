@@ -13,22 +13,24 @@ public class PKMObject extends TrainerCard {
         this.effect = effect;
     }
 
-    private void setCurrentPokemon(IPokemon pokemon) {
+    public boolean setCurrentPokemon(IPokemon pokemon) {
+        boolean t = false;
         if (pokemon.getPKMObject() == null) {
             this.currentPokemon = pokemon;
+            t = true;
         }
+        return t;
     }
 
     @Override
     public void play() {
-        setCurrentPokemon(this.getTrainer().selectOwnPokemonTarget());
-        // TODO: Revisar bien
-        this.effect.executeBefore();
-        this.effect.executeAfter();
+        if(setCurrentPokemon(this.getTrainer().selectOwnPokemonTarget())) {
+            this.effect.executeBefore();
+            this.effect.executeAfter();}
     }
 
     @Override
     public void notifyType(Game game) {
-        // TODO: Implement
+        game.playPKMObject(this);
     }
 }
