@@ -5,6 +5,10 @@ import Other.Effects.IEffect;
 
 import java.util.HashMap;
 
+/**
+ * @author fabiwave
+ */
+
 public class PokemonAbility extends AbstractAbility {
 
     public PokemonAbility(String name, String description, HashMap<String, Integer> energies,

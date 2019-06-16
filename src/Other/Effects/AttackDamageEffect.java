@@ -5,6 +5,10 @@ import Other.Abilities.Attack;
 import Players.Trainer;
 import Types.Type;
 
+/**
+ * @author fabiwave
+ */
+
 public class AttackDamageEffect extends AbstractAbilityEffect {
 
     public AttackDamageEffect(Attack attack) {

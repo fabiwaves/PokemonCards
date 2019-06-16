@@ -5,6 +5,10 @@ import Other.Effects.IEffect;
 
 import java.util.HashMap;
 
+/**
+ * @author fabiwave
+ */
+
 public abstract class AbstractAbility implements IAbility {
     String name;
     String description;

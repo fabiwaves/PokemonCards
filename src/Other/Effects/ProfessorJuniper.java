@@ -3,6 +3,10 @@ package Other.Effects;
 import Cards.IPokemon;
 import Players.Trainer;
 
+/**
+ * @author fabiwave
+ */
+
 public class ProfessorJuniper extends AbstractAbilityEffect {
     @Override
     public void executeBefore() {

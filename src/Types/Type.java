@@ -8,6 +8,11 @@ public abstract class Type {
 
     protected String name;
 
+    /**
+     * Gives the name of the type
+     *
+     * @return name of the type
+     */
     public String getName() {
         return this.name;
     }

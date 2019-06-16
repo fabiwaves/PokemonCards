@@ -3,6 +3,10 @@ package Visitors;
 import Cards.IPokemon;
 import Players.Trainer;
 
+/**
+ * @author fabiwave
+ */
+
 public interface IVisitor {
 
     /**

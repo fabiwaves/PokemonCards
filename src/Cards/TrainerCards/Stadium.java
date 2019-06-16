@@ -3,6 +3,10 @@ package Cards.TrainerCards;
 import Controller.Game;
 import Other.Effects.IEffect;
 
+/**
+ * @author fabiwave
+ */
+
 public class Stadium extends TrainerCard {
 
     public IEffect effect;
@@ -10,7 +14,6 @@ public class Stadium extends TrainerCard {
     public Stadium(IEffect effect) {
         this.effect = effect;
     }
-
 
     @Override
     public void notifyType(Game game) {

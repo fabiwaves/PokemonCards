@@ -10,6 +10,9 @@ import Visitors.IVisitable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * @author fabiwave
+ */
 
 public interface IPokemon extends ICard, IVisitable {
 
@@ -104,6 +107,9 @@ public interface IPokemon extends ICard, IVisitable {
      */
     void setNextAbility(int index);
 
+    /**
+     * Makes the action of using an ability
+     */
     void useAbility();
 
     /**

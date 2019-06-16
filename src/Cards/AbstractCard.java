@@ -2,6 +2,10 @@ package Cards;
 
 import Players.Trainer;
 
+/**
+ * @author fabiwave
+ */
+
 public abstract class AbstractCard implements ICard {
 
     private String name;

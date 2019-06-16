@@ -1,7 +1,10 @@
 package Cards.Phases;
 
-
 import Cards.IPokemon;
+
+/**
+ * @author fabiwave
+ */
 
 public abstract class AbstractPhase implements IPhase {
 

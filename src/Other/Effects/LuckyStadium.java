@@ -3,6 +3,10 @@ package Other.Effects;
 import Cards.IPokemon;
 import Players.Trainer;
 
+/**
+ * @author fabiwave
+ */
+
 public class LuckyStadium extends AbstractAbilityEffect {
 
 
@@ -23,7 +27,7 @@ public class LuckyStadium extends AbstractAbilityEffect {
 
     @Override
     public void visitTrainer(Trainer trainer) {
-        //Notifica que puede tomar una carta extra, mientras el stadium esté activo en el juego
+        //While this Stadium Card is active in the game, the player can take an extra card
         trainer.notifyObservers(2);
 
     }

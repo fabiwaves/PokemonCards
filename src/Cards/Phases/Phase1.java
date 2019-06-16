@@ -1,7 +1,10 @@
 package Cards.Phases;
 
-import Cards.ICard;
 import Cards.IPokemon;
+
+/**
+ * @author fabiwave
+ */
 
 public class Phase1 extends AbstractPhase {
 

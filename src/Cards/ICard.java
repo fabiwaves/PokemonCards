@@ -3,6 +3,10 @@ package Cards;
 import Controller.Game;
 import Players.Trainer;
 
+/**
+ * @author fabiwave
+ */
+
 public interface ICard {
 
     /**
@@ -33,5 +37,10 @@ public interface ICard {
      */
     void setTrainer(Trainer trainer);
 
+    /**
+     * Notifies the type of the card to the controller
+     *
+     * @param game controller that has to be notified
+     */
     void notifyType(Game game);
 }

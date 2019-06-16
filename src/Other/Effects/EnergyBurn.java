@@ -2,6 +2,7 @@ package Other.Effects;
 
 import Cards.IPokemon;
 import Players.Trainer;
+
 import java.util.HashMap;
 
 public class EnergyBurn extends AbstractAbilityEffect {

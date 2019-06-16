@@ -11,6 +11,10 @@ import Visitors.IVisitor;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * @author fabiwave
+ */
+
 public class Pokemon extends AbstractCard implements IPokemon {
     private String name;
     private int id;
@@ -164,10 +168,6 @@ public class Pokemon extends AbstractCard implements IPokemon {
                 "Water",
                 this.energies.get("Water") + 1
         );
-    }
-
-    public void play() {
-        this.trainer.addPokemonToTeam();
     }
 
     @Override

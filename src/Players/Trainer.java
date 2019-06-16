@@ -9,6 +9,10 @@ import Visitors.IVisitor;
 import java.util.ArrayList;
 import java.util.Observable;
 
+/**
+ * @author fabiwave
+ */
+
 public class Trainer extends Observable implements Player, IVisitable {
 
     private ArrayList<IPokemon> team;
@@ -135,12 +139,6 @@ public class Trainer extends Observable implements Player, IVisitable {
         return this.observer.getAdversary();
     }
 
-    /**
-     * Sends a card from any place to the cemetery pile
-     *
-     * @param card  Card that you want to send to the graveyard
-     * @param place Location of the card
-     */
     public <T> void sendToGraveyard(T card, ArrayList<T> place) {
         place.remove(card);
         this.graveyard.add((ICard) card);
@@ -161,7 +159,6 @@ public class Trainer extends Observable implements Player, IVisitable {
     public void endTurn() {
         notifyObservers(0);
     }
-
 
     public void getCard() {
         notifyObservers(1);

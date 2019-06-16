@@ -5,6 +5,10 @@ import Players.Trainer;
 
 import java.util.Random;
 
+/**
+ * @author fabiwave
+ */
+
 public class ElectricShock extends AbstractAbilityEffect {
     @Override
     public void executeBefore() {
@@ -21,7 +25,7 @@ public class ElectricShock extends AbstractAbilityEffect {
     public void visitPokemon(IPokemon pokemon) {
         Random random = new Random();
 
-        if (random.nextInt() % 2 == 1) { //Numero impar -> sello
+        if (random.nextInt() % 2 == 1) { //Even number -> face,
             int current_hp = pokemon.getHp();
             int new_hp = current_hp - 10;
             pokemon.setHp(new_hp);

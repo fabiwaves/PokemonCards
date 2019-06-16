@@ -2,6 +2,10 @@ package Cards.Phases;
 
 import Cards.IPokemon;
 
+/**
+ * @author fabiwave
+ */
+
 public interface IPhase {
 
     /**
@@ -32,9 +36,26 @@ public interface IPhase {
      */
     public void setPrev_pokemon_id1(int prev_pokemon_id1);
 
+    /**
+     * Check if the prev_id1 it is the same as the id of the pokemon
+     *
+     * @param pokemon that want to be checkes
+     * @return true if it is the pre evolution, false otherwise
+     */
     public boolean checkPrevId1(IPokemon pokemon);
 
+    /**
+     * Check if the prev_id2 it is the same as the id of the pokemon
+     *
+     * @param pokemon that want to be checkes
+     * @return true if it is the pre-pre-evolution, false otherwise
+     */
     public boolean checkPrevId2(IPokemon pokemon);
 
+    /**
+     * Inform if a type is an evolution or not
+     *
+     * @return false if its a basic phase, false otherwise
+     */
     public boolean isEvolution();
 }

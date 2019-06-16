@@ -4,6 +4,10 @@ import Cards.IPokemon;
 import Controller.Game;
 import Other.Effects.IEffect;
 
+/**
+ * @author fabiwave
+ */
+
 public class PKMObject extends TrainerCard {
 
     public IEffect effect;
@@ -13,6 +17,12 @@ public class PKMObject extends TrainerCard {
         this.effect = effect;
     }
 
+    /**
+     * Sets the current pokemon who will have this object associated
+     *
+     * @param pokemon that will have the object
+     * @return True if it works, false otherwise
+     */
     public boolean setCurrentPokemon(IPokemon pokemon) {
         boolean t = false;
         if (pokemon.getPKMObject() == null) {

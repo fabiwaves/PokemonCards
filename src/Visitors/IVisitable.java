@@ -1,5 +1,9 @@
 package Visitors;
 
+/**
+ * @author fabiwave
+ */
+
 public interface IVisitable {
 
     /**

@@ -3,6 +3,10 @@ package Other.Effects;
 import Cards.IPokemon;
 import Players.Trainer;
 
+/**
+ * @author fabiwave
+ */
+
 public class Potion extends AbstractAbilityEffect {
     @Override
     public void executeBefore() {
@@ -21,9 +25,9 @@ public class Potion extends AbstractAbilityEffect {
         int max_hp = this.ability.getPokemon().getMax_hp();
         int current_hp = this.ability.getPokemon().getHp();
         /* Contadores perdidos por el pokemon */
-        int counter = (max_hp - current_hp)/10;
-        int random = (int)(Math.random() * current_hp + 1);
-        pokemon.setHp(random*10);
+        int counter = (max_hp - current_hp) / 10;
+        int random = (int) (Math.random() * current_hp + 1);
+        pokemon.setHp(random * 10);
 
     }
 

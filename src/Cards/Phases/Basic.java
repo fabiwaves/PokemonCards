@@ -1,5 +1,9 @@
 package Cards.Phases;
 
+/**
+ * @author fabiwave
+ */
+
 public class Basic extends AbstractPhase {
 
     public Basic() {
@@ -8,7 +12,7 @@ public class Basic extends AbstractPhase {
     }
 
     @Override
-    public boolean isEvolution(){
+    public boolean isEvolution() {
         return false;
     }
 }

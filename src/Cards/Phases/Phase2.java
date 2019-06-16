@@ -2,6 +2,10 @@ package Cards.Phases;
 
 import Cards.IPokemon;
 
+/**
+ * @author fabiwave
+ */
+
 public class Phase2 extends AbstractPhase {
 
     public Phase2(int prev1, int prev2) {

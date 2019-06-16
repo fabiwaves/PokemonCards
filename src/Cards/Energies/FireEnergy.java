@@ -4,6 +4,10 @@ import Cards.AbstractCard;
 import Cards.IEnergy;
 import Controller.Game;
 
+/**
+ * @author fabiwave
+ */
+
 public class FireEnergy extends AbstractCard implements IEnergy {
 
     public void notifyType(Game game) {
