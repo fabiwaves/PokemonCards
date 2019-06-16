@@ -5,13 +5,17 @@
 ### Implementación
 #### Paquetes, clases y otros
 
-##### Actualmente esta tarea cuenta con 5 paquetes principales y 3 paquetes, donde estan implementadas las siguientes cosas:
-##### 1. Cards: En este paquete se encuentran todas las entidades que permiten crear las cartas del juego, tales como la clase Abstracta Abstract Card, las interfaces ICard, IEnergy y IPokemon y la clase Pokemon. Junto a estas se encuentran otros paquetes que contienen las clases necesarias para simular las Energies, Phases y TrainerCard.
-##### 2. Controller:
-##### 3. Other:
-##### 4. Players
-##### 5. Types
-##### 6. Visitors: Contiene las interfaces Visitor y Visitable necesarias para poder implementar el patrón de diseño Visitor.
+
+
+### Supuestos implementados
+#### Muy importante tener en cuenta!
+##### Para esta tarea se asumieron las siguientes cosas:
+##### 1. El pokemon activo siempre seria el primero del team, es decir, el que se encuentra en la posición 0 del team.
+##### 2. Se buscaría simular los turnos, no implementar una partida de principio a fin.
+##### 3. Los ataques ahora son una habilidad que contiene un efecto de daño extra.
+##### 4. Los pokemon tienen tanto un tipo y una fase que necesitan ser inicializadas para que funcionen.
+##### 5. El usuario no puede interactuar de manera directa en base a inputs con sus pokemon, asi que por convención se dejo que siempre se seleccionará la habilidad en el indice 0. 
+##### 6. Para las evoluciones se asume que el Id de la pre-evolucion siempre va a ser el id1, vale decir si tengo la un Charmeleon su id1 va a corresponder a la id de Charmander y si tengo un Charizard su id1 va a corresponder a la id del Charmeleon.
 
 ### Patrones de diseño utilizados
 #### Para esta entrega se utilizaron los patrones de diseño Observer, Visitor y Double Dispatch.
@@ -24,8 +28,13 @@
 ##### Ya que se implementó hasta la funcionalidad para simular u turno, Asi que si se quiere correr desde un main se puede pero debe ser creado por uno mismo y todos los objetos que seran parte de este deben ser inicializados antes.
 
 ### Funcionalidades opcionales implementadas
-#### Proximante en su tarea más cercana!
-#### Hasta ahora no hay ninguna funcionalidad opcional implementada
+#### Se implementó una funcionalidad por cada categoria de habilidad como efectos.
+
+##### 1. Habilidad Pokemon: Energy Burn.
+##### 2. Ataque: Electric Shock.
+##### 3. Objetos: Potion.
+##### 4. Estadio: Lucky Stadium
+##### 5. Soporte: Professor Juniper.
 
 ### Testing
 #### Creados en JUnit 4!
