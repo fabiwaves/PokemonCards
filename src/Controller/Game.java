@@ -7,6 +7,7 @@ import Cards.TrainerCards.PKMObject;
 import Cards.TrainerCards.Stadium;
 import Cards.TrainerCards.Support;
 import Players.Player;
+import Players.Trainer;
 
 import java.util.ArrayList;
 import java.util.Observable;
@@ -61,8 +62,18 @@ public class Game implements Observer {
     }
 
     public void playPokemon(IPokemon pkm) {
-        // TODO: Agregar lo de las evoluciones en el addPokemonToTeam
-        this.current_player.addPokemonToTeam();
+
+        if (!pkm.getPhase().isEvolution()) {
+            this.current_player.addPokemonToTeam();
+        } else {
+            Trainer trainer = (Trainer) this.current_player;
+            IPokemon replacement = trainer.selectOwnPokemonTarget();
+
+            if (pkm.getPhase().checkPrevId1(replacement)) {
+                this.current_player.addPokemonToTeam();
+                ((Trainer) this.current_player).sendToGraveyard(replacement, trainer.getTeam());
+            }
+        }
     }
 
     public void playStadium(Stadium std) {

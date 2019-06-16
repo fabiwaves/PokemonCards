@@ -7,7 +7,7 @@ public class Support extends TrainerCard {
 
     public IEffect effect;
 
-    public Support(IEffect effect){
+    public Support(IEffect effect) {
         this.effect = effect;
     }
 

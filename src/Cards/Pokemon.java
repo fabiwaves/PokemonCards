@@ -56,6 +56,16 @@ public class Pokemon extends AbstractCard implements IPokemon {
         return hp;
     }
 
+    public void setHp(int hp) {
+        if (hp > this.max_hp) {
+            this.hp = this.max_hp;
+        } else if (hp <= 0) {
+            this.hp = 0;
+        } else {
+            this.hp = hp;
+        }
+    }
+
     public int getMax_hp() {
         return max_hp;
     }
@@ -79,16 +89,6 @@ public class Pokemon extends AbstractCard implements IPokemon {
 
     public void setTrainer(Trainer trainer) {
         this.trainer = trainer;
-    }
-
-    public void setHp(int hp) {
-        if (hp > this.max_hp) {
-            this.hp = this.max_hp;
-        } else if (hp <= 0) {
-            this.hp = 0;
-        } else {
-            this.hp = hp;
-        }
     }
 
     public PKMObject getPKMObject() {

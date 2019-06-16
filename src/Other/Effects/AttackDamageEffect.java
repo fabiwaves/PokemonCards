@@ -7,7 +7,7 @@ import Types.Type;
 
 public class AttackDamageEffect extends AbstractAbilityEffect {
 
-    public AttackDamageEffect(Attack attack){
+    public AttackDamageEffect(Attack attack) {
         this.ability = attack;
     }
 

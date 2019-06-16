@@ -39,7 +39,7 @@ public class Attack extends AbstractAbility {
         return damage;
     }
 
-    public IPokemon getTargetPokemon(){
+    public IPokemon getTargetPokemon() {
         return this.target_pokemon;
     }
 

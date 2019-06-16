@@ -28,7 +28,15 @@ public interface IPokemon extends ICard, IVisitable {
     int getHp();
 
     /**
+     * Sets the hp for a pokemon
+     *
+     * @param hp new value of hp
+     */
+    void setHp(int hp);
+
+    /**
      * Gives the maximum hp that a pokemon can have
+     *
      * @return the max_hp
      */
     int getMax_hp();
@@ -62,25 +70,22 @@ public interface IPokemon extends ICard, IVisitable {
     void setTrainer(Trainer trainer);
 
     /**
-     * Sets the hp for a pokemon
-     * @param hp new value of hp
-     */
-    void setHp(int hp);
-
-    /**
      * Gives the object associated to the pokemon
+     *
      * @return the object that its associated to this pokemon
      */
     PKMObject getPKMObject();
 
     /**
      * Sets an object to a pokemon
+     *
      * @param pkmObject object that has to be set
      */
     void setPkmObject(PKMObject pkmObject);
 
     /**
      * Gives the phase of the pokemon
+     *
      * @return phase of the pokemon
      */
     public AbstractPhase getPhase();
@@ -94,6 +99,7 @@ public interface IPokemon extends ICard, IVisitable {
 
     /**
      * Set the next ability of a pokemon
+     *
      * @param index of the attack that want to be used
      */
     void setNextAbility(int index);

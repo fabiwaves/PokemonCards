@@ -8,7 +8,7 @@ public abstract class Type {
 
     protected String name;
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 

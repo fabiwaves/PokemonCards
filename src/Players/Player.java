@@ -60,7 +60,6 @@ public interface Player {
 
     /**
      * Add a played pokemon card to the the team
-     *
      */
     public void addPokemonToTeam();
 

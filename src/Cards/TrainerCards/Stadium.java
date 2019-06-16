@@ -7,7 +7,7 @@ public class Stadium extends TrainerCard {
 
     public IEffect effect;
 
-    public Stadium(IEffect effect){
+    public Stadium(IEffect effect) {
         this.effect = effect;
     }
 

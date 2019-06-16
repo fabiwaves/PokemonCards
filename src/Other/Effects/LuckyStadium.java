@@ -3,7 +3,7 @@ package Other.Effects;
 import Cards.IPokemon;
 import Players.Trainer;
 
-public class LuckyStadium extends AbstractAbilityEffect{
+public class LuckyStadium extends AbstractAbilityEffect {
 
 
     @Override

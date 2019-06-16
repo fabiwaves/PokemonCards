@@ -20,11 +20,11 @@ public abstract class AbstractAbility implements IAbility {
         return description;
     }
 
-    public boolean checkCost(){
+    public boolean checkCost() {
         boolean result = true;
         HashMap<String, Integer> pkmn_energies = this.pokemon.getEnergies();
-        for (String energy : energies.keySet()){
-            if (this.energies.get(energy) < pkmn_energies.get(energy)){
+        for (String energy : energies.keySet()) {
+            if (this.energies.get(energy) < pkmn_energies.get(energy)) {
                 result = false;
                 break;
             }
@@ -33,7 +33,7 @@ public abstract class AbstractAbility implements IAbility {
     }
 
     @Override
-    public IPokemon getPokemon(){
+    public IPokemon getPokemon() {
         return this.pokemon;
     }
 

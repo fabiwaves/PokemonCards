@@ -158,9 +158,11 @@ public class Trainer extends Observable implements Player, IVisitable {
         endTurn();
     }
 
-    public void getCard(){
+    public void getCard() {
         notifyObservers(1);
     }
 
-    public void endTurn(){notifyObservers(0);}
+    public void endTurn() {
+        notifyObservers(0);
+    }
 }
