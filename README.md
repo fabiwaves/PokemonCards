@@ -16,6 +16,8 @@
 ##### 4. Los pokemon tienen tanto un tipo y una fase que necesitan ser inicializadas para que funcionen.
 ##### 5. El usuario no puede interactuar de manera directa en base a inputs con sus pokemon, asi que por convención se dejo que siempre se seleccionará la habilidad en el indice 0. 
 ##### 6. Para las evoluciones se asume que el Id de la pre-evolucion siempre va a ser el id1, vale decir si tengo la un Charmeleon su id1 va a corresponder a la id de Charmander y si tengo un Charizard su id1 va a corresponder a la id del Charmeleon.
+##### 7. Para las implementaciones opcionales que requerian lanzar una moneda, se asumió que todos los numeros pares representarían un resultado cara y los impares un resultado sello.
+##### 8. Además para las implementaciones opcionales, se asumió que donde dijiera x de algo, este valor representaria 10. 
 
 ### Patrones de diseño utilizados
 #### Para esta entrega se utilizaron los patrones de diseño Observer, Visitor y Double Dispatch.

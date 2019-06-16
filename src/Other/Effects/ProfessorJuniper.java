@@ -22,6 +22,10 @@ public class ProfessorJuniper extends AbstractAbilityEffect {
 
     @Override
     public void visitTrainer(Trainer trainer) {
-        //Hacer que bote su mano y tome 7 cartas
+
+        //Hace que bote toda su mano
+        trainer.notifyObservers(100);
+        //Hace que tome 7 cartas
+        trainer.notifyObservers(7);
     }
 }

@@ -23,7 +23,8 @@ public class LuckyStadium extends AbstractAbilityEffect {
 
     @Override
     public void visitTrainer(Trainer trainer) {
-        //todo: implementar que tome una carta
+        //Notifica que puede tomar una carta extra, mientras el stadium esté activo en el juego
+        trainer.notifyObservers(2);
 
     }
 }

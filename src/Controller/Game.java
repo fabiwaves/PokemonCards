@@ -171,6 +171,20 @@ public class Game implements Observer {
             }
         }
 
+        if(arg.equals(2)){
+            // El jugador toma una carta extra por el efecto LuckyStadium
+            ICard card = current_player.getDeck().remove(0);
+            current_player.getHand().add(card);
+        }
+
+        if ((arg.equals(7))) {
+            //El jugador toma 7 cartas por el Soporte Professor Jupiter
+            for (int i = 0; i <= 7; i++) {
+                ICard card = current_player.getDeck().remove(0);
+                current_player.getHand().add(card);
+            }
+        }
+
         if (arg.equals(5)) {
             if (this.current_player.equals(o)) {
                 // Notify 5 va a ser "jugador actual juega carta"
@@ -194,6 +208,12 @@ public class Game implements Observer {
 
         }
 
+        if (arg.equals(100)) {
+            // El jugador descarta su mano
+            this.current_player.getHand().clear();
+        }
     }
+
 }
+
 
