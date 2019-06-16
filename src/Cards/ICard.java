@@ -33,11 +33,5 @@ public interface ICard {
      */
     void setTrainer(Trainer trainer);
 
-    /**
-     * Represents the action of playing a card
-     * It depends of the card type the effect of the play
-     */
-    void play();
-
     void notifyType(Game game);
 }

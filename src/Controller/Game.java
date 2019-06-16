@@ -1,11 +1,12 @@
 package Controller;
 
-
+import Cards.IEnergy;
 import Cards.IPokemon;
 import Cards.TrainerCards.PKMObject;
 import Cards.TrainerCards.Stadium;
 import Cards.TrainerCards.Support;
 import Players.Player;
+
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -16,12 +17,14 @@ public class Game implements Observer {
     private Player player2;
     private Stadium card_stadium;
     private Player current_player;
+    private boolean has_energy_played;
 
     public Game(Player player1, Player player2) {
         this.player1 = player1;
         this.player2 = player2;
         this.card_stadium = null;
         this.current_player = player1;
+        has_energy_played = false;
     }
 
     private void setCurrentPlayer(Player current_player) {
@@ -58,22 +61,80 @@ public class Game implements Observer {
         this.current_player.addPokemonToTeam();
     }
 
-    public void playStadium(Stadium std){
+    public void playStadium(Stadium std) {
         setCardStadium(std);
+        std.effect.executeBefore();
+        std.effect.executeAfter();
     }
 
-    public void playPKMObject(PKMObject pkmObject){
-        pkmObject.setCurrentPokemon(current_player.getActivePokemon());
+    public void playPKMObject(PKMObject pkmObject) {
+        boolean variable = pkmObject.setCurrentPokemon(current_player.getActivePokemon());
+        if (variable) {
+            pkmObject.effect.executeBefore();
+            pkmObject.effect.executeAfter();
+        }
     }
 
-    public void playSupport(Support support){
+    public void playSupport(Support support) {
+        support.effect.executeBefore();
+        support.effect.executeAfter();
+    }
+
+    public void playLightingEnergy(IEnergy energy) {
+        if (has_energy_played == false) {
+            current_player.getActivePokemon().addLightningEnergy();
+            has_energy_played = true;
+            energy.getTrainer().sendToGraveyard(energy, energy.getTrainer().getHand());
+        }
+    }
+
+    public void playFireEnergy(IEnergy energy ) {
+        if (has_energy_played == false) {
+            current_player.getActivePokemon().addFightingEnergy();
+            has_energy_played = true;
+            energy.getTrainer().sendToGraveyard(energy, energy.getTrainer().getHand());
+        }
+    }
+
+    public void playFightingEnergy(IEnergy energy) {
+        if (has_energy_played == false) {
+            current_player.getActivePokemon().addFightingEnergy();
+            has_energy_played = true;
+            energy.getTrainer().sendToGraveyard(energy, energy.getTrainer().getHand());
+        }
+    }
+
+    public void playPlantEnergy(IEnergy energy) {
+        if (has_energy_played == false) {
+            current_player.getActivePokemon().addPlantEnergy();
+            has_energy_played = true;
+            energy.getTrainer().sendToGraveyard(energy, energy.getTrainer().getHand());
+        }
+
+    }
+
+    public void playPsychicEnergy(IEnergy energy) {
+        if (has_energy_played == false) {
+            current_player.getActivePokemon().addPsychicEnergy();
+            has_energy_played = true;
+            energy.getTrainer().sendToGraveyard(energy, energy.getTrainer().getHand());
+        }
+
+    }
+
+    public void playWaterEnergy(IEnergy energy) {
+        if (has_energy_played == false) {
+            current_player.getActivePokemon().addWaterEnergy();
+            has_energy_played = true;
+            energy.getTrainer().sendToGraveyard(energy, energy.getTrainer().getHand());
+        }
 
     }
 
     @Override
     public void update(Observable o, Object arg) {
 
-        if(arg.equals(-1)){
+        if (arg.equals(-1)) {
             //todo: Implementar que el juego se termina
         }
 
@@ -106,6 +167,5 @@ public class Game implements Observer {
         }
 
     }
-
 }
 

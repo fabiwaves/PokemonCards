@@ -138,7 +138,7 @@ public class Trainer extends Observable implements Player, IVisitable {
      * @param card  Card that you want to send to the graveyard
      * @param place Location of the card
      */
-    private <T> void sendToGraveyard(T card, ArrayList<T> place) {
+    public <T> void sendToGraveyard(T card, ArrayList<T> place) {
         place.remove(card);
         this.graveyard.add((ICard) card);
     }

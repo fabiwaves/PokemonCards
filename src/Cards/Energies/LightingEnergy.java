@@ -1,16 +1,12 @@
 package Cards.Energies;
 
 import Cards.AbstractCard;
-import Cards.ICard;
 import Cards.IEnergy;
-import Cards.IPokemon;
+import Controller.Game;
 
 public class LightingEnergy extends AbstractCard implements IEnergy {
 
-    @Override
-    public void play(ICard card) {
-        IPokemon pokemon = (IPokemon) card;
-        pokemon.addLightningEnergy();
-        this.getTrainer().sendToGraveyard(this, getTrainer().getHand());
+    public void notifyType(Game game) {
+        game.playLightingEnergy(this);
     }
 }

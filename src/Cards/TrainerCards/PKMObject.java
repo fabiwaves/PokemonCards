@@ -6,8 +6,8 @@ import Other.Effects.IEffect;
 
 public class PKMObject extends TrainerCard {
 
-    private IEffect effect;
-    private IPokemon currentPokemon;
+    public IEffect effect;
+    public IPokemon currentPokemon;
 
     public PKMObject(IEffect effect) {
         this.effect = effect;
@@ -20,13 +20,6 @@ public class PKMObject extends TrainerCard {
             t = true;
         }
         return t;
-    }
-
-    @Override
-    public void play() {
-        if(setCurrentPokemon(this.getTrainer().selectOwnPokemonTarget())) {
-            this.effect.executeBefore();
-            this.effect.executeAfter();}
     }
 
     @Override

@@ -5,17 +5,12 @@ import Other.Effects.IEffect;
 
 public class Stadium extends TrainerCard {
 
-    private IEffect effect;
+    public IEffect effect;
 
     public Stadium(IEffect effect){
         this.effect = effect;
     }
 
-    @Override
-    public void play() {
-        this.effect.executeBefore();
-        this.effect.executeAfter();
-    }
 
     @Override
     public void notifyType(Game game) {
