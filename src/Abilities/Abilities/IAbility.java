@@ -1,4 +1,4 @@
-package Other.Abilities;
+package Abilities.Abilities;
 
 import Cards.IPokemon;
 

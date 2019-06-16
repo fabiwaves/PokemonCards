@@ -1,6 +1,6 @@
-package Other.Effects;
+package Abilities.Effects;
 
-import Other.Abilities.IAbility;
+import Abilities.Abilities.IAbility;
 
 /**
  * @author fabiwave

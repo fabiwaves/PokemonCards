@@ -1,4 +1,4 @@
-package Other.Effects;
+package Abilities.Effects;
 
 import Visitors.IVisitor;
 

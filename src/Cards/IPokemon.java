@@ -2,7 +2,7 @@ package Cards;
 
 import Cards.Phases.AbstractPhase;
 import Cards.TrainerCards.PKMObject;
-import Other.Abilities.AbstractAbility;
+import Abilities.Abilities.AbstractAbility;
 import Players.Trainer;
 import Types.Type;
 import Visitors.IVisitable;

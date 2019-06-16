@@ -4,8 +4,18 @@
 
 ### Implementación
 #### Paquetes, clases y otros
+##### Este proyecto cuenta con 11 paquetes para poder ordenar de mejor manera las clases e interfaces comunes.
 
-
+##### 1: Paquete Visitor: Este cuenta con las interfaces IVisitable y IVisitor que permiten modelar que un objeto sea visitado y/o visitante.
+##### 2. Paquete Types: Contiene la clase AbstractType que permite modelar lo basico de una entidad Type y las clases [Type] que modelan las interacciones en cuanto a ataques de los tipos.
+##### 3. Paquete Player: Contiene la interface Player que permite modelar lo básico que debe tener cualquier jugador en el juego. La clase Trainer modela en este caso, la instancia de un Entrenador y sus atributos.
+##### 4. Paquete Controller: Este paquete solo contiene una clase Game, que describe el controlador del juego, que en esta entrega es  el encargado de controlar el juego, ya que es  quien se encarga de manejar los turnos entre los jugadores, checkear condiciones y ver si una jugada es válida o no dependiendo del caso. Esta clase extiende la interfaz ya hecha de Java, 'Observer' de manera tal que los objetos notifican cuando un cambio ha sucedido.
+##### 5. Paquete Cards: Este paquete contiene otros 3 paquetes más ademas de las interfaces ICard, IEnergy y Ipokemon que modelan lo básico que una Carta, Energia y Pokemon deben tener respectivamente, la clase AbstractCard que permite dar forma a la abstraccion en cuanto atributos de una carta y la clase Pokemon que es la encargada de generar el Pokemon y sus metodos necesarios.  
+##### 5.1 Paquete TrainerCards: Contiene la interfaz ITrainerCard una nueva entidad para esta entrega, que permite modelar lo básico que toda carta de entrenador necesita tener. Además de esta interfaz, se encuentra la clase Abstracta asociada junto a las clases PKMObject, Stadium y Support que son las nuevas entidades presentes en el juego que generan un efecto a nivel juego-pokemon-entrenador según el caso.
+##### 5.2 Paquete Phases: Este paquete contiene todo lo necesario para inicializar las fases de un pokemon, ya que contiene la Intefaa IPhase y la clase AbstractPhase que permiten englobar todo lo que una fase contiene, de manera tal que las clases Basic, Phase1 y Phase 2 que estan modeladas como una clase, puedan ser inicializadas y utilizadas de manera correcta por un pokemon.
+##### 5.3 Paquete Energies: Contiene todo lo necesario para generar las energias del juego de manera tal que las energias saben por double dispatch agregarse solas al pokemon asociado.
+##### 6. Abilities: Contiene dos paquetes más; El paquete Abilities que contiene la interfaz IAbility que permite modelar lo basico que toda habilidad en el juego debe tener. La clase abstracta AbstractAbility que permite agregarle a la interfaz descrita anteriormente los atributos correspondientes a una habilidad. Por ultimo este paquete contiene las clases Attack que permite describir un ataque (Que a diferencia de la entrega anterior ahora es una habilidad que hace daño) y la clase PokemonAbility que permite describir una habilidad asociadad a un pokemon. 
+ 
 
 ### Supuestos implementados
 #### Muy importante tener en cuenta!

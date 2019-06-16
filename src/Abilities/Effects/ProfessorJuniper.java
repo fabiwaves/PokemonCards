@@ -1,4 +1,4 @@
-package Other.Effects;
+package Abilities.Effects;
 
 import Cards.IPokemon;
 import Players.Trainer;
@@ -7,9 +7,7 @@ import Players.Trainer;
  * @author fabiwave
  */
 
-public class LuckyStadium extends AbstractAbilityEffect {
-
-
+public class ProfessorJuniper extends AbstractAbilityEffect {
     @Override
     public void executeBefore() {
         Trainer trainer = this.ability.getPokemon().getTrainer();
@@ -18,6 +16,7 @@ public class LuckyStadium extends AbstractAbilityEffect {
 
     @Override
     public void executeAfter() {
+
     }
 
     @Override
@@ -27,8 +26,10 @@ public class LuckyStadium extends AbstractAbilityEffect {
 
     @Override
     public void visitTrainer(Trainer trainer) {
-        //While this Stadium Card is active in the game, the player can take an extra card
-        trainer.notifyObservers(2);
 
+        //Hace que bote toda su mano
+        trainer.notifyObservers(100);
+        //Hace que tome 7 cartas
+        trainer.notifyObservers(7);
     }
 }

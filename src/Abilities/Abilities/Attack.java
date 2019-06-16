@@ -1,8 +1,8 @@
-package Other.Abilities;
+package Abilities.Abilities;
 
 import Cards.IPokemon;
-import Other.Effects.AttackDamageEffect;
-import Other.Effects.IEffect;
+import Abilities.Effects.AttackDamageEffect;
+import Abilities.Effects.IEffect;
 import Players.Trainer;
 
 import java.util.HashMap;
