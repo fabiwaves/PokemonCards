@@ -39,6 +39,8 @@ public interface Player {
      */
     void setHand(ArrayList<IPokemon> hand);
 
+    public ArrayList<ICard> getDeck();
+
     /**
      * Gives the collection of all the pokemon of the player
      *

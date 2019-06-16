@@ -54,6 +54,9 @@ public class Trainer extends Observable implements Player, IVisitable {
         // TODO: WAT
     }
 
+    public ArrayList<ICard> getDeck() {
+        return deck;
+    }
 
     public ArrayList<IPokemon> getTeam() {
         return team;
@@ -152,6 +155,12 @@ public class Trainer extends Observable implements Player, IVisitable {
         // Attacks are notified with 10 argument
         notifyObservers(10);
         // End turn automatically
-        notifyObservers(0);
+        endTurn();
     }
+
+    public void getCard(){
+        notifyObservers(1);
+    }
+
+    public void endTurn(){notifyObservers(0);}
 }
