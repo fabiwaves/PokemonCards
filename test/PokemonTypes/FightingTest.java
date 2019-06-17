@@ -23,6 +23,11 @@ public class FightingTest {
     }
 
     @Test
+    public void getName(){
+        assertEquals("Fighting", fighting.getName());
+    }
+
+    @Test
     public void calcDamage() {
         assertEquals(otherType.calcDamageFighting(damage1), fighting.calcDamage(otherType, damage1));
     }
