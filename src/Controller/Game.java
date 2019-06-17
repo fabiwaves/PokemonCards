@@ -147,7 +147,7 @@ public class Game implements Observer {
      *
      * @param energy that wants to be played
      */
-    public void playLightingEnergy(IEnergy energy) {
+    public void playLightningEnergy(IEnergy energy) {
         if (!has_energy_played) {
             current_player.getActivePokemon().addLightningEnergy();
             has_energy_played = true;

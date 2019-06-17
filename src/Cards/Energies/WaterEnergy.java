@@ -9,6 +9,10 @@ import Controller.Game;
 
 public class WaterEnergy extends AbstractCard implements IEnergy {
 
+    public WaterEnergy(){
+        this.setName("Water Energy");
+    }
+
     public void notifyType(Game game) {
         game.playWaterEnergy(this);
     }
