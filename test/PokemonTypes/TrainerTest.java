@@ -1,3 +1,5 @@
+package PokemonTypes;
+
 import org.junit.Test;
 
 public class TrainerTest {

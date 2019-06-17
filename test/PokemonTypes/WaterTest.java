@@ -1,3 +1,5 @@
+package PokemonTypes;
+
 import Types.Fire;
 import Types.Type;
 import Types.Water;

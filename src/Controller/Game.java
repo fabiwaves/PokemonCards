@@ -1,7 +1,7 @@
 package Controller;
 
 import Cards.ICard;
-import Cards.IEnergy;
+import Cards.Energies.IEnergy;
 import Cards.IPokemon;
 import Cards.TrainerCards.PKMObject;
 import Cards.TrainerCards.Stadium;
@@ -84,7 +84,7 @@ public class Game implements Observer {
      *
      * @param stadium new stadium card for the game
      */
-    public void setCardStadium(Stadium stadium) {
+    private void setCardStadium(Stadium stadium) {
         this.card_stadium = stadium;
     }
 
@@ -103,7 +103,7 @@ public class Game implements Observer {
 
             if (pkm.getPhase().checkPrevId1(replacement)) {
                 this.current_player.addPokemonToTeam();
-                ((Trainer) this.current_player).sendToGraveyard(replacement, trainer.getTeam());
+                this.current_player.sendToGraveyard(replacement, trainer.getTeam());
             }
         }
     }
@@ -111,7 +111,7 @@ public class Game implements Observer {
     /**
      * Makes the action of playing a Stadium
      *
-     * @param std
+     * @param std Stadium card to be played
      */
     public void playStadium(Stadium std) {
         setCardStadium(std);
@@ -148,7 +148,7 @@ public class Game implements Observer {
      * @param energy that wants to be played
      */
     public void playLightingEnergy(IEnergy energy) {
-        if (has_energy_played == false) {
+        if (!has_energy_played) {
             current_player.getActivePokemon().addLightningEnergy();
             has_energy_played = true;
             energy.getTrainer().sendToGraveyard(energy, energy.getTrainer().getHand());
@@ -161,7 +161,7 @@ public class Game implements Observer {
      * @param energy that wants to be played
      */
     public void playFireEnergy(IEnergy energy) {
-        if (has_energy_played == false) {
+        if (!has_energy_played) {
             current_player.getActivePokemon().addFightingEnergy();
             has_energy_played = true;
             energy.getTrainer().sendToGraveyard(energy, energy.getTrainer().getHand());
@@ -174,7 +174,7 @@ public class Game implements Observer {
      * @param energy that want to be played
      */
     public void playFightingEnergy(IEnergy energy) {
-        if (has_energy_played == false) {
+        if (!has_energy_played) {
             current_player.getActivePokemon().addFightingEnergy();
             has_energy_played = true;
             energy.getTrainer().sendToGraveyard(energy, energy.getTrainer().getHand());
@@ -187,7 +187,7 @@ public class Game implements Observer {
      * @param energy that wants to be played
      */
     public void playPlantEnergy(IEnergy energy) {
-        if (has_energy_played == false) {
+        if (!has_energy_played) {
             current_player.getActivePokemon().addPlantEnergy();
             has_energy_played = true;
             energy.getTrainer().sendToGraveyard(energy, energy.getTrainer().getHand());
@@ -201,7 +201,7 @@ public class Game implements Observer {
      * @param energy that wants to be played
      */
     public void playPsychicEnergy(IEnergy energy) {
-        if (has_energy_played == false) {
+        if (!has_energy_played) {
             current_player.getActivePokemon().addPsychicEnergy();
             has_energy_played = true;
             energy.getTrainer().sendToGraveyard(energy, energy.getTrainer().getHand());
@@ -215,7 +215,7 @@ public class Game implements Observer {
      * @param energy that wants to be played
      */
     public void playWaterEnergy(IEnergy energy) {
-        if (has_energy_played == false) {
+        if (!has_energy_played) {
             current_player.getActivePokemon().addWaterEnergy();
             has_energy_played = true;
             energy.getTrainer().sendToGraveyard(energy, energy.getTrainer().getHand());
@@ -240,7 +240,7 @@ public class Game implements Observer {
         if (arg.equals(1)) {
             // El jugador tomo una carta
             if (this.current_player.equals(o)) {
-                if (has_taken_a_card == false) {
+                if (!has_taken_a_card) {
                     ICard card = current_player.getDeck().remove(0);
                     current_player.getHand().add(card);
                     has_taken_a_card = true;

@@ -1,3 +1,5 @@
+package PokemonTypes;
+
 import Types.Fighting;
 import Types.Lightning;
 import Types.Type;

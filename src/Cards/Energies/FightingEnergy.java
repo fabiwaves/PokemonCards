@@ -1,7 +1,6 @@
 package Cards.Energies;
 
 import Cards.AbstractCard;
-import Cards.IEnergy;
 import Controller.Game;
 
 /**

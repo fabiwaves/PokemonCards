@@ -1,4 +1,6 @@
-package Cards;
+package Cards.Energies;
+
+import Cards.ICard;
 
 /**
  * @author fabiwave

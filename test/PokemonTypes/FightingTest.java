@@ -1,3 +1,5 @@
+package PokemonTypes;
+
 import Types.Fighting;
 import Types.Fire;
 import Types.Type;
