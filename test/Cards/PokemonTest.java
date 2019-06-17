@@ -21,78 +21,6 @@ import static org.junit.Assert.*;
 
 public class PokemonTest {
 
-    private class NullEffect implements IEffect {
-        private int exec_before_count, exec_after_count;
-
-        private NullEffect() {
-            this.exec_before_count = 0;
-            this.exec_after_count = 0;
-        }
-
-        @Override
-        public void executeBefore() {
-            this.exec_before_count += 1;
-        }
-
-        @Override
-        public void executeAfter() {
-            this.exec_after_count += 1;
-        }
-
-        @Override
-        public void visitPokemon(IPokemon pokemon) {
-        }
-
-        @Override
-        public void visitTrainer(Trainer trainer) {
-        }
-
-        private boolean checkCounts(int before, int after) {
-            return (this.exec_before_count == before) && (this.exec_after_count == after);
-        }
-    }
-
-    private class NullGame extends Game {
-        private boolean play_pkmn_called;
-
-        NullGame() {
-            super(null, null);
-            this.play_pkmn_called = false;
-        }
-
-        @Override
-        public void playPokemon(IPokemon pkm) {
-            this.play_pkmn_called = true;
-        }
-
-        boolean playPokemonCalled() {
-            return this.play_pkmn_called;
-        }
-    }
-
-    private class NullVisitor implements IVisitor {
-
-        private boolean visit_pkmn_called;
-
-        NullVisitor(){
-            this.visit_pkmn_called = false;
-        }
-
-        @Override
-        public void visitPokemon(IPokemon pokemon) {
-            this.visit_pkmn_called = true;
-        }
-
-        @Override
-        public void visitTrainer(Trainer trainer) {
-        }
-
-        boolean visitPokemonCalled(){
-            return this.visit_pkmn_called;
-        }
-
-    }
-
     private Pokemon piplup;
     private Type water;
     private ArrayList<ICard> deck;
@@ -299,5 +227,77 @@ public class PokemonTest {
         NullVisitor visitor = new NullVisitor();
         piplup.acceptVisitor(visitor);
         assertTrue(visitor.visitPokemonCalled());
+    }
+
+    private class NullEffect implements IEffect {
+        private int exec_before_count, exec_after_count;
+
+        private NullEffect() {
+            this.exec_before_count = 0;
+            this.exec_after_count = 0;
+        }
+
+        @Override
+        public void executeBefore() {
+            this.exec_before_count += 1;
+        }
+
+        @Override
+        public void executeAfter() {
+            this.exec_after_count += 1;
+        }
+
+        @Override
+        public void visitPokemon(IPokemon pokemon) {
+        }
+
+        @Override
+        public void visitTrainer(Trainer trainer) {
+        }
+
+        private boolean checkCounts(int before, int after) {
+            return (this.exec_before_count == before) && (this.exec_after_count == after);
+        }
+    }
+
+    private class NullGame extends Game {
+        private boolean play_pkmn_called;
+
+        NullGame() {
+            super(null, null);
+            this.play_pkmn_called = false;
+        }
+
+        @Override
+        public void playPokemon(IPokemon pkm) {
+            this.play_pkmn_called = true;
+        }
+
+        boolean playPokemonCalled() {
+            return this.play_pkmn_called;
+        }
+    }
+
+    private class NullVisitor implements IVisitor {
+
+        private boolean visit_pkmn_called;
+
+        NullVisitor() {
+            this.visit_pkmn_called = false;
+        }
+
+        @Override
+        public void visitPokemon(IPokemon pokemon) {
+            this.visit_pkmn_called = true;
+        }
+
+        @Override
+        public void visitTrainer(Trainer trainer) {
+        }
+
+        boolean visitPokemonCalled() {
+            return this.visit_pkmn_called;
+        }
+
     }
 }

@@ -21,7 +21,7 @@ public class TrainerTest {
     private ICard cardToPlay;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         deck = new ArrayList<>();
     }
 
