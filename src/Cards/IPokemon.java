@@ -91,7 +91,7 @@ public interface IPokemon extends ICard, IVisitable {
      *
      * @return phase of the pokemon
      */
-    public AbstractPhase getPhase();
+    AbstractPhase getPhase();
 
     /**
      * Gives if the pokemon is alive
@@ -106,6 +106,13 @@ public interface IPokemon extends ICard, IVisitable {
      * @param index of the attack that want to be used
      */
     void setNextAbility(int index);
+
+    /**
+     * Get the next ability index of a pokemon
+     *
+     * @return index of the next ability to be used by a pokemon
+     */
+    int getNextAbility();
 
     /**
      * Makes the action of using an ability

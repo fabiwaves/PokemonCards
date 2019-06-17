@@ -13,21 +13,28 @@ public interface IAbility {
      *
      * @return the name of the attack
      */
-    public String getName();
+    String getName();
 
     /**
      * Gives the description of the attack
      *
      * @return the description of the attack
      */
-    public String getDescription();
+    String getDescription();
 
     /**
      * Chacks the cost of energies
      *
      * @return true if it can be afforded, false otherwise
      */
-    public boolean checkCost();
+    boolean checkCost();
+
+    /**
+     * Sets the pokemon associated to the ability
+     *
+     * @param pokemon IPokemon associated to the ability
+     */
+    void setPokemon(IPokemon pokemon);
 
     /**
      * Gets the pokemon associated to the ability

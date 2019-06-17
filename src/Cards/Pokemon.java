@@ -44,6 +44,9 @@ public class Pokemon extends AbstractCard implements IPokemon {
                 energy_names) {
             this.energies.put(a_name, 0);
         }
+        for(AbstractAbility ability : this.abilities){
+            ability.setPokemon(this);
+        }
         this.phase = phase;
     }
 
@@ -116,6 +119,11 @@ public class Pokemon extends AbstractCard implements IPokemon {
         if (index >= 0 && index < abilities.size()) {
             this.next_ability_index = index;
         }
+    }
+
+    @Override
+    public int getNextAbility() {
+        return this.next_ability_index;
     }
 
     public void useAbility() {

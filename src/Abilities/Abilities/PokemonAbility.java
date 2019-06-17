@@ -1,7 +1,7 @@
 package Abilities.Abilities;
 
-import Cards.IPokemon;
 import Abilities.Effects.IEffect;
+import Cards.IPokemon;
 
 import java.util.HashMap;
 
@@ -12,17 +12,18 @@ import java.util.HashMap;
 public class PokemonAbility extends AbstractAbility {
 
     public PokemonAbility(String name, String description, HashMap<String, Integer> energies,
-                          IEffect effect, IPokemon pokemon) {
+                          IEffect effect) {
         this.name = name;
         this.description = description;
         this.energies = energies;
         this.effect = effect;
-        this.pokemon = pokemon;
     }
 
     @Override
     public void useAbility() {
-        effect.executeBefore();
-        effect.executeAfter();
+        if (this.checkCost()) {
+            effect.executeBefore();
+            effect.executeAfter();
+        }
     }
 }
