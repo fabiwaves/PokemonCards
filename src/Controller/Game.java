@@ -17,23 +17,24 @@ import java.util.Observer;
  * @author fabiwave
  */
 
-public class Game implements Observer {
+public class Game extends Observable implements Observer {
 
     private Player player1;
     private Player player2;
     private Stadium card_stadium;
     private Player current_player;
     private boolean has_energy_played;
-    private boolean has_taken_a_card;
+    private int allowed_cards_to_take;
+    private int remaining_cards_to_take;
 
     public Game(Player player1, Player player2) {
         this.player1 = player1;
         this.player2 = player2;
         this.card_stadium = null;
         this.current_player = player1;
-        has_energy_played = false;
-        has_taken_a_card = false;
-
+        this.has_energy_played = false;
+        this.allowed_cards_to_take = 1;
+        this.remaining_cards_to_take = this.allowed_cards_to_take;
     }
 
     /**
@@ -43,6 +44,15 @@ public class Game implements Observer {
      */
     private void setCurrentPlayer(Player current_player) {
         this.current_player = current_player;
+    }
+
+    /**
+     * Gets the current player
+     *
+     * @return The current player
+     */
+    public Player getCurrentPlayer() {
+        return this.current_player;
     }
 
     /**
@@ -77,6 +87,8 @@ public class Game implements Observer {
         if (current_player == player2) {
             setCurrentPlayer(player1);
         }
+        this.remaining_cards_to_take = this.allowed_cards_to_take;
+        has_energy_played = false;
     }
 
     /**
@@ -85,7 +97,11 @@ public class Game implements Observer {
      * @param stadium new stadium card for the game
      */
     private void setCardStadium(Stadium stadium) {
+        this.card_stadium.effect.executeAfter();
+        this.deleteObserver(this.card_stadium.effect);
         this.card_stadium = stadium;
+        this.addObserver(this.card_stadium.effect);
+        this.card_stadium.effect.executeBefore();
     }
 
     /**
@@ -115,8 +131,6 @@ public class Game implements Observer {
      */
     public void playStadium(Stadium std) {
         setCardStadium(std);
-        std.effect.executeBefore();
-        std.effect.executeAfter();
     }
 
     /**
@@ -127,6 +141,7 @@ public class Game implements Observer {
     public void playPKMObject(PKMObject pkmObject) {
         boolean variable = pkmObject.setCurrentPokemon(current_player.getActivePokemon());
         if (variable) {
+            current_player.getActivePokemon().setPkmObject(pkmObject);
             pkmObject.effect.executeBefore();
             pkmObject.effect.executeAfter();
         }
@@ -227,31 +242,26 @@ public class Game implements Observer {
     public void update(Observable o, Object arg) {
 
         if (arg.equals(-1)) {
+            notifyObservers(-1);
             //todo: Implementar que el juego se termina
         }
 
         if (arg.equals(0)) {
             // Notify 0 va a ser para notificar que se acabo el turno
             changePlayer();
-            has_taken_a_card = false;
-            has_energy_played = false;
+            notifyObservers(0);
         }
 
         if (arg.equals(1)) {
             // El jugador tomo una carta
             if (this.current_player.equals(o)) {
-                if (!has_taken_a_card) {
+                if (remaining_cards_to_take > 0) {
                     ICard card = current_player.getDeck().remove(0);
                     current_player.getHand().add(card);
-                    has_taken_a_card = true;
+                    remaining_cards_to_take--;
                 }
+                notifyObservers(1);
             }
-        }
-
-        if (arg.equals(2)) {
-            // El jugador toma una carta extra por el efecto LuckyStadium
-            ICard card = current_player.getDeck().remove(0);
-            current_player.getHand().add(card);
         }
 
         if ((arg.equals(7))) {
@@ -260,6 +270,7 @@ public class Game implements Observer {
                 ICard card = current_player.getDeck().remove(0);
                 current_player.getHand().add(card);
             }
+            notifyObservers(7);
         }
 
         if (arg.equals(5)) {
@@ -267,6 +278,7 @@ public class Game implements Observer {
                 // Notify 5 va a ser "jugador actual juega carta"
                 Player aux = (Player) o;
                 aux.playACard();
+                notifyObservers(5);
             }
         }
 
@@ -275,6 +287,7 @@ public class Game implements Observer {
             if (!this.getAdversary().getTeam().get(0).isAlive()) {
                 this.getAdversary().replaceActivePokemon();
             }
+            notifyObservers(10);
         }
 
         if (arg.equals(15)) {
@@ -282,12 +295,13 @@ public class Game implements Observer {
             if (!this.current_player.getTeam().get(0).isAlive()) {
                 this.current_player.replaceActivePokemon();
             }
-
+            notifyObservers(15);
         }
 
         if (arg.equals(100)) {
             // El jugador descarta su mano
             this.current_player.getHand().clear();
+            notifyObservers(100);
         }
     }
 

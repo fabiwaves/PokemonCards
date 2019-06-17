@@ -11,7 +11,7 @@ import Abilities.Effects.IEffect;
 public class PKMObject extends TrainerCard {
 
     public IEffect effect;
-    public IPokemon currentPokemon;
+    private IPokemon current_pokemon;
 
     public PKMObject(IEffect effect) {
         this.effect = effect;
@@ -26,10 +26,14 @@ public class PKMObject extends TrainerCard {
     public boolean setCurrentPokemon(IPokemon pokemon) {
         boolean t = false;
         if (pokemon.getPKMObject() == null) {
-            this.currentPokemon = pokemon;
+            this.current_pokemon = pokemon;
             t = true;
         }
         return t;
+    }
+
+    IPokemon getCurrentPokemon() {
+        return this.current_pokemon;
     }
 
     @Override

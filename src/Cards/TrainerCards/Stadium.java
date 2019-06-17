@@ -1,5 +1,6 @@
 package Cards.TrainerCards;
 
+import Abilities.Effects.AbstractStadiumEffect;
 import Controller.Game;
 import Abilities.Effects.IEffect;
 
@@ -9,10 +10,11 @@ import Abilities.Effects.IEffect;
 
 public class Stadium extends TrainerCard {
 
-    public IEffect effect;
+    public AbstractStadiumEffect effect;
 
-    public Stadium(IEffect effect) {
+    public Stadium(AbstractStadiumEffect effect) {
         this.effect = effect;
+        effect.setStadium(this);
     }
 
     @Override
