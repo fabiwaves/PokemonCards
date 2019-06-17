@@ -11,5 +11,5 @@ public interface IVisitable {
      *
      * @param visitor parameter of the visitor that will visit the object
      */
-    public void acceptVisitor(IVisitor visitor);
+    void acceptVisitor(IVisitor visitor);
 }

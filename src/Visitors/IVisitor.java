@@ -14,13 +14,13 @@ public interface IVisitor {
      *
      * @param pokemon object that I want to visit
      */
-    public void visitPokemon(IPokemon pokemon);
+    void visitPokemon(IPokemon pokemon);
 
     /**
      * Visitor of a trainer
      *
      * @param trainer object that I want to visit
      */
-    public void visitTrainer(Trainer trainer);
+    void visitTrainer(Trainer trainer);
 
 }

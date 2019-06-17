@@ -6,14 +6,14 @@ import Cards.ICard;
  * @author fabiwave
  */
 
-public interface ITrainerCard extends ICard {
+interface ITrainerCard extends ICard {
 
     /**
      * Gives the description of the trainerCard
      *
      * @return the description of the trainerCard
      */
-    public String getDescription();
+    String getDescription();
 
 
     /**
@@ -21,6 +21,6 @@ public interface ITrainerCard extends ICard {
      *
      * @param description that wants to set
      */
-    public void setDescription(String description);
+    void setDescription(String description);
 }
 

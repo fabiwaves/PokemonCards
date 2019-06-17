@@ -57,7 +57,7 @@ public class LuckyStadium extends AbstractStadiumEffect {
                 if (!this.used_this_turn) {
                     this.used_this_turn = true;
                     Game game = (Game) o;
-                    Trainer trainer = (Trainer) game.getCurrentPlayer();
+                    Trainer trainer = game.getCurrentPlayer();
                     if (random.nextInt(2) > 0){
                         this.visitTrainer(trainer);
                     }

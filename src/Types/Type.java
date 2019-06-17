@@ -6,7 +6,7 @@ package Types;
 
 public abstract class Type {
 
-    protected String name;
+    String name;
 
     /**
      * Gives the name of the type

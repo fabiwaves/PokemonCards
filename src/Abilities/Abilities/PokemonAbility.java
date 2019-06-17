@@ -1,7 +1,6 @@
 package Abilities.Abilities;
 
 import Abilities.Effects.IEffect;
-import Cards.IPokemon;
 
 import java.util.HashMap;
 

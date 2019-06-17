@@ -2,7 +2,6 @@ package Cards.TrainerCards;
 
 import Abilities.Effects.AbstractStadiumEffect;
 import Controller.Game;
-import Abilities.Effects.IEffect;
 
 /**
  * @author fabiwave

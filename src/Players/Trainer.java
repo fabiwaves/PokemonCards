@@ -13,7 +13,7 @@ import java.util.Observable;
  * @author fabiwave
  */
 
-public class Trainer extends Observable implements Player, IVisitable {
+public class Trainer extends Observable implements IVisitable {
 
     private ArrayList<IPokemon> team;
     private ArrayList<ICard> hand;
@@ -54,8 +54,8 @@ public class Trainer extends Observable implements Player, IVisitable {
         return hand;
     }
 
-    public void setHand(ArrayList<IPokemon> hand) {
-        // TODO: WAT
+    public void setHand(ArrayList<ICard> hand) {
+        this.hand = hand;
     }
 
     public ArrayList<ICard> getDeck() {
@@ -107,8 +107,8 @@ public class Trainer extends Observable implements Player, IVisitable {
         return enemy_team.get(index);
     }
 
-    public Player selectTrainerTarget() {
-        Player target = this;
+    public Trainer selectTrainerTarget() {
+        Trainer target = this;
         boolean select_enemy = true; // TODO (Not in this version): Get trainer input
         if (select_enemy) {
             target = this.observer.getAdversary();
@@ -135,7 +135,7 @@ public class Trainer extends Observable implements Player, IVisitable {
         }
     }
 
-    public Player getAdversary() {
+    public Trainer getAdversary() {
         return this.observer.getAdversary();
     }
 
@@ -156,7 +156,7 @@ public class Trainer extends Observable implements Player, IVisitable {
         endTurn();
     }
 
-    public void endTurn() {
+    private void endTurn() {
         notifyObservers(0);
     }
 
@@ -164,4 +164,11 @@ public class Trainer extends Observable implements Player, IVisitable {
         notifyObservers(1);
     }
 
+    public ArrayList<ICard> getPrizes() {
+        return prizes;
+    }
+
+    public void setPrizes(ArrayList<ICard> prizes) {
+        this.prizes = prizes;
+    }
 }

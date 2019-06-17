@@ -6,7 +6,6 @@ import Cards.IPokemon;
 import Cards.TrainerCards.PKMObject;
 import Cards.TrainerCards.Stadium;
 import Cards.TrainerCards.Support;
-import Players.Player;
 import Players.Trainer;
 
 import java.util.ArrayList;
@@ -19,15 +18,15 @@ import java.util.Observer;
 
 public class Game extends Observable implements Observer {
 
-    private Player player1;
-    private Player player2;
+    private Trainer player1;
+    private Trainer player2;
     private Stadium card_stadium;
-    private Player current_player;
+    private Trainer current_player;
     private boolean has_energy_played;
     private int allowed_cards_to_take;
     private int remaining_cards_to_take;
 
-    public Game(Player player1, Player player2) {
+    public Game(Trainer player1, Trainer player2) {
         this.player1 = player1;
         this.player2 = player2;
         this.card_stadium = null;
@@ -42,7 +41,7 @@ public class Game extends Observable implements Observer {
      *
      * @param current_player the player of the turn
      */
-    private void setCurrentPlayer(Player current_player) {
+    private void setCurrentPlayer(Trainer current_player) {
         this.current_player = current_player;
     }
 
@@ -51,17 +50,17 @@ public class Game extends Observable implements Observer {
      *
      * @return The current player
      */
-    public Player getCurrentPlayer() {
+    public Trainer getCurrentPlayer() {
         return this.current_player;
     }
 
     /**
-     * Gets the adversary of a Player
+     * Gets the adversary of the current player
      *
      * @return Adversary
      */
-    public Player getAdversary() {
-        Player adversary = this.player2;
+    public Trainer getAdversary() {
+        Trainer adversary = this.player2;
         if (this.current_player.equals(player2)) {
             adversary = player1;
         }
@@ -114,7 +113,7 @@ public class Game extends Observable implements Observer {
         if (!pkm.getPhase().isEvolution()) {
             this.current_player.addPokemonToTeam();
         } else {
-            Trainer trainer = (Trainer) this.current_player;
+            Trainer trainer = this.current_player;
             IPokemon replacement = trainer.selectOwnPokemonTarget();
 
             if (pkm.getPhase().checkPrevId1(replacement)) {
@@ -276,7 +275,7 @@ public class Game extends Observable implements Observer {
         if (arg.equals(5)) {
             if (this.current_player.equals(o)) {
                 // Notify 5 va a ser "jugador actual juega carta"
-                Player aux = (Player) o;
+                Trainer aux = (Trainer) o;
                 aux.playACard();
                 notifyObservers(5);
             }

@@ -1,8 +1,8 @@
 package Abilities.Abilities;
 
-import Cards.IPokemon;
 import Abilities.Effects.AttackDamageEffect;
 import Abilities.Effects.IEffect;
+import Cards.IPokemon;
 import Players.Trainer;
 
 import java.util.HashMap;
@@ -46,7 +46,7 @@ public class Attack extends AbstractAbility {
     public void useAbility() {
         if (this.checkCost()) {
             Trainer trainer = this.pokemon.getTrainer();
-            Trainer target = (Trainer) trainer.getAdversary();
+            Trainer target = trainer.getAdversary();
             this.target_pokemon = target.getActivePokemon();
 
             this.effect.executeBefore();

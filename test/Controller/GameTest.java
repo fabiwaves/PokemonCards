@@ -1,18 +1,16 @@
 package Controller;
 
 import Cards.TrainerCards.Stadium;
-import Players.Player;
+import Players.Trainer;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class GameTest {
 
-    private Player player1;
-    private Players.Player player2;
+    private Trainer player1;
+    private Trainer player2;
     private Stadium card_stadium;
-    private Player current_player;
+    private Trainer current_player;
     private boolean has_energy_played;
     private boolean has_taken_a_card;
 
