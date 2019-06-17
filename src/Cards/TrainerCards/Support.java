@@ -18,6 +18,5 @@ public class Support extends TrainerCard {
     @Override
     public void notifyType(Game game) {
         game.playSupport(this);
-
     }
 }
