@@ -131,7 +131,7 @@ public class Trainer extends Observable implements IVisitable {
         this.cardToPlay = null;
     }
 
-    void play(ICard card) {
+    public void play(ICard card) {
         card.setTrainer(this);
         this.cardToPlay = card;
         this.setChanged();

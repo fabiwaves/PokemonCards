@@ -71,14 +71,14 @@ public class LuckyStadiumTest {
     @Test
     public void executeAfter() {
         // This method does nothing
-        lucky.executeBefore();
+        lucky.executeAfter();
         assertTrue(true);
     }
 
     @Test
     public void visitPokemon() {
         // This method does nothing
-        lucky.executeBefore();
+        lucky.visitPokemon(null);
         assertTrue(true);
     }
 

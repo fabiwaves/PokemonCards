@@ -1,7 +1,7 @@
 package Controller;
 
-import Cards.ICard;
 import Cards.Energies.IEnergy;
+import Cards.ICard;
 import Cards.IPokemon;
 import Cards.TrainerCards.PKMObject;
 import Cards.TrainerCards.Stadium;
@@ -139,6 +139,15 @@ public class Game extends Observable implements Observer {
     }
 
     /**
+     * Shows the current Stadium card
+     *
+     * @return current Stadium card
+     */
+    ICard getStadium() {
+        return this.card_stadium;
+    }
+
+    /**
      * Makes the action of playing a PKM Object
      *
      * @param pkmObject that wants to be played
@@ -160,6 +169,7 @@ public class Game extends Observable implements Observer {
     public void playSupport(Support support) {
         support.effect.executeBefore();
         support.effect.executeAfter();
+        current_player.sendToGraveyard(support, current_player.getHand());
     }
 
     /**
@@ -182,7 +192,7 @@ public class Game extends Observable implements Observer {
      */
     public void playFireEnergy(IEnergy energy) {
         if (!has_energy_played) {
-            current_player.getActivePokemon().addFightingEnergy();
+            current_player.getActivePokemon().addFireEnergy();
             has_energy_played = true;
             energy.getTrainer().sendToGraveyard(energy, energy.getTrainer().getHand());
         }
@@ -312,7 +322,11 @@ public class Game extends Observable implements Observer {
 
         if (arg.equals(100)) {
             // El jugador descarta su mano
-            this.current_player.getHand().clear();
+            ArrayList<ICard> hand = this.current_player.getHand();
+            int hand_size = hand.size();
+            for (int i = 0;  i < hand_size; i++){
+                this.current_player.sendToGraveyard(hand.get(0), hand);
+            }
             this.setChanged();
             notifyObservers(100);
         }
