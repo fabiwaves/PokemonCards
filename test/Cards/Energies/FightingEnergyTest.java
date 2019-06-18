@@ -57,7 +57,7 @@ public class FightingEnergyTest {
         private boolean play_energy_called;
 
         NullGame() {
-            super(null, null);
+            super(new Trainer(new ArrayList<>()), new Trainer(new ArrayList<>()));
             this.play_energy_called = false;
         }
 

@@ -29,6 +29,10 @@ public class Game extends Observable implements Observer {
     public Game(Trainer player1, Trainer player2) {
         this.player1 = player1;
         this.player2 = player2;
+        this.player1.addObserver(this);
+        this.player2.addObserver(this);
+        this.player1.setObserver(this);
+        this.player2.setObserver(this);
         this.card_stadium = null;
         this.current_player = player1;
         this.has_energy_played = false;
@@ -96,8 +100,10 @@ public class Game extends Observable implements Observer {
      * @param stadium new stadium card for the game
      */
     private void setCardStadium(Stadium stadium) {
-        this.card_stadium.effect.executeAfter();
-        this.deleteObserver(this.card_stadium.effect);
+        if (this.card_stadium != null) {
+            this.card_stadium.effect.executeAfter();
+            this.deleteObserver(this.card_stadium.effect);
+        }
         this.card_stadium = stadium;
         this.addObserver(this.card_stadium.effect);
         this.card_stadium.effect.executeBefore();
@@ -241,6 +247,7 @@ public class Game extends Observable implements Observer {
     public void update(Observable o, Object arg) {
 
         if (arg.equals(-1)) {
+            this.setChanged();
             notifyObservers(-1);
             //todo: Implementar que el juego se termina
         }
@@ -248,6 +255,7 @@ public class Game extends Observable implements Observer {
         if (arg.equals(0)) {
             // Notify 0 va a ser para notificar que se acabo el turno
             changePlayer();
+            this.setChanged();
             notifyObservers(0);
         }
 
@@ -259,6 +267,7 @@ public class Game extends Observable implements Observer {
                     current_player.getHand().add(card);
                     remaining_cards_to_take--;
                 }
+                this.setChanged();
                 notifyObservers(1);
             }
         }
@@ -269,6 +278,7 @@ public class Game extends Observable implements Observer {
                 ICard card = current_player.getDeck().remove(0);
                 current_player.getHand().add(card);
             }
+            this.setChanged();
             notifyObservers(7);
         }
 
@@ -277,6 +287,7 @@ public class Game extends Observable implements Observer {
                 // Notify 5 va a ser "jugador actual juega carta"
                 Trainer aux = (Trainer) o;
                 aux.playACard();
+                this.setChanged();
                 notifyObservers(5);
             }
         }
@@ -286,6 +297,7 @@ public class Game extends Observable implements Observer {
             if (!this.getAdversary().getTeam().get(0).isAlive()) {
                 this.getAdversary().replaceActivePokemon();
             }
+            this.setChanged();
             notifyObservers(10);
         }
 
@@ -294,12 +306,14 @@ public class Game extends Observable implements Observer {
             if (!this.current_player.getTeam().get(0).isAlive()) {
                 this.current_player.replaceActivePokemon();
             }
+            this.setChanged();
             notifyObservers(15);
         }
 
         if (arg.equals(100)) {
             // El jugador descarta su mano
             this.current_player.getHand().clear();
+            this.setChanged();
             notifyObservers(100);
         }
     }

@@ -28,8 +28,10 @@ public class ProfessorJuniper extends AbstractAbilityEffect {
     public void visitTrainer(Trainer trainer) {
 
         //Hace que bote toda su mano
+        trainer.setChangedObs();
         trainer.notifyObservers(100);
         //Hace que tome 7 cartas
+        trainer.setChangedObs();
         trainer.notifyObservers(7);
     }
 }

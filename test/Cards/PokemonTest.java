@@ -264,7 +264,7 @@ public class PokemonTest {
         private boolean play_pkmn_called;
 
         NullGame() {
-            super(null, null);
+            super(new Trainer(new ArrayList<>()), new Trainer(new ArrayList<>()));
             this.play_pkmn_called = false;
         }
 

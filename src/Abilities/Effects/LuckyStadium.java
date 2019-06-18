@@ -1,7 +1,6 @@
 package Abilities.Effects;
 
 import Cards.IPokemon;
-import Cards.TrainerCards.Stadium;
 import Controller.Game;
 import Players.Trainer;
 
@@ -18,7 +17,7 @@ public class LuckyStadium extends AbstractStadiumEffect {
     private boolean used_this_turn;
     private Random random;
 
-    public LuckyStadium(Stadium stadium){
+    public LuckyStadium() {
         this.new_turn = false;
         this.used_this_turn = false;
         this.random = new Random();
@@ -45,20 +44,20 @@ public class LuckyStadium extends AbstractStadiumEffect {
 
     @Override
     public void update(Observable o, Object arg) {
-        if (arg.equals(0)){
+        if (arg.equals(0)) {
             this.new_turn = true;
             this.used_this_turn = false;
         }
 
-        if (arg.equals(1)){
-            if (this.new_turn){
+        if (arg.equals(1)) {
+            if (this.new_turn) {
                 this.new_turn = false;
             } else {
                 if (!this.used_this_turn) {
                     this.used_this_turn = true;
                     Game game = (Game) o;
                     Trainer trainer = game.getCurrentPlayer();
-                    if (random.nextInt(2) > 0){
+                    if (random.nextInt(2) > 0) {
                         this.visitTrainer(trainer);
                     }
                 }

@@ -18,7 +18,7 @@ public class PKMObjectTest {
         private boolean play_pkmobject_called;
 
         NullGame() {
-            super(null, null);
+            super(new Trainer(new ArrayList<>()), new Trainer(new ArrayList<>()));
             this.play_pkmobject_called = false;
         }
 

@@ -35,11 +35,23 @@ public class Trainer extends Observable implements IVisitable {
         this.cardToPlay = null;
     }
 
+    ArrayList<ICard> getGraveyard() {
+        return this.graveyard;
+    }
+
     public IPokemon getActivePokemon() {
         return this.team.get(0);
     }
 
-    public void setActivePokemon(IPokemon activePokemon) {
+    public void setObserver(Game game) {
+        this.observer = game;
+    }
+
+    public void setChangedObs() {
+        this.setChanged();
+    }
+
+    void setActivePokemon(IPokemon activePokemon) {
         int pkm_index = this.team.indexOf(activePokemon);
         IPokemon current_active = this.team.get(0);
         this.team.set(0, activePokemon);
@@ -70,28 +82,24 @@ public class Trainer extends Observable implements IVisitable {
         int remaining_pkm = this.team.size() - 1;
         this.sendToGraveyard(this.team.get(0), this.team);
         if (remaining_pkm <= 0) {
+            this.setChanged();
             notifyObservers(-1);
         }
     }
 
     public void addPokemonToTeam() {
-        try {
-            IPokemon pkm = (IPokemon) this.cardToPlay;
-            if (this.team.size() < 6) {
-                this.team.add(pkm);
-                this.hand.remove(pkm);
-            }
-        } catch (Exception e) {
-            // To stop unauthorized executions
-            return;
+        IPokemon pkm = (IPokemon) this.cardToPlay;
+        if (this.team.size() < 6 && this.cardToPlay != null) {
+            this.team.add(pkm);
+            this.hand.remove(pkm);
         }
     }
 
-    public void selectAbility(int index) {
+    void selectAbility(int index) {
         this.team.get(0).setNextAbility(index);
     }
 
-    public void useAbility(int index) {
+    public void useAbility() {
         this.team.get(0).useAbility();
     }
 
@@ -101,13 +109,13 @@ public class Trainer extends Observable implements IVisitable {
         return this.team.get(index);
     }
 
-    public IPokemon selectEnemyPokemonTarget() {
+    IPokemon selectEnemyPokemonTarget() {
         ArrayList<IPokemon> enemy_team = this.observer.getAdversaryPokemon();
         int index = 0; // TODO (Not in this version): Get player input
         return enemy_team.get(index);
     }
 
-    public Trainer selectTrainerTarget() {
+    Trainer selectTrainerTarget() {
         Trainer target = this;
         boolean select_enemy = true; // TODO (Not in this version): Get trainer input
         if (select_enemy) {
@@ -118,18 +126,19 @@ public class Trainer extends Observable implements IVisitable {
 
     public void playACard() {
         if (this.cardToPlay != null) {
-            cardToPlay.notifyType(this.observer);
+            this.cardToPlay.notifyType(this.observer);
         }
         this.cardToPlay = null;
     }
 
-    public void play(ICard card) {
+    void play(ICard card) {
         card.setTrainer(this);
         this.cardToPlay = card;
-        notifyObservers(5);
+        this.setChanged();
+        this.notifyObservers(5);
     }
 
-    public void checkActivePokemon() {
+    void checkActivePokemon() {
         if (!this.team.get(0).isAlive()) {
             this.replaceActivePokemon();
         }
@@ -151,24 +160,27 @@ public class Trainer extends Observable implements IVisitable {
 
     public void notifyAttack() {
         // Attacks are notified with 10 argument
+        this.setChanged();
         notifyObservers(10);
         // End turn automatically
         endTurn();
     }
 
     private void endTurn() {
+        this.setChanged();
         notifyObservers(0);
     }
 
-    public void getCard() {
+    void getCard() {
+        this.setChanged();
         notifyObservers(1);
     }
 
-    public ArrayList<ICard> getPrizes() {
+    ArrayList<ICard> getPrizes() {
         return prizes;
     }
 
-    public void setPrizes(ArrayList<ICard> prizes) {
+    void setPrizes(ArrayList<ICard> prizes) {
         this.prizes = prizes;
     }
 }

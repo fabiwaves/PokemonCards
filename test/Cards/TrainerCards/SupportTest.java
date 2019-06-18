@@ -1,8 +1,11 @@
 package Cards.TrainerCards;
 
 import Controller.Game;
+import Players.Trainer;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
@@ -12,7 +15,7 @@ public class SupportTest {
         private boolean play_support_called;
 
         NullGame() {
-            super(null, null);
+            super(new Trainer(new ArrayList<>()), new Trainer(new ArrayList<>()));
             this.play_support_called = false;
         }
 
