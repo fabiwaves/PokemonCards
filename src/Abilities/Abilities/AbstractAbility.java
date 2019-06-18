@@ -1,7 +1,7 @@
 package Abilities.Abilities;
 
-import Cards.IPokemon;
 import Abilities.Effects.IEffect;
+import Cards.IPokemon;
 
 import java.util.HashMap;
 
@@ -42,7 +42,7 @@ public abstract class AbstractAbility implements IAbility {
     }
 
     @Override
-    public void setPokemon(IPokemon pokemon){
+    public void setPokemon(IPokemon pokemon) {
         this.pokemon = pokemon;
     }
 

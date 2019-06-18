@@ -1,8 +1,8 @@
 package Cards.TrainerCards;
 
+import Abilities.Effects.IEffect;
 import Cards.IPokemon;
 import Controller.Game;
-import Abilities.Effects.IEffect;
 
 /**
  * @author fabiwave

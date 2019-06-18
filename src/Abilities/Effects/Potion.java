@@ -1,17 +1,24 @@
 package Abilities.Effects;
 
 import Cards.IPokemon;
+import Cards.TrainerCards.Support;
 import Players.Trainer;
 
 /**
  * @author fabiwave
  */
 
-public class Potion extends AbstractAbilityEffect {
+public class Potion implements IEffect {
+    private Support support;
+
+    void setSupport(Support support) {
+        this.support = support;
+    }
+
     @Override
     public void executeBefore() {
 
-        IPokemon pokemon = this.ability.getPokemon();
+        IPokemon pokemon = this.support.getTrainer().selectOwnPokemonTarget();
         pokemon.acceptVisitor(this);
     }
 
@@ -22,8 +29,8 @@ public class Potion extends AbstractAbilityEffect {
 
     @Override
     public void visitPokemon(IPokemon pokemon) {
-        int max_hp = this.ability.getPokemon().getMax_hp();
-        int current_hp = this.ability.getPokemon().getHp();
+        int max_hp = pokemon.getMax_hp();
+        int current_hp = pokemon.getHp();
         /* Contadores perdidos por el pokemon */
         int counter = (max_hp - current_hp) / 10;
         int random = (int) (Math.random() * current_hp + 1);

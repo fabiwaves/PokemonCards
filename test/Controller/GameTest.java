@@ -25,37 +25,6 @@ import static org.junit.Assert.*;
 
 public class GameTest {
 
-    private class NullEffect implements IEffect {
-        private int exec_before_count, exec_after_count;
-
-        private NullEffect() {
-            this.exec_before_count = 0;
-            this.exec_after_count = 0;
-        }
-
-        @Override
-        public void executeBefore() {
-            this.exec_before_count += 1;
-        }
-
-        @Override
-        public void executeAfter() {
-            this.exec_after_count += 1;
-        }
-
-        @Override
-        public void visitPokemon(IPokemon pokemon) {
-        }
-
-        @Override
-        public void visitTrainer(Trainer trainer) {
-        }
-
-        private boolean checkCounts(int before, int after) {
-            return (this.exec_before_count == before) && (this.exec_after_count == after);
-        }
-    }
-
     private Trainer trainer;
     private ArrayList<ICard> deck;
     private Game observer;
@@ -228,5 +197,36 @@ public class GameTest {
         assertEquals(third, trainer.getActivePokemon());
         observer.update(trainer, 100);
         assertTrue(trainer.getHand().isEmpty());
+    }
+
+    private class NullEffect implements IEffect {
+        private int exec_before_count, exec_after_count;
+
+        private NullEffect() {
+            this.exec_before_count = 0;
+            this.exec_after_count = 0;
+        }
+
+        @Override
+        public void executeBefore() {
+            this.exec_before_count += 1;
+        }
+
+        @Override
+        public void executeAfter() {
+            this.exec_after_count += 1;
+        }
+
+        @Override
+        public void visitPokemon(IPokemon pokemon) {
+        }
+
+        @Override
+        public void visitTrainer(Trainer trainer) {
+        }
+
+        private boolean checkCounts(int before, int after) {
+            return (this.exec_before_count == before) && (this.exec_after_count == after);
+        }
     }
 }

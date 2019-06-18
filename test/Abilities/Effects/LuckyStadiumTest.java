@@ -14,34 +14,6 @@ import static org.junit.Assert.*;
 
 public class LuckyStadiumTest {
 
-    private class NullGame extends Game {
-
-        private int get_current_player_times;
-
-        public NullGame(Trainer player1) {
-            super(player1, player1);
-            this.get_current_player_times = 0;
-        }
-
-        @Override
-        public Trainer getCurrentPlayer() {
-            this.get_current_player_times += 1;
-            return super.getCurrentPlayer();
-        }
-
-        int getCurrentPlayerTimes() {
-            return this.get_current_player_times;
-        }
-    }
-
-    private class NullCard extends AbstractCard {
-
-        @Override
-        public void notifyType(Game game) {
-            game.playFireEnergy(new FireEnergy());
-        }
-    }
-
     private LuckyStadium lucky;
     private Trainer trainer;
     private ArrayList<ICard> null_cards;
@@ -102,5 +74,33 @@ public class LuckyStadiumTest {
     public void setStadium() {
         lucky.setStadium(null);
         assertNull(lucky.stadium_card);
+    }
+
+    private class NullGame extends Game {
+
+        private int get_current_player_times;
+
+        public NullGame(Trainer player1) {
+            super(player1, player1);
+            this.get_current_player_times = 0;
+        }
+
+        @Override
+        public Trainer getCurrentPlayer() {
+            this.get_current_player_times += 1;
+            return super.getCurrentPlayer();
+        }
+
+        int getCurrentPlayerTimes() {
+            return this.get_current_player_times;
+        }
+    }
+
+    private class NullCard extends AbstractCard {
+
+        @Override
+        public void notifyType(Game game) {
+            game.playFireEnergy(new FireEnergy());
+        }
     }
 }

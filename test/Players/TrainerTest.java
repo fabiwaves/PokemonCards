@@ -22,75 +22,6 @@ import static org.junit.Assert.*;
 
 public class TrainerTest {
 
-    private class NullVisitor implements IVisitor {
-        private boolean visit_trainer_called;
-
-        NullVisitor() {
-            this.visit_trainer_called = false;
-        }
-
-        @Override
-        public void visitPokemon(IPokemon pokemon) {
-        }
-
-        @Override
-        public void visitTrainer(Trainer trainer) {
-            this.visit_trainer_called = true;
-        }
-
-        boolean visitTrainerCalled() {
-            return visit_trainer_called;
-        }
-    }
-
-    private class NullEffect implements IEffect {
-        private int exec_before_count, exec_after_count;
-
-        private NullEffect() {
-            this.exec_before_count = 0;
-            this.exec_after_count = 0;
-        }
-
-        @Override
-        public void executeBefore() {
-            this.exec_before_count += 1;
-        }
-
-        @Override
-        public void executeAfter() {
-            this.exec_after_count += 1;
-        }
-
-        @Override
-        public void visitPokemon(IPokemon pokemon) {
-        }
-
-        @Override
-        public void visitTrainer(Trainer trainer) {
-        }
-
-        private boolean checkCounts(int before, int after) {
-            return (this.exec_before_count == before) && (this.exec_after_count == after);
-        }
-    }
-
-    private class TestGame extends Game {
-
-        ArrayList<Integer> notify_calls;
-
-        TestGame(Trainer player1, Trainer player2) {
-            super(player1, player2);
-            notify_calls = new ArrayList<>();
-        }
-
-        @Override
-        public void update(Observable o, Object arg) {
-            notify_calls.add((Integer) arg);
-            super.update(o, arg);
-        }
-
-    }
-
     private Trainer trainer;
     private ArrayList<ICard> deck;
     private TestGame observer;
@@ -129,7 +60,6 @@ public class TrainerTest {
         trainer.setHand(hand);
         observer = new TestGame(trainer, trainer);
     }
-
 
     @Test
     public void play() {
@@ -262,7 +192,7 @@ public class TrainerTest {
         trainer.play(trainer.getHand().get(0));
         trainer.selectAbility(0);
         trainer.useAbility();
-        assertTrue(first_effect.checkCounts(1,1));
+        assertTrue(first_effect.checkCounts(1, 1));
     }
 
     @Test
@@ -284,6 +214,74 @@ public class TrainerTest {
         assertEquals(trainer, trainer.selectTrainerTarget());
     }
 
+    private class NullVisitor implements IVisitor {
+        private boolean visit_trainer_called;
+
+        NullVisitor() {
+            this.visit_trainer_called = false;
+        }
+
+        @Override
+        public void visitPokemon(IPokemon pokemon) {
+        }
+
+        @Override
+        public void visitTrainer(Trainer trainer) {
+            this.visit_trainer_called = true;
+        }
+
+        boolean visitTrainerCalled() {
+            return visit_trainer_called;
+        }
+    }
+
+    private class NullEffect implements IEffect {
+        private int exec_before_count, exec_after_count;
+
+        private NullEffect() {
+            this.exec_before_count = 0;
+            this.exec_after_count = 0;
+        }
+
+        @Override
+        public void executeBefore() {
+            this.exec_before_count += 1;
+        }
+
+        @Override
+        public void executeAfter() {
+            this.exec_after_count += 1;
+        }
+
+        @Override
+        public void visitPokemon(IPokemon pokemon) {
+        }
+
+        @Override
+        public void visitTrainer(Trainer trainer) {
+        }
+
+        private boolean checkCounts(int before, int after) {
+            return (this.exec_before_count == before) && (this.exec_after_count == after);
+        }
+    }
+
+    private class TestGame extends Game {
+
+        ArrayList<Integer> notify_calls;
+
+        TestGame(Trainer player1, Trainer player2) {
+            super(player1, player2);
+            notify_calls = new ArrayList<>();
+        }
+
+        @Override
+        public void update(Observable o, Object arg) {
+            notify_calls.add((Integer) arg);
+            super.update(o, arg);
+        }
+
+    }
 
 
 }

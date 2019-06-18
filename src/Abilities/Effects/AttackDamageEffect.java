@@ -1,7 +1,7 @@
 package Abilities.Effects;
 
-import Cards.IPokemon;
 import Abilities.Abilities.Attack;
+import Cards.IPokemon;
 import Players.Trainer;
 import Types.Type;
 

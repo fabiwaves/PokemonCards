@@ -14,6 +14,21 @@ import static org.junit.Assert.assertTrue;
 
 public class StadiumTest {
 
+    private Stadium stadium;
+
+    @Before
+    public void setUp() {
+        NullStadiumEffect null_effect = new NullStadiumEffect();
+        stadium = new Stadium(null_effect);
+    }
+
+    @Test
+    public void notifyType() {
+        NullGame game = new NullGame();
+        stadium.notifyType(game);
+        assertTrue(game.playStadiumCalled());
+    }
+
     private class NullGame extends Game {
         private boolean play_stadium_called;
 
@@ -53,20 +68,5 @@ public class StadiumTest {
         @Override
         public void update(Observable o, Object arg) {
         }
-    }
-
-    private Stadium stadium;
-
-    @Before
-    public void setUp() {
-        NullStadiumEffect null_effect = new NullStadiumEffect();
-        stadium = new Stadium(null_effect);
-    }
-
-    @Test
-    public void notifyType() {
-        NullGame game = new NullGame();
-        stadium.notifyType(game);
-        assertTrue(game.playStadiumCalled());
     }
 }

@@ -14,37 +14,6 @@ import static org.junit.Assert.*;
 
 public class PokemonAbilityTest {
 
-    private class NullEffect implements IEffect {
-        private int exec_before_count, exec_after_count;
-
-        private NullEffect() {
-            this.exec_before_count = 0;
-            this.exec_after_count = 0;
-        }
-
-        @Override
-        public void executeBefore() {
-            this.exec_before_count += 1;
-        }
-
-        @Override
-        public void executeAfter() {
-            this.exec_after_count += 1;
-        }
-
-        @Override
-        public void visitPokemon(IPokemon pokemon) {
-        }
-
-        @Override
-        public void visitTrainer(Trainer trainer) {
-        }
-
-        private boolean checkCounts(int before, int after) {
-            return (this.exec_before_count == before) && (this.exec_after_count == after);
-        }
-    }
-
     private PokemonAbility pkmnAbility;
     private NullEffect effect;
     private IPokemon piplup;
@@ -99,5 +68,36 @@ public class PokemonAbilityTest {
     public void setPokemon() {
         pkmnAbility.setPokemon(null);
         assertNull(pkmnAbility.getPokemon());
+    }
+
+    private class NullEffect implements IEffect {
+        private int exec_before_count, exec_after_count;
+
+        private NullEffect() {
+            this.exec_before_count = 0;
+            this.exec_after_count = 0;
+        }
+
+        @Override
+        public void executeBefore() {
+            this.exec_before_count += 1;
+        }
+
+        @Override
+        public void executeAfter() {
+            this.exec_after_count += 1;
+        }
+
+        @Override
+        public void visitPokemon(IPokemon pokemon) {
+        }
+
+        @Override
+        public void visitTrainer(Trainer trainer) {
+        }
+
+        private boolean checkCounts(int before, int after) {
+            return (this.exec_before_count == before) && (this.exec_after_count == after);
+        }
     }
 }

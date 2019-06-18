@@ -41,21 +41,21 @@ public class Game extends Observable implements Observer {
     }
 
     /**
-     * Sets the current player of the game
-     *
-     * @param current_player the player of the turn
-     */
-    private void setCurrentPlayer(Trainer current_player) {
-        this.current_player = current_player;
-    }
-
-    /**
      * Gets the current player
      *
      * @return The current player
      */
     public Trainer getCurrentPlayer() {
         return this.current_player;
+    }
+
+    /**
+     * Sets the current player of the game
+     *
+     * @param current_player the player of the turn
+     */
+    private void setCurrentPlayer(Trainer current_player) {
+        this.current_player = current_player;
     }
 
     /**
@@ -324,7 +324,7 @@ public class Game extends Observable implements Observer {
             // El jugador descarta su mano
             ArrayList<ICard> hand = this.current_player.getHand();
             int hand_size = hand.size();
-            for (int i = 0;  i < hand_size; i++){
+            for (int i = 0; i < hand_size; i++) {
                 this.current_player.sendToGraveyard(hand.get(0), hand);
             }
             this.setChanged();

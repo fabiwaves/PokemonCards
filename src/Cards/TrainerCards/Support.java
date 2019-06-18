@@ -1,7 +1,7 @@
 package Cards.TrainerCards;
 
-import Controller.Game;
 import Abilities.Effects.IEffect;
+import Controller.Game;
 
 /**
  * @author fabiwave

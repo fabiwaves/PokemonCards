@@ -1,8 +1,8 @@
 package Cards;
 
+import Abilities.Abilities.AbstractAbility;
 import Cards.Phases.AbstractPhase;
 import Cards.TrainerCards.PKMObject;
-import Abilities.Abilities.AbstractAbility;
 import Players.Trainer;
 import Types.Type;
 import Visitors.IVisitable;
@@ -101,18 +101,18 @@ public interface IPokemon extends ICard, IVisitable {
     boolean isAlive();
 
     /**
-     * Set the next ability of a pokemon
-     *
-     * @param index of the attack that want to be used
-     */
-    void setNextAbility(int index);
-
-    /**
      * Get the next ability index of a pokemon
      *
      * @return index of the next ability to be used by a pokemon
      */
     int getNextAbility();
+
+    /**
+     * Set the next ability of a pokemon
+     *
+     * @param index of the attack that want to be used
+     */
+    void setNextAbility(int index);
 
     /**
      * Makes the action of using an ability

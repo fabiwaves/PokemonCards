@@ -23,7 +23,7 @@ public class FightingTest {
     }
 
     @Test
-    public void getName(){
+    public void getName() {
         assertEquals("Fighting", fighting.getName());
     }
 

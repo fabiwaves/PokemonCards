@@ -43,19 +43,19 @@ public class Trainer extends Observable implements IVisitable {
         return this.team.get(0);
     }
 
+    void setActivePokemon(IPokemon activePokemon) {
+        int pkm_index = this.team.indexOf(activePokemon);
+        IPokemon current_active = this.team.get(0);
+        this.team.set(0, activePokemon);
+        this.team.set(pkm_index, current_active);
+    }
+
     public void setObserver(Game game) {
         this.observer = game;
     }
 
     public void setChangedObs() {
         this.setChanged();
-    }
-
-    void setActivePokemon(IPokemon activePokemon) {
-        int pkm_index = this.team.indexOf(activePokemon);
-        IPokemon current_active = this.team.get(0);
-        this.team.set(0, activePokemon);
-        this.team.set(pkm_index, current_active);
     }
 
     public ArrayList getAbilities() {

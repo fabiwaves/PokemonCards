@@ -9,7 +9,7 @@ import Controller.Game;
 
 public class FireEnergy extends AbstractCard implements IEnergy {
 
-    public FireEnergy(){
+    public FireEnergy() {
         this.setName("Fire Energy");
     }
 

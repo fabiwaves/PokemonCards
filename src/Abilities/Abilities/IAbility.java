@@ -30,18 +30,18 @@ public interface IAbility {
     boolean checkCost();
 
     /**
-     * Sets the pokemon associated to the ability
-     *
-     * @param pokemon IPokemon associated to the ability
-     */
-    void setPokemon(IPokemon pokemon);
-
-    /**
      * Gets the pokemon associated to the ability
      *
      * @return IPokemon associated to the ability
      */
     IPokemon getPokemon();
+
+    /**
+     * Sets the pokemon associated to the ability
+     *
+     * @param pokemon IPokemon associated to the ability
+     */
+    void setPokemon(IPokemon pokemon);
 
     /**
      * Representation of using the ability

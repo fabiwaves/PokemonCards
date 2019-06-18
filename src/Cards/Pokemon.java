@@ -1,9 +1,9 @@
 package Cards;
 
+import Abilities.Abilities.AbstractAbility;
 import Cards.Phases.AbstractPhase;
 import Cards.TrainerCards.PKMObject;
 import Controller.Game;
-import Abilities.Abilities.AbstractAbility;
 import Players.Trainer;
 import Types.Type;
 import Visitors.IVisitor;
@@ -44,7 +44,7 @@ public class Pokemon extends AbstractCard implements IPokemon {
                 energy_names) {
             this.energies.put(a_name, 0);
         }
-        for(AbstractAbility ability : this.abilities){
+        for (AbstractAbility ability : this.abilities) {
             ability.setPokemon(this);
         }
         this.phase = phase;
@@ -115,15 +115,15 @@ public class Pokemon extends AbstractCard implements IPokemon {
     }
 
     @Override
+    public int getNextAbility() {
+        return this.next_ability_index;
+    }
+
+    @Override
     public void setNextAbility(int index) {
         if (index >= 0 && index < abilities.size()) {
             this.next_ability_index = index;
         }
-    }
-
-    @Override
-    public int getNextAbility() {
-        return this.next_ability_index;
     }
 
     public void useAbility() {

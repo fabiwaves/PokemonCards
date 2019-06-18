@@ -7,7 +7,7 @@ import java.util.Observer;
 public abstract class AbstractStadiumEffect implements IEffect, Observer {
     Stadium stadium_card;
 
-    public void setStadium(Stadium stadium){
+    public void setStadium(Stadium stadium) {
         this.stadium_card = stadium;
     }
 }

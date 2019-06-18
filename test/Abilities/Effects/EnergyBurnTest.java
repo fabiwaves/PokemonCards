@@ -16,37 +16,6 @@ import static org.junit.Assert.assertTrue;
 
 public class EnergyBurnTest {
 
-    public class NullAbility extends PokemonAbility {
-
-        NullAbility(IEffect effect, IPokemon pokemon) {
-            super("null", "test", new HashMap<>(), effect);
-            this.setPokemon(pokemon);
-        }
-    }
-
-    public class NullPokemon extends Pokemon {
-
-        private boolean accept_visitor_called;
-
-        NullPokemon() {
-            super("test", 1, 11, new ArrayList<>(), new Water(), null, null);
-            this.accept_visitor_called = false;
-            super.addFightingEnergy();
-            super.addFireEnergy();
-        }
-
-        @Override
-        public void acceptVisitor(IVisitor visitor) {
-            this.accept_visitor_called = true;
-        }
-
-        boolean acceptVisitorCalled() {
-            return this.accept_visitor_called;
-        }
-
-
-    }
-
     private EnergyBurn energy_burn;
     private NullPokemon pokemon;
 
@@ -91,5 +60,36 @@ public class EnergyBurnTest {
         // This method does nothing
         energy_burn.visitTrainer(null);
         assertTrue(true);
+    }
+
+    public class NullAbility extends PokemonAbility {
+
+        NullAbility(IEffect effect, IPokemon pokemon) {
+            super("null", "test", new HashMap<>(), effect);
+            this.setPokemon(pokemon);
+        }
+    }
+
+    public class NullPokemon extends Pokemon {
+
+        private boolean accept_visitor_called;
+
+        NullPokemon() {
+            super("test", 1, 11, new ArrayList<>(), new Water(), null, null);
+            this.accept_visitor_called = false;
+            super.addFightingEnergy();
+            super.addFireEnergy();
+        }
+
+        @Override
+        public void acceptVisitor(IVisitor visitor) {
+            this.accept_visitor_called = true;
+        }
+
+        boolean acceptVisitorCalled() {
+            return this.accept_visitor_called;
+        }
+
+
     }
 }

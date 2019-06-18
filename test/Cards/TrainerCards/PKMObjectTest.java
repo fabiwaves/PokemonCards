@@ -14,24 +14,6 @@ import static org.junit.Assert.*;
 
 public class PKMObjectTest {
 
-    private class NullGame extends Game {
-        private boolean play_pkmobject_called;
-
-        NullGame() {
-            super(new Trainer(new ArrayList<>()), new Trainer(new ArrayList<>()));
-            this.play_pkmobject_called = false;
-        }
-
-        @Override
-        public void playPKMObject(PKMObject pkm_object) {
-            this.play_pkmobject_called = true;
-        }
-
-        boolean playPKMObjectCalled() {
-            return this.play_pkmobject_called;
-        }
-    }
-
     private PKMObject object, object2;
     private IPokemon pokemon;
 
@@ -93,5 +75,23 @@ public class PKMObjectTest {
         Trainer trainer = new Trainer(new ArrayList<>());
         object.setTrainer(trainer);
         assertEquals(trainer, object.getTrainer());
+    }
+
+    private class NullGame extends Game {
+        private boolean play_pkmobject_called;
+
+        NullGame() {
+            super(new Trainer(new ArrayList<>()), new Trainer(new ArrayList<>()));
+            this.play_pkmobject_called = false;
+        }
+
+        @Override
+        public void playPKMObject(PKMObject pkm_object) {
+            this.play_pkmobject_called = true;
+        }
+
+        boolean playPKMObjectCalled() {
+            return this.play_pkmobject_called;
+        }
     }
 }
