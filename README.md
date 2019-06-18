@@ -50,6 +50,6 @@
 
 ### Testing
 #### Creados en JUnit 4!
-##### Hasta ahora los test solo abarcan las clases asociadas a los tipos de los Pokemon, asi que si se quiere probar más que eso no se puede.
+##### El paquete test contiene los tests para todas las clases menos Professor Juniper.
 
  
